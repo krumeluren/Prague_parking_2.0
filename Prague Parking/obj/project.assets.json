@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\Prague_parking_2.0_beta\\Prague Parking\\Prague Parking.csproj",
-      "projectName": "Prague Parking",
-      "projectPath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\Prague_parking_2.0_beta\\Prague Parking\\Prague Parking.csproj",
+      "projectUniqueName": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\Prague_parking_2.0_beta\\Prague Parking\\Prague Parking 2_0 beta.csproj",
+      "projectName": "Prague Parking 2_0 beta",
+      "projectPath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\Prague_parking_2.0_beta\\Prague Parking\\Prague Parking 2_0 beta.csproj",
       "packagesPath": "C:\\Users\\9928l\\.nuget\\packages\\",
       "outputPath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\Prague_parking_2.0_beta\\Prague Parking\\obj\\",
       "projectStyle": "PackageReference",

@@ -1,0 +1,15 @@
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\Prague Parking 2.0 beta.exe
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\Prague Parking 2.0 beta.deps.json
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\Prague Parking 2.0 beta.runtimeconfig.json
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\Prague Parking 2.0 beta.runtimeconfig.dev.json
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\Prague Parking 2.0 beta.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\ref\Prague Parking 2.0 beta.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\Prague Parking 2.0 beta.pdb
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2.0 beta.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2.0 beta.AssemblyInfoInputs.cache
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2.0 beta.AssemblyInfo.cs
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2.0 beta.csproj.CoreCompileInputs.cache
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2.0 beta.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\ref\Prague Parking 2.0 beta.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2.0 beta.pdb
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2.0 beta.genruntimeconfig.cache

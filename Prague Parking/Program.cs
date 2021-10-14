@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Prague_Parking
+namespace Prague_Parking_2_0_beta
 {
     class Program
     {
