@@ -1,0 +1,32 @@
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.exe
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.deps.json
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.runtimeconfig.json
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.runtimeconfig.dev.json
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.dll
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\ref\Prague Parking.dll
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.pdb
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.csproj.AssemblyReference.cache
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.AssemblyInfoInputs.cache
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.AssemblyInfo.cs
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.csproj.CoreCompileInputs.cache
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.dll
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\ref\Prague Parking.dll
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.pdb
+C:\Users\9928l\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.genruntimeconfig.cache
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.exe
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.deps.json
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.runtimeconfig.json
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.runtimeconfig.dev.json
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.dll
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\ref\Prague Parking.dll
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\bin\Debug\net5.0\Prague Parking.pdb
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.csproj.AssemblyReference.cache
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.AssemblyInfoInputs.cache
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.AssemblyInfo.cs
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.csproj.CoreCompileInputs.cache
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.dll
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\ref\Prague Parking.dll
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.pdb
+C:\Users\9928l\OneDrive - Handelsakademin\Projekt\Visual Studio Projekt\source\repos\Prague Parking App\Prague Parking\obj\Debug\net5.0\Prague Parking.genruntimeconfig.cache
