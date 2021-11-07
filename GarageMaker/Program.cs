@@ -1,6 +1,6 @@
 ﻿
 using System;
-using Prague_Parking_2_0_beta.VehicleTypes;
+
 using Prague_Parking_2_0_beta.Garage;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -13,15 +13,11 @@ namespace Prague_Parking_2_0_beta
         {
             Console.WriteLine("V 2.0 beta");
 
+            MyGarage garage = new MyGarage();
+            garage.UIMenu();
 
 
-
-            Row row = Row.Create();
-
-
-            Vehicle vehicle = Vehicle.Create();
-            Console.WriteLine(vehicle);
-
+            Console.ReadKey();
         }
     }
 }

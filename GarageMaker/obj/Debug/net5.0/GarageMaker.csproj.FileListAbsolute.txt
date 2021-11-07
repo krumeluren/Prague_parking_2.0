@@ -1,0 +1,16 @@
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\bin\Debug\net5.0\GarageMaker.exe
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\bin\Debug\net5.0\GarageMaker.deps.json
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\bin\Debug\net5.0\GarageMaker.runtimeconfig.json
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\bin\Debug\net5.0\GarageMaker.runtimeconfig.dev.json
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\bin\Debug\net5.0\GarageMaker.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\bin\Debug\net5.0\ref\GarageMaker.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\bin\Debug\net5.0\GarageMaker.pdb
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.csproj.AssemblyReference.cache
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.AssemblyInfoInputs.cache
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.AssemblyInfo.cs
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.csproj.CoreCompileInputs.cache
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\ref\GarageMaker.dll
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.pdb
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\GarageMaker\obj\Debug\net5.0\GarageMaker.genruntimeconfig.cache
