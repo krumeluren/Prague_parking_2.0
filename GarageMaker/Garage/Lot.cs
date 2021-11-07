@@ -2,19 +2,24 @@
 
 namespace Prague_Parking_2_0_beta.Garage
 {
-    class Lot
+    [Serializable]
+    public class Lot
     {
         #region Properties
         public string Name { get; set; }
-        public int? Heigth { get; set; }
+        public int LocationNumber { get; set; }
+        public int RowNumber { get; set; }
+        public int Number { get; set; }
+        public int Heigth { get; set; }
         public bool HasCharger { get; set; }
         #endregion
 
         #region Constructor
-        public Lot(string name = null, int? heigth = null, bool hasCharger = false)
+        public Lot() { }
+        public Lot(string name = null, int? heigth = 0, bool hasCharger = false)
         {
-            Name = name;
-            Heigth = heigth;
+            Name = name == null ? "Unnamed" : name;
+            Heigth = heigth == null ? 9999 : (int)heigth;
             HasCharger = hasCharger;
         }
         #endregion
@@ -22,24 +27,18 @@ namespace Prague_Parking_2_0_beta.Garage
         #region SetName() set Name prop
         public void SetName(string name)
         {
-            Name = name == null ? Name = Name : Name = name;
+            Name = name == null ? Name : name;
         }
         #endregion
-
         #region SetHeigth() set Heigth prop
         public void SetHeigth(int h)
         {
-            if (h >= 1)
+            if (h >= 0)
             {
                 Heigth = h;
             }
-            else if (h == 0)
-            {
-                Heigth = null;
-            }
         }
         #endregion
-
         #region SetHasCharger() set bool HasCharger prop
         public void SetHasCharger(bool hasCharger)
         {
@@ -56,14 +55,13 @@ namespace Prague_Parking_2_0_beta.Garage
         {
             Console.Write("Name: ");
             string name = Console.ReadLine().Trim();
-            name = name == "" ? name = null : name = name;
+            name = name == "" ? null : name;
             SetName(name);
         }
         #endregion
-
         #region UISetHeigth() Change the Heigth int
         /// <summary>
-        /// Ask user for input heigth. If 1 or more, updates. If 0, set to null. If negative or empty, Heigth isn't changed.
+        /// Ask user for input heigth. Must be greater >= 0
         /// </summary>
         public void UISetHeigth()
         {
@@ -86,7 +84,6 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
-
         #region UISetHasCharger() Change the HasCharger bool
         /// <summary>
         /// Updates the HasCharger bool of the lot

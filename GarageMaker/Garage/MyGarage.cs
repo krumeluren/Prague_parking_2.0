@@ -1,15 +1,49 @@
 ﻿
 using System;
 using System.Collections.Generic;
+
 namespace Prague_Parking_2_0_beta.Garage
 {
-    class MyGarage
+    public class MyGarage
     {
+        #region Properties
+        public string Name { get; set; }
+        public int Size { get; set; }
         public List<Location> Locations { get; set; }
+        #endregion
+
+        #region SetLotNumbers()
+        public void SetLotNumbers()
+        {
+            int locationNumber = 0;
+            int rowNumber = 0;
+            int number = 0;
+            for (int i = 0; i < Locations.Count; i++)
+            {
+                Locations[i].Number = locationNumber;
+                for (int ii = 0; ii < Locations[i].Rows.Count; ii++)
+                {
+                    Locations[i].Rows[ii].LocationNumber = locationNumber;
+                    Locations[i].Rows[ii].Number = rowNumber;
+                    for (int iii = 0; iii < Locations[i].Rows[ii].Lots.Length; iii++)
+                    {
+                        Locations[i].Rows[ii].Lots[iii].LocationNumber = locationNumber;
+                        Locations[i].Rows[ii].Lots[iii].RowNumber = rowNumber;
+                        Locations[i].Rows[ii].Lots[iii].Number = number; number++;
+                    }
+                    rowNumber++;
+                }
+                locationNumber++;
+            }
+            Size = number;
+        }
+        #endregion
 
         #region Constructor
-        public MyGarage()
+        public MyGarage() { }
+        public MyGarage(string name)
         {
+            Name = name;
             Locations = new List<Location>();
         }
         #endregion
@@ -20,13 +54,11 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void AddLocation(string name = null)
         {
-            int number = Locations.Count + 1;
-            Location location = new Location(number, name);
+            Location location = new Location(name);
             Locations.Add(location);
             location.UIAddMultipleRows();
         }
         #endregion
-
         #region UIAddLocation()
         /// <summary>
         /// User interface ask for Name of Location, then creates new Location inside this MyGarage
@@ -57,6 +89,20 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
+        #region DisplayLocations()
+        /// <summary>
+        /// Display number, name and row count of all locations
+        /// </summary>
+        public void DisplayLocations()
+        {
+            int count = 1;
+            foreach (var location in Locations)
+            {
+                Console.WriteLine($"Location {count}: Name: {location.Name}, Row Count: {location.Rows.Count}");
+                count++;
+            }
+        }
+        #endregion
 
         #region SetAllLotNames(string name) - set Name prop of all Lots in all Rows in all Locations
         public void SetAllLotNames(string name)
@@ -70,7 +116,6 @@ namespace Prague_Parking_2_0_beta.Garage
             
         }
         #endregion
-
         #region SetAllLotHeigths(int heigth) - set Heigth prop of all Lots in all Rows in all Locations
         public void SetAllLotHeigths(int heigth)
         {
@@ -82,7 +127,6 @@ namespace Prague_Parking_2_0_beta.Garage
 
         }
         #endregion
-
         #region SetAllLotChargers(bool hasCharger) - set HasCharger prop of all Lots in all Rows in all Locations
         public void SetAllLotChargers(bool hasCharger)
         {
@@ -95,6 +139,33 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
+        #region Save(string fileName)
+        /// <summary>
+        /// Save the garage to a json file in /templates
+        /// </summary>
+        /// <param name="fileName"> The name of the file. Overrides or creates a new</param>
+        public void Save(string fileName)
+        {
+            SetLotNumbers();
+            string filePath = $"../../../templates/{fileName}.json";
+            GarageSerializer garageSerializer = new GarageSerializer();
+            garageSerializer.JsonSerialize(this, filePath);
+            Console.WriteLine("Saved..");
+        }
+        #endregion
+        #region UpdateLocationNumbers() - Run after making changes to the Locations list to update the Number property
+        /// <summary>
+        /// Run after making changes to the Locations list to update the Number property
+        /// </summary>
+        private void UpdateLocationNumbers()
+        {
+            for (int i = 0; i < Locations.Count; i++)
+            {
+                Locations[i].Number = i + 1;
+            }
+        }
+        #endregion
+
         #region UIMenu()
         /// <summary>
         /// Outer user menu for managing this garage. Add locations, step in to locations etc
@@ -104,7 +175,7 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
-                Console.WriteLine("Garage Menu");
+                Console.WriteLine($"Garage {Name} Menu");
                 Console.WriteLine("[1] Add a new Location");
                 Console.WriteLine("[2] Edit existing Location");
                 Console.WriteLine("[3] Display Garage");
@@ -128,7 +199,7 @@ namespace Prague_Parking_2_0_beta.Garage
                             DisplayLocations();
                             Console.Write("Enter a Location number:");
                             int loc;
-                            if(int.TryParse(Console.ReadLine(), out loc)) 
+                            if (int.TryParse(Console.ReadLine(), out loc))
                             {
                                 loc -= 1;
                                 if (loc < Locations.Count && loc >= 0)
@@ -167,7 +238,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     case "5":
                         {
                             int? heigth = UISetHeigth();
-                            if(heigth != null)
+                            if (heigth != null)
                             {
                                 SetAllLotHeigths((int)heigth);
                             }
@@ -181,10 +252,11 @@ namespace Prague_Parking_2_0_beta.Garage
                             break;
                         }
                     #endregion
-                    #region Go back
+                    #region Exit
                     case "7":
                         {
-                            Console.WriteLine("Backing..");
+                            UISave();
+                            Console.WriteLine("Exiting..");
                             isDone = true;
                             break;
                         }
@@ -195,17 +267,57 @@ namespace Prague_Parking_2_0_beta.Garage
                             Console.WriteLine("Invalid!");
                             break;
                         }
-                    #endregion
+                        #endregion
                 }
             }
         }
         #endregion
-
+        #region UISave() - Serialize the garage to /templates
+        public void UISave()
+        {
+            Console.WriteLine($"Exiting: Garage {Name} ");
+            Console.WriteLine($"[1] Save as {Name}.json");
+            Console.WriteLine("[2] Save as... .json");
+            Console.WriteLine("[3] Don't save");
+            Console.Write("Option: ");
+            switch (Console.ReadLine())
+            {
+                #region Save
+                case "1":
+                    {
+                        Save(Name);
+                        break;
+                    }
+                #endregion
+                #region Save as
+                case "2":
+                    {
+                        Console.Write("File name: ");
+                        Save(Console.ReadLine());
+                        break;
+                    }
+                #endregion
+                #region Don't save
+                case "3":
+                    {
+                        break;
+                    }
+                #endregion
+                #region Default, error
+                default:
+                    {
+                        Console.WriteLine("Invalid!");
+                        break;
+                    }
+                #endregion
+            }
+        }
+        #endregion
         #region UILocationMenu
         /// <summary>
         /// User menu targeting a location in the garage. Step into location, delete location etc
         /// </summary>
-        public void UILocationMenu(Location location)
+        void UILocationMenu(Location location)
         {
             bool isDone = false;
 
@@ -264,11 +376,10 @@ namespace Prague_Parking_2_0_beta.Garage
         {
             Console.Write("Name: ");
             string name = Console.ReadLine().Trim();
-            name = name == "" ? name = null : name = name;
+            name = name == "" ? null : name;
             return name;
         }
         #endregion
-
         #region UISetHeigth() Get the Heigth and SetAllLotHeigths(h);
         /// <summary>
         /// Ask user for input heigth. Returns int >=0 or null
@@ -293,11 +404,10 @@ namespace Prague_Parking_2_0_beta.Garage
             {
                 heigth = null;
             }
-            heigth = heigth < 0 ? heigth = 0 : heigth = heigth;
+            heigth = heigth < 0 ? 0 : heigth;
             return heigth;
         }
         #endregion
-
         #region UISetHasCharger() Get the Heigth and SetAllLotChargers(bool);
         /// <summary>
         /// Updates the HasCharger bool of the lot
@@ -312,34 +422,6 @@ namespace Prague_Parking_2_0_beta.Garage
                 case "y": SetAllLotChargers(true); ; Console.WriteLine("Set to True"); break;
                 case "n": SetAllLotChargers(false); Console.WriteLine("Set to False"); break;
                 default: Console.WriteLine("Didn't change"); break;
-            }
-        }
-        #endregion
-
-        #region DisplayLocations()
-        /// <summary>
-        /// Display number, name and row count of all locations
-        /// </summary>
-        public void DisplayLocations()
-        {
-            int count = 1;
-            foreach (var location in Locations)
-            {
-                Console.WriteLine($"Location {count}: Name: {location.Name}, Row Count: {location.Rows.Count}");
-                count++;
-            }
-        }
-        #endregion
-
-        #region UpdateLocationNumbers() - Run after making changes to the Locations list to update the Number property
-        /// <summary>
-        /// Run after making changes to the Locations list to update the Number property
-        /// </summary>
-        private void UpdateLocationNumbers()
-        {
-            for (int i = 0; i < Locations.Count; i++)
-            {
-                Locations[i].Number = i + 1;
             }
         }
         #endregion

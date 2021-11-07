@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta.Garage
 {
-    class Location
+    [Serializable]
+    public class Location
     {
         #region Properties
         public string Name { get; set; }
@@ -12,26 +13,26 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region Constructor
-        public Location(int number, string name = "Unnamed location")
+        public Location() { }
+        public Location(string name = "Unnamed location")
         {
-            Number = number;
             Name = name;
             Rows = new List<Row>();
         }
         #endregion
 
         #region AddRow() - Add a new Row() object to List<Row> Structure property
-        public void AddRow(int size, string name, int? heigth )
+        public void AddRow(int size, string name, int? heigth)
         {
-            int number = Rows.Count+1;
-            Rows.Add(new Row(size, number, name, heigth ));
+            Rows.Add(new Row(size,  name, heigth ));
+            UpdateRowNumbers();
         }
         #endregion
 
         #region SetAllLotNames(string name) - set Name prop of all Lots in all Rows of this Location
         public void SetAllLotNames(string name)
         {
-            Name = name == null ? Name = Name : Name = name;
+            Name = name == null ? Name : name;
             for (int i = 0; i < Rows.Count; i++)
             {
                 Row row = Rows[i];
@@ -62,26 +63,31 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region UITargetRow() - User input. Return a Row object or null
-        public Row UITargetRow()
+        #region UITargetRow() - User input. Return a number or null
+        public int? UITargetRow()
         {
-            for (int i = 0; i < Rows.Count; i++)
+            Display();
+            DisplayRows();
+            Console.Write("Enter a Row number:");
+            int i;
+            if (int.TryParse(Console.ReadLine(), out i))
             {
-                Console.Write(i);
-                Rows[i].Display();
-            }
-            Console.Write("Enter a row number");
-            //  TryParse
-            int row;
-            if (int.TryParse(Console.ReadLine(), out row))
-            {   //  Success
-                return Rows[row];
+                i -= 1;
+                if (i < Rows.Count && i >= 0)
+                {
+                    return i;
+                }
+                else
+                {
+                    Console.WriteLine("Out of range");
+                    return null;
+                }
             }
             else
-            {   // Failed
+            {
+                Console.WriteLine("Invalid.");
                 return null;
             }
-
         }
         #endregion
 
@@ -169,7 +175,7 @@ namespace Prague_Parking_2_0_beta.Garage
         {
             Console.Write("Location Name: ");
             string name = Console.ReadLine().Trim();
-            return name == "" ? name = null : name = name;
+            return name == "" ? null : name;
         }
         #endregion
 
@@ -192,9 +198,9 @@ namespace Prague_Parking_2_0_beta.Garage
             }
             else //if heigth not set
             {
-                heigth = null;
+                heigth = 0;
             }
-            heigth = heigth < 0 ? heigth = 0 : heigth = heigth;
+            heigth = heigth >= 0 ? heigth : null;
             return heigth;
         }
         #endregion
@@ -280,26 +286,10 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Enter Row.UIMenu()
                     case "3":
                         {
-                            Display();
-                            DisplayRows();
-                            Console.Write("Enter a Row number:");
-                            int i;
-                            if (int.TryParse(Console.ReadLine(), out i))
+                            int? row = UITargetRow();
+                            if(row != null)
                             {
-                                i -= 1;
-                                if (i < Rows.Count && i >= 0)
-                                {
-                                    Row row = Rows[i];
-                                    row.IMenu();
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Out of range");
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid.");
+                                UIRowMenu(Rows[(int)row]);
                             }
                             break;
                         }
@@ -335,7 +325,6 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Set charging stations of all lots in the Park
                     case "7":
                         {
-
                             UISetHasCharger();
                             break;
                         }
@@ -380,7 +369,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Step into
                     case "1":
                         {
-                            row.IMenu();
+                            row.UIMenu();
                             break;
                         }
                     #endregion
@@ -418,18 +407,13 @@ namespace Prague_Parking_2_0_beta.Garage
 
         #region UpdateRowNumbers() - run after making changes to the Rows list of location
         /// <summary>
-        /// Run after making changes to the Rows list of location to update the Number prop of each Row object
+        /// Depricated
         /// </summary>
         private void UpdateRowNumbers()
         {
-            for (int i = 0; i < Rows.Count; i++)
-            {
-                Rows[i].Number = i + 1;
-            }
+
         }
         #endregion
-
-
 
     }
 }

@@ -7,8 +7,25 @@
   "targets": {
     ".NETCoreApp,Version=v5.0": {
       "Prague Parking 2_0 beta/1.0.0": {
+        "dependencies": {
+          "JsonSubTypes": "1.8.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
         "runtime": {
           "Prague Parking 2_0 beta.dll": {}
+        }
+      },
+      "JsonSubTypes/1.8.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
         }
       }
     }
@@ -18,6 +35,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "JsonSubTypes/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pBChxyl9mt0F1s1giHlN6yQ9WWb5FljluCNhMnSb7sspPfPRPTrc0a0psdu2/FVb5nZu5bQN50OMMaSp8jm8xQ==",
+      "path": "jsonsubtypes/1.8.0",
+      "hashPath": "jsonsubtypes.1.8.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
     }
   }
 }
