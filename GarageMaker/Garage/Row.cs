@@ -2,6 +2,7 @@
 
 namespace Prague_Parking_2_0_beta.Garage
 {
+    [Serializable]
     class Row
     {
         #region Properties
@@ -79,7 +80,6 @@ namespace Prague_Parking_2_0_beta.Garage
                     case "1":
                         {
                             DisplayLots();
-
                             EditSpecificLot();
                             break;
                         }
@@ -116,11 +116,11 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void EditSpecificLot()
         {
-            Console.Write("Enter a target:");
+            Console.Write("Enter a target: ");
             int i;
             if (int.TryParse(Console.ReadLine(), out i))
             {
-                if (i > 0 && i < (Lots.Length - 1))
+                if (i > 0 && i <= (Lots.Length))
                 {
                     Lot lot = Lots[i - 1];
                     lot.UISetName();
@@ -175,11 +175,11 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region IMenu()
+        #region UIMenu()
         /// <summary>
         /// A user menu for managing this row
         /// </summary>
-        public void IMenu()
+        public void UIMenu()
         {
             bool isDone = false;
             while (!isDone)

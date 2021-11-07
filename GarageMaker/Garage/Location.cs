@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta.Garage
 {
+    [Serializable]
     class Location
     {
         #region Properties
@@ -290,7 +291,7 @@ namespace Prague_Parking_2_0_beta.Garage
                                 if (i < Rows.Count && i >= 0)
                                 {
                                     Row row = Rows[i];
-                                    row.IMenu();
+                                    row.UIMenu();
                                 }
                                 else
                                 {
@@ -380,7 +381,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Step into
                     case "1":
                         {
-                            row.IMenu();
+                            row.UIMenu();
                             break;
                         }
                     #endregion
@@ -428,8 +429,6 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
-
-
 
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Prague_Parking_2_0_beta.Garage
 {
+    [Serializable]
     class Lot
     {
         #region Properties

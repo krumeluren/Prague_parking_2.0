@@ -1,15 +1,19 @@
 ﻿
 using System;
 using System.Collections.Generic;
+
 namespace Prague_Parking_2_0_beta.Garage
 {
+    [Serializable]
     class MyGarage
     {
+        public string Name { get; set; }
         public List<Location> Locations { get; set; }
 
         #region Constructor
-        public MyGarage()
+        public MyGarage(string name)
         {
+            Name = name;
             Locations = new List<Location>();
         }
         #endregion
@@ -95,6 +99,55 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
+        #region UISave() - Serialize the garage to /templates
+        public void UISave()
+        {
+            Console.WriteLine($"Exiting: Garage {Name} ");
+            Console.WriteLine($"[1] Save as {Name}.data");
+            Console.WriteLine("[2] Save as..");
+            Console.WriteLine("[3] Don't save");
+            Console.Write("Option: ");
+            switch (Console.ReadLine())
+            {
+                #region Save
+                case "1":
+                    {
+                        string filePath = $"../../../templates/{Name}.data";
+                        GarageSerializer garageSerializer = new GarageSerializer();
+                        garageSerializer.BinarySerialize(this, filePath);
+                        Console.WriteLine("Saved..");
+                        break;
+                    }
+                #endregion
+                #region Save as
+                case "2":
+                    {
+                        Console.Write("File name: ");
+                        string fileName = Console.ReadLine();
+                        string filePath = $"../../../templates/{fileName}.save";
+                        GarageSerializer garageSerializer = new GarageSerializer();
+                        garageSerializer.BinarySerialize(this, filePath);
+                        Console.WriteLine("Saved..");
+                        break;
+                    }
+                #endregion
+                #region Don't save
+                case "3":
+                    {
+                        break;
+                    }
+                #endregion
+                #region Default, error
+                default:
+                    {
+                        Console.WriteLine("Invalid!");
+                        break;
+                    }
+                #endregion
+            }
+        }
+        #endregion
+
         #region UIMenu()
         /// <summary>
         /// Outer user menu for managing this garage. Add locations, step in to locations etc
@@ -104,7 +157,7 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
-                Console.WriteLine("Garage Menu");
+                Console.WriteLine($"Garage {Name} Menu");
                 Console.WriteLine("[1] Add a new Location");
                 Console.WriteLine("[2] Edit existing Location");
                 Console.WriteLine("[3] Display Garage");
@@ -181,10 +234,11 @@ namespace Prague_Parking_2_0_beta.Garage
                             break;
                         }
                     #endregion
-                    #region Go back
+                    #region Exit
                     case "7":
                         {
-                            Console.WriteLine("Backing..");
+                            UISave();
+                            Console.WriteLine("Exiting..");
                             isDone = true;
                             break;
                         }
