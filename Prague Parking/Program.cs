@@ -9,8 +9,6 @@ namespace Prague_Parking_2_0_beta
 {
     class Program
     {
-
-
         static void Main(string[] args)
         {
             Console.WriteLine("V 2.0 beta");

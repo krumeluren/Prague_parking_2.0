@@ -114,7 +114,7 @@ namespace Prague_Parking_2_0_beta.Garage
             Console.WriteLine($"Name: {Name}, Heigth: {Heigth}, Charger: {HasCharger} ");
             foreach (Vehicle vehicle in Vehicles)
             {
-                Console.WriteLine(vehicle.GetType());
+                vehicle.Display();
             }
         }
         #endregion

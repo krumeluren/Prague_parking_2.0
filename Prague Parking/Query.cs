@@ -5,10 +5,12 @@ using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta
 {
+    /// <summary>
+    /// Static methods filtering and returning a list of lots
+    /// </summary>
     class Query
     {
-
-        #region ByMaxHeigth()
+        #region ByMaxHeigth(list, max height)
         /// <summary>
         /// Filtered garage
         /// </summary>
@@ -29,8 +31,7 @@ namespace Prague_Parking_2_0_beta
             return queriedLots;
         }
         #endregion
-
-        #region ByMinHeigth()
+        #region ByMinHeigth(list, min height)
         /// <summary>
         /// Filtered list of lots
         /// </summary>
@@ -51,8 +52,7 @@ namespace Prague_Parking_2_0_beta
             return queriedLots;
         }
         #endregion
-
-        #region ByCharger()
+        #region ByCharger(list, bool)
         /// <summary>
         /// Filtered list of lots
         /// </summary>
@@ -73,6 +73,5 @@ namespace Prague_Parking_2_0_beta
             return queriedLots;
         }
         #endregion
-
     }
 }

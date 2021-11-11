@@ -12,6 +12,7 @@ namespace Prague_Parking_2_0_beta.Garage
     class GarageSerializer
     {
         public MyGarage Garage { get; set; }
+
         #region BinarySerialize(object, filePath)
         public void BinarySerialize(object data, string filePath)
         {
@@ -71,7 +72,6 @@ namespace Prague_Parking_2_0_beta.Garage
             File.WriteAllText(filePath, JsonConvert.SerializeObject(data));
         }
         #endregion
-
         #region JsonDeserialize
         public object JsonDeserialize(Type dataType, string filePath)
         {
@@ -87,9 +87,8 @@ namespace Prague_Parking_2_0_beta.Garage
                 jsonReader.Close();
                 sr.Close();
             }
-
             Garage = (MyGarage)obj.ToObject(dataType);
-            // JSON load child class as parent class. This code goes through all json vehicles objects and recreates them with correct class
+            // JSON load child class as parent class. This code goes through all json vehicles objects and recreates them with correct child class
             for (int i = 0; i < Garage.Locations.Count; i++)
             {
                 for (int ii = 0; ii < Garage.Locations[i].Rows.Count; ii++)
@@ -103,7 +102,7 @@ namespace Prague_Parking_2_0_beta.Garage
                                 List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
                                 for (int v = 0; v < vehicles.Count; v++)
                                 {
-                                    vehicles[v] = new Car(vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
+                                    vehicles[v] = new Car(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
                                 }
                             }
                             if (Garage.Locations[i].Rows[ii].Lots[iii].Vehicles[iv].Type == "MC")
@@ -111,7 +110,7 @@ namespace Prague_Parking_2_0_beta.Garage
                                 List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
                                 for (int v = 0; v < vehicles.Count; v++)
                                 {
-                                    vehicles[v] = new MC(vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
+                                    vehicles[v] = new MC(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
                                 }
                             }
                             if (Garage.Locations[i].Rows[ii].Lots[iii].Vehicles[iv].Type == "Truck")
@@ -119,7 +118,7 @@ namespace Prague_Parking_2_0_beta.Garage
                                 List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
                                 for (int v = 0; v < vehicles.Count; v++)
                                 {
-                                    vehicles[v] = new Truck(vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
+                                    vehicles[v] = new Truck(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
                                 }
                             }
                             if (Garage.Locations[i].Rows[ii].Lots[iii].Vehicles[iv].Type == "Bike")
@@ -127,14 +126,13 @@ namespace Prague_Parking_2_0_beta.Garage
                                 List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
                                 for (int v = 0; v < vehicles.Count; v++)
                                 {
-                                    vehicles[v] = new Bike(vehicles[v].Heigth, vehicles[v].Color);
+                                    vehicles[v] = new Bike(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Color);
                                 }
                             }
                         }
                     }
                 }
             }
-
             return Garage;
         }
         #endregion

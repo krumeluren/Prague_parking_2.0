@@ -7,10 +7,11 @@ namespace Prague_Parking_2_0_beta
     {
         public MyGarage Garage { get; set; }
         public string FileName { get; set; }
-        public MainMenu()
-        {
 
-        }
+        #region Constructor
+        public MainMenu()
+        {}
+        #endregion
 
         #region Init() - Init a MyGarage object from GarageMaker or /parks
         public void Init()
@@ -23,14 +24,14 @@ namespace Prague_Parking_2_0_beta
                 #region Load from GarageMaker/templates
                 case "1":
                     {
-                        //  Load and Save a GarageMaker/templates to /parks
+                        //  Load and Save a GarageMaker/templates file to /parks
                         Console.Write("Enter the file name: ");
                         string fileName = Console.ReadLine();
                         string filePath = $"../../../../GarageMaker/templates/{fileName}.json";
                         GarageSerializer garageSerializer = new GarageSerializer();
                         Garage = garageSerializer.JsonDeserialize(typeof(MyGarage), filePath) as MyGarage;
                         FileName = Garage.UISave(fileName);
-                        //  Reload from /parks
+                        // Then Reload it from /parks
                         Garage = MyGarage.Load(FileName);
                         Garage.FileName = FileName;
                         Garage.UIMenu();
@@ -60,6 +61,5 @@ namespace Prague_Parking_2_0_beta
             }
         }
         #endregion
-
     }
 }

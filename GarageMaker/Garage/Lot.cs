@@ -35,7 +35,7 @@ namespace Prague_Parking_2_0_beta.Garage
         {
             if (h >= 0)
             {
-                Heigth = h;
+                Heigth = h; 
             }
         }
         #endregion

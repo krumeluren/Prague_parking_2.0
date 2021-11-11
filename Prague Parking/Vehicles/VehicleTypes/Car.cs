@@ -7,11 +7,13 @@ namespace Prague_Parking_2_0_beta
     class Car : Vehicle
     {
         public Car(
+            DateTime arrival,
             int heigth,
             string id,
             string color = null,
             bool electric = false
             ) : base (
+                arrival,
                 heigth,
                 id, 
                 color,
@@ -48,8 +50,9 @@ namespace Prague_Parking_2_0_beta
             {
                 electric = false;
             }
+            DateTime arrival = DateTime.Now;
 
-            return new Car(heigth, id, color, electric);
+            return new Car(arrival, heigth, id, color, electric);
         }
     }
 }

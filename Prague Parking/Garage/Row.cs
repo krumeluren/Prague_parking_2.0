@@ -190,11 +190,8 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-
-        #region Queries
-
         #region QueryLots()
-        public List<Lot> QueryLots()
+        public List<Lot> GetAllLots()
         {
             List<Lot> queriedLots = new List<Lot>();
             foreach (Lot lot in Lots)
@@ -204,42 +201,5 @@ namespace Prague_Parking_2_0_beta.Garage
             return queriedLots;
         }
         #endregion
-
-        #region ByMaxHeigth()
-        public List<Lot> ByMaxHeigth(int max)
-        {
-            List<Lot> queriedLots = new List<Lot>();
-
-            for (int i = 0; i < Lots.Length; i++)
-            {
-                if (Lots[i].Heigth <= max)
-                {
-                    queriedLots.Add(Lots[i]);
-                }
-            }
-            return queriedLots;
-        }
-        #endregion
-
-        #region ByMinHeigth()
-        public List<Lot> ByMinHeigth(int min)
-        {
-            List<Lot> queriedLots = new List<Lot>();
-
-            for (int i = 0; i < Lots.Length; i++)
-            {
-                if (Lots[i].Heigth >= min)
-                {
-                    queriedLots.Add(Lots[i]);
-                }
-            }
-            return queriedLots;
-        }
-        #endregion
-
-        #endregion
-
-
-
     }
 }

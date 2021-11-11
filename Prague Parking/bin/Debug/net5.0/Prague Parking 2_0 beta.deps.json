@@ -18,6 +18,12 @@
       "JsonSubTypes/1.8.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/JsonSubTypes.dll": {
+            "assemblyVersion": "1.8.0.0",
+            "fileVersion": "1.8.0.0"
+          }
         }
       },
       "Newtonsoft.Json/13.0.1": {

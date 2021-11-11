@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "3JaETLN8SUnvOXWa6Kq8IUSKXd+eXNauJYtFwgtXSr4cFSJ/AO2UcbOS2kdQx0doVujgVcS51FLKsNGiwCrVKw==",
+  "dgSpecHash": "FzE5ncFsFHX20JGtLqpWxpVj3rctCoytNPTNbe1cu0mqQ616aBnZaGa5p2q4g+YUiAxjaG23+fqQx+kSg0q/cw==",
   "success": true,
   "projectFilePath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\Prague_parking_2.0_beta\\GarageMaker\\GarageMaker.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\9928l\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\9928l\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\9928l\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,4 +1,5 @@
 ﻿using Prague_Parking_2_0_beta.Garage;
+using System;
 using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta
@@ -6,9 +7,11 @@ namespace Prague_Parking_2_0_beta
     class Bike : Vehicle
     {
         public Bike(
+            DateTime arrival,
             int heigth,
             string color = null
             ) : base (
+                arrival,
                 heigth,
                 color: color
                 )
@@ -18,10 +21,10 @@ namespace Prague_Parking_2_0_beta
         }
         public static Bike UICreate()
         {
-            int heigth = 0;
+            int heigth = 150;
             string color = null;
-
-            return new Bike(heigth, color);
+            DateTime arrival = DateTime.Now;
+            return new Bike(arrival, heigth, color);
         }
     }
 }

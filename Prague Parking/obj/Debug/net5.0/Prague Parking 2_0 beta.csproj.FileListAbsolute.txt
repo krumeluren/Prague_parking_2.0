@@ -16,3 +16,4 @@ E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Par
 E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2_0 beta.genruntimeconfig.cache
 E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\Newtonsoft.Json.dll
 E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\obj\Debug\net5.0\Prague Parking 2_0 beta.csproj.CopyComplete
+E:\Projekt\Visual Studio Projekt\source\repos\Prague_parking_2.0_beta\Prague Parking\bin\Debug\net5.0\JsonSubTypes.dll

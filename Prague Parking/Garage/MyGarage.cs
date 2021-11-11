@@ -163,7 +163,8 @@ namespace Prague_Parking_2_0_beta.Garage
         public void TestVehicles()
         {
             Lot lot = Locations[0].Rows[0].Lots[0];
-                lot.Vehicles.Add(new Car(200, "ABC123", "Black", true));
+            DateTime arrival = DateTime.Now;
+                lot.Vehicles.Add(new Car(arrival,200, "ABC123", "Black", true));
 
 
             Console.WriteLine(Locations[0].Rows[0].Lots[0].Vehicles[0].Id);
@@ -185,6 +186,7 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
+                #region Menu
                 Console.WriteLine($"Garage {Name} Menu");
                 Console.WriteLine("[2] Add a vehicle");
                 Console.WriteLine("[3] Display Garage");
@@ -193,6 +195,8 @@ namespace Prague_Parking_2_0_beta.Garage
                 Console.WriteLine("[6] Set charging stations of all lots in the Park");
                 Console.WriteLine("[7] Exit Garage Menu");
                 Console.Write("Option: ");
+                #endregion
+
                 switch (Console.ReadLine())
                 {
                     #region Add a vehicle
