@@ -14,7 +14,7 @@ namespace Prague_Parking_2_0_beta
 
             Lot lot = new Lot();
             Console.WriteLine(lot.Name);
-            Console.WriteLine("GarageMaker Beta");
+            Console.WriteLine("GarageMaker 1.0b");
 
 
             Console.WriteLine("[1] Load Garage template");
