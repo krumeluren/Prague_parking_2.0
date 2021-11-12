@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9sx2XfQpbg/jeCy84K3Hkykbg0IVc19iJ3i0Kd/2x+NzofrRMl5Rz7i8m+veOQdj6KnbukkZDcLKBDOFmXqDzA==",
+  "dgSpecHash": "vosLD0e8z4tlq02NbtttVuyGPtFyzIYFKwxyluyrOLHDUC9CrJbsGsmck5DpZOWjRpQ0xccwTMPu7E25D+CGWg==",
   "success": true,
   "projectFilePath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\Prague_parking_2.0_beta\\Prague Parking\\Prague Parking 2_0 beta.csproj",
   "expectedPackageFiles": [
@@ -39,8 +39,7 @@
     "C:\\Users\\9928l\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
     "C:\\Users\\9928l\\.nuget\\packages\\system.threading.tasks.extensions\\4.0.0\\system.threading.tasks.extensions.4.0.0.nupkg.sha512",
     "C:\\Users\\9928l\\.nuget\\packages\\system.xml.readerwriter\\4.0.11\\system.xml.readerwriter.4.0.11.nupkg.sha512",
-    "C:\\Users\\9928l\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
-    "C:\\Users\\9928l\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+    "C:\\Users\\9928l\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512"
   ],
   "logs": []
 }
