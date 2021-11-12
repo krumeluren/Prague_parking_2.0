@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b70391b9-f83c-43cd-8952-67f9588054aa": {
+      "ProjectGuid": "b70391b9-f83c-43cd-8952-67f9588054aa",
+      "DisplayName": "Prague Parking 2_0 beta",
+      "ColorIndex": 0
+    },
+    "f7d1cc3a-b2de-462b-bf7d-aa0432b2316c": {
+      "ProjectGuid": "f7d1cc3a-b2de-462b-bf7d-aa0432b2316c",
+      "DisplayName": "GarageMaker",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
