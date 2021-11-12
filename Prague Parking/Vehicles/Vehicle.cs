@@ -36,10 +36,12 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
+        #region Display()
         public void Display()
         {
             Console.WriteLine($"Typ: {Type}, Regnr: {Id}, Färg: {Color}, Höjd: {Heigth}, Elektrisk: {Electric}, Ankomst: {Arrival}");
         }
+        #endregion
 
         #region UICreator() - Returns a Vehicle object
         public static Vehicle UICreator()
@@ -145,12 +147,12 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
-        #region CheckLots(row, filter, index) - Goes over lot/lots in a Row until remaining vehicle size is 0 
+        #region CheckLotsOLD(row, filter, index) - Goes over lot/lots in a Row until remaining vehicle size is 0 
         /// <summary>
         /// Goes over lot(s) staring at "l", filling up each lot, until remaining vehicle size is 0,
         /// </summary>
         /// <returns>true if vehicle size reached 0, false if problem</returns>
-        private bool CheckLots(Row row, List<Lot> filter, int l)
+        private bool CheckLotsOLD(Row row, List<Lot> filter, int l)
         {
             Lot lot = row.Lots[l];
             int vehicleSizeLeft = Size;
@@ -185,14 +187,14 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
-        #region Park(row, filter, index) - Parks the vehicle on lot (or lots if larger vehicle)
+        #region ParkOLD(row, filter, index) - Parks the vehicle on lot (or lots if larger vehicle)
         /// <summary>
         /// Try add the vehicle to the specified lot start point + more if larger vehicle 
         /// </summary>
         /// <returns>Parking success</returns>
-        public bool Park(Row row, List<Lot> filter, int l)
+        public bool ParkOLD(Row row, List<Lot> filter, int l)
         {
-            bool canFit = CheckLots(row, filter, l);
+            bool canFit = CheckLotsOLD(row, filter, l);
             Lot lot = row.Lots[l];
             int vehicleSizeLeft = Size;
 
@@ -220,6 +222,43 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
+        #region Park(garage, lot, filter) - Parks the vehicle on lot (or lots if larger vehicle)
+        /// <summary>
+        /// Try add the vehicle to the specified lot start point + more if larger vehicle 
+        /// </summary>
+        /// <returns>Parking success</returns>
+        public bool Park(MyGarage garage, Lot lot, List<Lot> filter)
+        {
+            bool canFit = garage.CheckLots(this, lot, filter);
+            Row row = garage.Locations[lot.LocationIndex].Rows[lot.RowIndex];
+            int i = lot.Index;
+
+            int vehicleSizeLeft = Size;
+
+            if (canFit)
+            {
+                if (Size >= 4) // If car or bigger
+                {
+                    while (lot.SpaceLeft == 4 && vehicleSizeLeft != 0 && filter.Contains(lot)) // While the lot is empty and there is size left
+                    {
+                        lot.Vehicles.Add(this); // Add vehicle to lot
+                        lot.SpaceLeft -= 4; // Drain available lot of space
+                        vehicleSizeLeft -= 4; // Drain vehicle size
+                        i++; // Go to next lot
+                        lot = row.Lots[i];
+                    }
+                }
+                if (Size < 4) // If smaller than car
+                {
+                    lot.Vehicles.Add(this);
+                    lot.SpaceLeft -= vehicleSizeLeft;
+                }
+                return true;
+            }
+            else return false;
+        }
+        #endregion
+
         #region UIPark(garage) - Add the vehicle to the first available lot/lots
         /// <summary>
         /// Add vehicle to first available lot/lots
@@ -234,9 +273,10 @@ namespace Prague_Parking_2_0_beta
                 for (int ii = 0; ii < location.Rows.Count; ii++)
                 {
                     Row row = location.Rows[ii];
-                    for (int lot = 0; lot < row.Lots.Length; lot++)
+                    for (int iii = 0; iii < row.Lots.Length; iii++)
                     {
-                        success = Park(row, filter, lot);
+                        Lot lot = row.Lots[iii];
+                        success = Park(garage, lot, filter);
                         if (success)
                         {
                             return success;
@@ -291,8 +331,7 @@ namespace Prague_Parking_2_0_beta
                             {
                                 i -= 1;
                                 Lot lot = queriedLots[i]; //  Select lot by index in available lots
-                                Row row = garage.Locations[lot.LocationNumber].Rows[lot.RowNumber]; //  Find the row of the lot
-                                parked = Park(row, filter, i); // Try parking vehicle, if success exit methood
+                                parked = Park(garage, lot, filter); // Try parking vehicle, if success exit methood
                             }
                             break;
                         }
@@ -409,7 +448,7 @@ namespace Prague_Parking_2_0_beta
                     Row row = location.Rows[ii];
                     for (int lot = 0; lot < row.Lots.Length; lot++)
                     {
-                        while (CheckLots(row, filter, lot))
+                        while (CheckLotsOLD(row, filter, lot))
                         {
                             availableLots.Add(row.Lots[i]);
                         }

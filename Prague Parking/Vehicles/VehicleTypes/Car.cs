@@ -50,9 +50,7 @@ namespace Prague_Parking_2_0_beta
             {
                 electric = false;
             }
-            DateTime arrival = DateTime.Now;
-
-            return new Car(arrival, heigth, id, color, electric);
+            return new Car(DateTime.Now, heigth, id, color, electric);
         }
     }
 }

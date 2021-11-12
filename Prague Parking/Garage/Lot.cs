@@ -7,8 +7,9 @@ namespace Prague_Parking_2_0_beta.Garage
     class Lot
     {
         #region Properties
-        public int LocationNumber { get; set; }
-        public int RowNumber { get; set; }
+        public int LocationIndex { get; set; }
+        public int RowIndex { get; set; }
+        public int Index { get; set; }
         public int Number { get; set; }
         public string Name { get; set; }
         public int Heigth { get; set; }

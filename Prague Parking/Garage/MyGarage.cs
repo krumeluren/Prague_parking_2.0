@@ -353,30 +353,72 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region SetLotNumbers() - Unused
+        #region CheckLots(vehicle, lot, filter) - Goes over lot/lots in a Row until remaining vehicle size is 0 
+        /// <summary>
+        /// Goes over lot(s) staring at input lot, filling up each lot, until remaining vehicle size is 0,
+        /// </summary>
+        /// <returns>true if vehicle can fit here, false if not</returns>
+        public bool CheckLots(Vehicle vehicle, Lot lot, List<Lot> filter)
+        {
+            Row row = Locations[lot.LocationIndex].Rows[lot.RowIndex];
+            int i = lot.Index;
+            
+            int vehicleSizeLeft = Size;
+            if (Size >= 4) // if vehicle is car or bigger
+            {
+                // As long as lot is empty, height is less than vehicle, the lot exists in the filter, Iterate lots until vehicle size is 'emptied' - return true
+                while (row.Lots[i].SpaceLeft >= 4 &&
+                    lot.Heigth >= vehicle.Heigth &&
+                    vehicleSizeLeft != 0 &&
+                    filter.Contains(lot) &&
+                    (i < row.Lots.Length))
+                {
+                    lot = row.Lots[i];
+                    vehicleSizeLeft -= 4;
+                    i++;
+                }
+                if (vehicleSizeLeft == 0) // If while loop emptied vehicle size
+                {
+                    return true;
+                }
+            }
+            else if (Size < 4 && Size > 0) // If vehicle is smaller than car
+            {
+                // If lot is empty, height is less than vehicle, the lot exists in the filter, vehicle fits - return true
+                if (lot.SpaceLeft >= vehicleSizeLeft &&
+                    lot.Heigth >= vehicle.Heigth &&
+                    filter.Contains(lot))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        #endregion
+
+        #region SetLotNumbers()
         public void SetLotNumbers()
         {
-            //int locationNumber = 0;
-            //int rowNumber = 0;
-            //int number = 0;
-            //for (int i = 0; i < Locations.Count; i++)
-            //{
-            //    Locations[i].Number = locationNumber;
-            //    for (int ii = 0; ii < Locations[i].Rows.Count; ii++)
-            //    {
-            //        Locations[i].Rows[ii].LocationNumber = locationNumber;
-            //        Locations[i].Rows[ii].Number = rowNumber;
-            //        for (int iii = 0; iii < Locations[i].Rows[ii].Lots.Length; iii++)
-            //        {
-            //            Locations[i].Rows[ii].Lots[iii].LocationNumber = locationNumber;
-            //            Locations[i].Rows[ii].Lots[iii].RowNumber = rowNumber;
-            //            Locations[i].Rows[ii].Lots[iii].Number = number; number++;
-            //        }
-            //        rowNumber++;
-            //    }
-            //    locationNumber++;
-            //}
-            //Size = number;
+            int lotNumber = 0;
+
+            for (int i = 0; i < Locations.Count; i++)
+            {
+                Locations[i].Index = i;
+                for (int ii = 0; ii < Locations[i].Rows.Count; ii++)
+                {
+                    Locations[i].Rows[ii].Index = ii;
+                    Locations[i].Rows[ii].LocationIndex = i;
+                    for (int iii = 0; iii < Locations[i].Rows[ii].Lots.Length; iii++)
+                    {
+                        Locations[i].Rows[ii].Lots[iii].Index = iii;
+                        Locations[i].Rows[ii].Lots[iii].RowIndex = ii;
+                        Locations[i].Rows[ii].Lots[iii].LocationIndex = i;
+                        Locations[i].Rows[ii].Lots[iii].Number = lotNumber;
+                        lotNumber++;
+                    }
+                }
+            }
+            Size = lotNumber;
         }
         #endregion
 

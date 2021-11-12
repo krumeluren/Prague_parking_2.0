@@ -23,8 +23,7 @@ namespace Prague_Parking_2_0_beta
         {
             int heigth = 150;
             string color = null;
-            DateTime arrival = DateTime.Now;
-            return new Bike(arrival, heigth, color);
+            return new Bike(DateTime.Now, heigth, color);
         }
     }
 }

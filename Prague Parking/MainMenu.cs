@@ -47,6 +47,7 @@ namespace Prague_Parking_2_0_beta
                         {
                             FileName = fileName;
                             Garage = MyGarage.Load(fileName);
+                            Garage.SetLotNumbers();
                             Garage.FileName = FileName;
                             Garage.UIMenu();
                         }

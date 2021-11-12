@@ -8,8 +8,8 @@ namespace Prague_Parking_2_0_beta.Garage
     {
         #region Properties
         public string Name { get; set; }
-        public int LocationNumber { get; set; }
-        public int Number { get; set; }
+        public int LocationIndex { get; set; }
+        public int Index { get; set; }
         public Lot[] Lots { get; set; }
         #endregion
 
@@ -17,7 +17,7 @@ namespace Prague_Parking_2_0_beta.Garage
         public Row(int size, int number, string name = "Unnamed row", int heigth = 0)
         {
             Name = name;
-            Number = number;
+            Index = number;
             size = size < 1 ? 1 : size; //  If size is less than 1, set to 1.
             Lots = new Lot[size];
         }
@@ -115,7 +115,7 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
-                Console.WriteLine($"Row {Number} Menu");
+                Console.WriteLine($"Row {Index} Menu");
                 Console.WriteLine("[2] Set all lot names in the row");
                 Console.WriteLine("[3] Set the heigth of the row");
                 Console.WriteLine("[4] Set charging stations of all lots in the row");
@@ -173,7 +173,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"Row {Number}: Name: {Name}, Lots: {Lots.Length} ");
+            Console.WriteLine($"Row {Index}: Name: {Name}, Lots: {Lots.Length} ");
         }
         #endregion
         #region DisplayLots() - Displays properties of every lot on this Row
@@ -190,7 +190,7 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region QueryLots()
+        #region GetAllLots()
         public List<Lot> GetAllLots()
         {
             List<Lot> queriedLots = new List<Lot>();

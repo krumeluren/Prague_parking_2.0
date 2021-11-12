@@ -15,27 +15,26 @@ namespace Prague_Parking_2_0_beta.Garage
         #region SetLotNumbers()
         public void SetLotNumbers()
         {
-            int locationNumber = 0;
-            int rowNumber = 0;
-            int number = 0;
+            int lotNumber = 0;
+
             for (int i = 0; i < Locations.Count; i++)
             {
-                Locations[i].Number = locationNumber;
+                Locations[i].Index = i;
                 for (int ii = 0; ii < Locations[i].Rows.Count; ii++)
                 {
-                    Locations[i].Rows[ii].LocationNumber = locationNumber;
-                    Locations[i].Rows[ii].Number = rowNumber;
+                    Locations[i].Rows[ii].Index = ii;
+                    Locations[i].Rows[ii].LocationIndex = i;
                     for (int iii = 0; iii < Locations[i].Rows[ii].Lots.Length; iii++)
                     {
-                        Locations[i].Rows[ii].Lots[iii].LocationNumber = locationNumber;
-                        Locations[i].Rows[ii].Lots[iii].RowNumber = rowNumber;
-                        Locations[i].Rows[ii].Lots[iii].Number = number; number++;
+                        Locations[i].Rows[ii].Lots[iii].Index = iii;
+                        Locations[i].Rows[ii].Lots[iii].RowIndex = ii;
+                        Locations[i].Rows[ii].Lots[iii].LocationIndex = i;
+                        Locations[i].Rows[ii].Lots[iii].Number = lotNumber;
+                        lotNumber++;
                     }
-                    rowNumber++;
                 }
-                locationNumber++;
             }
-            Size = number;
+            Size = lotNumber;
         }
         #endregion
 
@@ -153,18 +152,7 @@ namespace Prague_Parking_2_0_beta.Garage
             Console.WriteLine("Saved..");
         }
         #endregion
-        #region UpdateLocationNumbers() - Run after making changes to the Locations list to update the Number property
-        /// <summary>
-        /// Run after making changes to the Locations list to update the Number property
-        /// </summary>
-        private void UpdateLocationNumbers()
-        {
-            for (int i = 0; i < Locations.Count; i++)
-            {
-                Locations[i].Number = i + 1;
-            }
-        }
-        #endregion
+
 
         #region UIMenu()
         /// <summary>
@@ -343,7 +331,7 @@ namespace Prague_Parking_2_0_beta.Garage
                         {
                             Console.WriteLine("Removing..");
                             Locations.Remove(location);
-                            UpdateLocationNumbers();
+                            SetLotNumbers();
                             isDone = true;
                             break;
                         }

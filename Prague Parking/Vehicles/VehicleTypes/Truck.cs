@@ -30,8 +30,7 @@ namespace Prague_Parking_2_0_beta
             string id = null;
             string color = null;
             bool electric = false;
-            DateTime dateTime = DateTime.Now;
-            return new Truck(dateTime, heigth, id, color, electric);
+            return new Truck(DateTime.Now, heigth, id, color, electric);
         }
     }
 }

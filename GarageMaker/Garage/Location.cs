@@ -8,7 +8,7 @@ namespace Prague_Parking_2_0_beta.Garage
     {
         #region Properties
         public string Name { get; set; }
-        public int Number { get; set; }
+        public int Index { get; set; }
         public List<Row> Rows { get; set; }
         #endregion
 
@@ -229,7 +229,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"Location {Number}: Name: {Name}, Row Count: {Rows.Count}");
+            Console.WriteLine($"Location {Index}: Name: {Name}, Row Count: {Rows.Count}");
         }
         #endregion
 
