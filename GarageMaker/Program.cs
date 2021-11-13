@@ -30,6 +30,7 @@ namespace Prague_Parking_2_0_beta
                         string filePath = $"../../../templates/{fileName}.json";
                         GarageSerializer garageSerializer = new GarageSerializer();
                         MyGarage garage = garageSerializer.JsonDeserialize(typeof(MyGarage), filePath) as MyGarage;
+                        garage.SetReferences();
                         garage.UIMenu();
                         break;
                     }

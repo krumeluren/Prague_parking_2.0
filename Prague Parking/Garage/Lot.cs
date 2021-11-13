@@ -7,21 +7,21 @@ namespace Prague_Parking_2_0_beta.Garage
     class Lot
     {
         #region Properties
-        public int LocationIndex { get; set; }
-        public int RowIndex { get; set; }
-        public int Index { get; set; }
-        public int Number { get; set; }
-        public string Name { get; set; }
-        public int Heigth { get; set; }
-        public bool HasCharger { get; set; }
+        public int Index { get; set; } // Index inside row
+        public Row Row { get; set; }
+        public int Number { get; set; } // Index of all lots in garage
+        public string Name { get; set; } // Optional name
+        public int Heigth { get; set; } // Max height to fit a vehicle
+        public bool HasCharger { get; set; } // If it has a charging station
         public List<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
         public int Space = 4;
         public int SpaceLeft = 4;
         #endregion
 
         #region Constructor
-        public Lot(string name = null, int heigth = 0, bool hasCharger = false)
+        public Lot(Row row, string name = null, int heigth = 0, bool hasCharger = false)
         {
+            Row = row;
             Name = name == null ? "Unnamed" : name;
             Heigth = heigth;
             HasCharger = hasCharger;
@@ -112,7 +112,9 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"Name: {Name}, Heigth: {Heigth}, Charger: {HasCharger} ");
+            string hasCharger = HasCharger == true ? "Yes" : "No";
+            string floorName = Row.Location.Name == null ? $"Floor: {Row.Location.Index.ToString()}" : Row.Location.Name;
+            Console.WriteLine($"{floorName}, Nr: {Number}, Height: {Heigth}, Charging port: {hasCharger}");
             foreach (Vehicle vehicle in Vehicles)
             {
                 vehicle.Display();

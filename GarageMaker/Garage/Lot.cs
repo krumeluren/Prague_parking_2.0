@@ -9,6 +9,8 @@ namespace Prague_Parking_2_0_beta.Garage
         public string Name { get; set; }
         public int LocationIndex { get; set; }
         public int RowIndex { get; set; }
+
+        public Row Row { get; set; }
         public int Index { get; set; }
         public int Number { get; set; }
         public int Heigth { get; set; }

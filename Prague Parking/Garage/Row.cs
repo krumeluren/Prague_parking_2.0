@@ -7,15 +7,16 @@ namespace Prague_Parking_2_0_beta.Garage
     class Row
     {
         #region Properties
-        public string Name { get; set; }
-        public int LocationIndex { get; set; }
-        public int Index { get; set; }
-        public Lot[] Lots { get; set; }
+        public string Name { get; set; } // Optional name
+        public int Index { get; set; } // Index inside location
+        public Location Location { get; set; }
+        public Lot[] Lots { get; set; } 
         #endregion
 
         #region Constructor
-        public Row(int size, int number, string name = "Unnamed row", int heigth = 0)
+        public Row(Location location,int size, int number, string name = "Unnamed row", int heigth = 0)
         {
+            Location = location;
             Name = name;
             Index = number;
             size = size < 1 ? 1 : size; //  If size is less than 1, set to 1.
@@ -105,7 +106,6 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
         #endregion
 
-
         #region UIMenu()
         /// <summary>
         /// A user menu for managing this row
@@ -183,8 +183,7 @@ namespace Prague_Parking_2_0_beta.Garage
         public void DisplayLots()
         {
             for (int i = 0; i < Lots.Length; i++)
-            {
-                Console.Write("Lot: " + (i + 1) + ": ");
+            {                
                 Lots[i].Display();
             }
         }

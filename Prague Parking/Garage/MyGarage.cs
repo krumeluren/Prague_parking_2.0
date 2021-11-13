@@ -7,10 +7,10 @@ namespace Prague_Parking_2_0_beta.Garage
     class MyGarage
     {
         #region Properties
-        public string Name { get; set; }
-        public string FileName { get; set; } // The name of the file loaded
+        public string Name { get; set; } // Name of garage
+        public string FileName { get; set; } // The name of the file loaded (initially same as Name)
         public List<Location> Locations { get; set; }
-        public int Size { get; set; }
+        public int Size { get; set; } // lot count in garage
         #endregion
         #region Constructor
         public MyGarage(string name)
@@ -114,6 +114,7 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
         #endregion
 
+        
         #region Display()
         /// <summary>
         /// Display the entire garage
@@ -147,6 +148,7 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
+
         #region Save(string fileName)
         /// <summary>
         /// Save the garage to a json file in /parks
@@ -160,29 +162,13 @@ namespace Prague_Parking_2_0_beta.Garage
             Console.WriteLine("Saved..");
         }
         #endregion
-        public void TestVehicles()
-        {
-            Lot lot = Locations[0].Rows[0].Lots[0];
-            DateTime arrival = DateTime.Now;
-                lot.Vehicles.Add(new Car(arrival,200, "ABC123", "Black", true));
-
-
-            Console.WriteLine(Locations[0].Rows[0].Lots[0].Vehicles[0].Id);
-            Console.WriteLine(Locations[0].Rows[0].Lots[0].Vehicles[0].Heigth);
-            Console.WriteLine(Locations[0].Rows[0].Lots[0].Vehicles[0].Color);
-            Console.WriteLine(Locations[0].Rows[0].Lots[0].Vehicles[0].Size);
-            Console.WriteLine(Locations[0].Rows[0].Lots[0].Vehicles[0].Electric);
-            Console.WriteLine(Locations[0].Rows[0].Lots[0].Vehicles[0].Arrival);
-        }
-
+       
         #region UIMenu()
         /// <summary>
         /// Outer user menu for managing this garage. Add locations, step in to locations etc
         /// </summary>
         public void UIMenu()
         {
-            //TestVehicles();
-
             bool isDone = false;
             while (!isDone)
             {
@@ -207,12 +193,12 @@ namespace Prague_Parking_2_0_beta.Garage
                                 Vehicle vehicle = Vehicle.UICreator();
                                 try
                                 {
-                                    Console.WriteLine("lol");
                                     vehicle.UIPark(this);
                                 }
                                 catch (Exception)
                                 {
                                     Console.WriteLine("Error while adding vehicle to lot");
+
                                 }
                             }
                             catch (Exception) { Console.WriteLine("Error while creating vehicle"); }
@@ -352,26 +338,26 @@ namespace Prague_Parking_2_0_beta.Garage
             return lots;
         }
         #endregion
-
         #region CheckLots(vehicle, lot, filter) - Goes over lot/lots in a Row until remaining vehicle size is 0 
         /// <summary>
-        /// Goes over lot(s) staring at input lot, filling up each lot, until remaining vehicle size is 0,
+        /// Goes over lot(s) staring at input lot, filling each lot, until remaining vehicle size is 0,
         /// </summary>
         /// <returns>true if vehicle can fit here, false if not</returns>
         public bool CheckLots(Vehicle vehicle, Lot lot, List<Lot> filter)
         {
-            Row row = Locations[lot.LocationIndex].Rows[lot.RowIndex];
+            Row row = lot.Row;
             int i = lot.Index;
             
-            int vehicleSizeLeft = Size;
-            if (Size >= 4) // if vehicle is car or bigger
+            int vehicleSizeLeft = vehicle.Size;
+            if (vehicle.Size >= 4) // if vehicle is car or bigger
             {
                 // As long as lot is empty, height is less than vehicle, the lot exists in the filter, Iterate lots until vehicle size is 'emptied' - return true
-                while (row.Lots[i].SpaceLeft >= 4 &&
+                while ((i < row.Lots.Length) &&
+                    row.Lots[i].SpaceLeft >= 4 &&
                     lot.Heigth >= vehicle.Heigth &&
                     vehicleSizeLeft != 0 &&
-                    filter.Contains(lot) &&
-                    (i < row.Lots.Length))
+                    filter.Contains(lot) 
+                    )
                 {
                     lot = row.Lots[i];
                     vehicleSizeLeft -= 4;
@@ -382,7 +368,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     return true;
                 }
             }
-            else if (Size < 4 && Size > 0) // If vehicle is smaller than car
+            else if (vehicle.Size < 4 && vehicle.Size > 0) // If vehicle is smaller than car
             {
                 // If lot is empty, height is less than vehicle, the lot exists in the filter, vehicle fits - return true
                 if (lot.SpaceLeft >= vehicleSizeLeft &&
@@ -407,12 +393,12 @@ namespace Prague_Parking_2_0_beta.Garage
                 for (int ii = 0; ii < Locations[i].Rows.Count; ii++)
                 {
                     Locations[i].Rows[ii].Index = ii;
-                    Locations[i].Rows[ii].LocationIndex = i;
+                    //Locations[i].Rows[ii].LocationIndex = i;
                     for (int iii = 0; iii < Locations[i].Rows[ii].Lots.Length; iii++)
                     {
                         Locations[i].Rows[ii].Lots[iii].Index = iii;
-                        Locations[i].Rows[ii].Lots[iii].RowIndex = ii;
-                        Locations[i].Rows[ii].Lots[iii].LocationIndex = i;
+                        //Locations[i].Rows[ii].Lots[iii].RowIndex = ii;
+                        //Locations[i].Rows[ii].Lots[iii].LocationIndex = i;
                         Locations[i].Rows[ii].Lots[iii].Number = lotNumber;
                         lotNumber++;
                     }
@@ -421,6 +407,27 @@ namespace Prague_Parking_2_0_beta.Garage
             Size = lotNumber;
         }
         #endregion
-
+        #region SetReferences()
+        /// <summary>
+        /// Set backward references for all objects in garage. lot.Row = row its inside of etc.
+        /// </summary>
+        public void SetReferences()
+        {
+            for (int i = 0; i < Locations.Count; i++)
+            {
+                Locations[i].Garage = this;
+                for (int ii = 0; ii < Locations[i].Rows.Count; ii++)
+                {
+                    Locations[i].Rows[ii].Location = Locations[i];
+                    for (int iii = 0; iii < Locations[i].Rows[ii].Lots.Length; iii++)
+                    {
+                        Locations[i].Rows[ii].Lots[iii].Row = Locations[i].Rows[ii];
+                    }
+                }
+            }
+            Console.WriteLine(Name);
+            Console.WriteLine(Locations[0].Rows[0].Lots[0].Row.Location.Garage.Name);
+        }
+        #endregion
     }
 }

@@ -9,10 +9,11 @@ namespace Prague_Parking_2_0_beta.Garage
         public string Name { get; set; }
         public int LocationIndex { get; set; }
         public int Index { get; set; }
+        public Location Location { get; set; }
         public Lot[] Lots { get; set; }
         #endregion
 
-        #region Constructor(size, name = "Unnamed row", heigth = null)
+        #region Constructor
         public Row() { }
         public Row(int size, string name = "Unnamed row", int? heigth = 0)
         {

@@ -1,0 +1,1049 @@
+{
+  "$id": "1",
+  "Name": "N",
+  "Size": 66,
+  "Locations": [
+    {
+      "$id": "2",
+      "Name": "One",
+      "Index": 0,
+      "Garage": {
+        "$ref": "1"
+      },
+      "Rows": [
+        {
+          "$id": "3",
+          "Name": null,
+          "LocationIndex": 0,
+          "Index": 0,
+          "Location": {
+            "$ref": "2"
+          },
+          "Lots": [
+            {
+              "$id": "4",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "3"
+              },
+              "Index": 0,
+              "Number": 0,
+              "Heigth": 300,
+              "HasCharger": true
+            },
+            {
+              "$id": "5",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "3"
+              },
+              "Index": 1,
+              "Number": 1,
+              "Heigth": 300,
+              "HasCharger": true
+            },
+            {
+              "$id": "6",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "3"
+              },
+              "Index": 2,
+              "Number": 2,
+              "Heigth": 300,
+              "HasCharger": true
+            },
+            {
+              "$id": "7",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "3"
+              },
+              "Index": 3,
+              "Number": 3,
+              "Heigth": 300,
+              "HasCharger": true
+            }
+          ]
+        },
+        {
+          "$id": "8",
+          "Name": null,
+          "LocationIndex": 0,
+          "Index": 1,
+          "Location": {
+            "$ref": "2"
+          },
+          "Lots": [
+            {
+              "$id": "9",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "8"
+              },
+              "Index": 0,
+              "Number": 4,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "10",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "8"
+              },
+              "Index": 1,
+              "Number": 5,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "11",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "8"
+              },
+              "Index": 2,
+              "Number": 6,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "12",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "8"
+              },
+              "Index": 3,
+              "Number": 7,
+              "Heigth": 300,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "13",
+          "Name": null,
+          "LocationIndex": 0,
+          "Index": 2,
+          "Location": {
+            "$ref": "2"
+          },
+          "Lots": [
+            {
+              "$id": "14",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "13"
+              },
+              "Index": 0,
+              "Number": 8,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "15",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "13"
+              },
+              "Index": 1,
+              "Number": 9,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "16",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "13"
+              },
+              "Index": 2,
+              "Number": 10,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "17",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "13"
+              },
+              "Index": 3,
+              "Number": 11,
+              "Heigth": 300,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "18",
+          "Name": null,
+          "LocationIndex": 0,
+          "Index": 3,
+          "Location": {
+            "$ref": "2"
+          },
+          "Lots": [
+            {
+              "$id": "19",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "18"
+              },
+              "Index": 0,
+              "Number": 12,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "20",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "18"
+              },
+              "Index": 1,
+              "Number": 13,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "21",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "18"
+              },
+              "Index": 2,
+              "Number": 14,
+              "Heigth": 300,
+              "HasCharger": false
+            },
+            {
+              "$id": "22",
+              "Name": "Unnamed",
+              "LocationIndex": 0,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "18"
+              },
+              "Index": 3,
+              "Number": 15,
+              "Heigth": 300,
+              "HasCharger": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$id": "23",
+      "Name": "Two",
+      "Index": 1,
+      "Garage": {
+        "$ref": "1"
+      },
+      "Rows": [
+        {
+          "$id": "24",
+          "Name": null,
+          "LocationIndex": 1,
+          "Index": 0,
+          "Location": {
+            "$ref": "23"
+          },
+          "Lots": [
+            {
+              "$id": "25",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "24"
+              },
+              "Index": 0,
+              "Number": 16,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "26",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "24"
+              },
+              "Index": 1,
+              "Number": 17,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "27",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "24"
+              },
+              "Index": 2,
+              "Number": 18,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "28",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "24"
+              },
+              "Index": 3,
+              "Number": 19,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "29",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "24"
+              },
+              "Index": 4,
+              "Number": 20,
+              "Heigth": 350,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "30",
+          "Name": null,
+          "LocationIndex": 1,
+          "Index": 1,
+          "Location": {
+            "$ref": "23"
+          },
+          "Lots": [
+            {
+              "$id": "31",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "30"
+              },
+              "Index": 0,
+              "Number": 21,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "32",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "30"
+              },
+              "Index": 1,
+              "Number": 22,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "33",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "30"
+              },
+              "Index": 2,
+              "Number": 23,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "34",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "30"
+              },
+              "Index": 3,
+              "Number": 24,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "35",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "30"
+              },
+              "Index": 4,
+              "Number": 25,
+              "Heigth": 350,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "36",
+          "Name": null,
+          "LocationIndex": 1,
+          "Index": 2,
+          "Location": {
+            "$ref": "23"
+          },
+          "Lots": [
+            {
+              "$id": "37",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "36"
+              },
+              "Index": 0,
+              "Number": 26,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "38",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "36"
+              },
+              "Index": 1,
+              "Number": 27,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "39",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "36"
+              },
+              "Index": 2,
+              "Number": 28,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "40",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "36"
+              },
+              "Index": 3,
+              "Number": 29,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "41",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "36"
+              },
+              "Index": 4,
+              "Number": 30,
+              "Heigth": 350,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "42",
+          "Name": null,
+          "LocationIndex": 1,
+          "Index": 3,
+          "Location": {
+            "$ref": "23"
+          },
+          "Lots": [
+            {
+              "$id": "43",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "42"
+              },
+              "Index": 0,
+              "Number": 31,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "44",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "42"
+              },
+              "Index": 1,
+              "Number": 32,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "45",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "42"
+              },
+              "Index": 2,
+              "Number": 33,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "46",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "42"
+              },
+              "Index": 3,
+              "Number": 34,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "47",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "42"
+              },
+              "Index": 4,
+              "Number": 35,
+              "Heigth": 350,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "48",
+          "Name": null,
+          "LocationIndex": 1,
+          "Index": 4,
+          "Location": {
+            "$ref": "23"
+          },
+          "Lots": [
+            {
+              "$id": "49",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "48"
+              },
+              "Index": 0,
+              "Number": 36,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "50",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "48"
+              },
+              "Index": 1,
+              "Number": 37,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "51",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "48"
+              },
+              "Index": 2,
+              "Number": 38,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "52",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "48"
+              },
+              "Index": 3,
+              "Number": 39,
+              "Heigth": 350,
+              "HasCharger": false
+            },
+            {
+              "$id": "53",
+              "Name": "Unnamed",
+              "LocationIndex": 1,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "48"
+              },
+              "Index": 4,
+              "Number": 40,
+              "Heigth": 350,
+              "HasCharger": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$id": "54",
+      "Name": "Roof",
+      "Index": 2,
+      "Garage": {
+        "$ref": "1"
+      },
+      "Rows": [
+        {
+          "$id": "55",
+          "Name": null,
+          "LocationIndex": 2,
+          "Index": 0,
+          "Location": {
+            "$ref": "54"
+          },
+          "Lots": [
+            {
+              "$id": "56",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "55"
+              },
+              "Index": 0,
+              "Number": 41,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "57",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "55"
+              },
+              "Index": 1,
+              "Number": 42,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "58",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "55"
+              },
+              "Index": 2,
+              "Number": 43,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "59",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "55"
+              },
+              "Index": 3,
+              "Number": 44,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "60",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 0,
+              "Row": {
+                "$ref": "55"
+              },
+              "Index": 4,
+              "Number": 45,
+              "Heigth": 9999,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "61",
+          "Name": null,
+          "LocationIndex": 2,
+          "Index": 1,
+          "Location": {
+            "$ref": "54"
+          },
+          "Lots": [
+            {
+              "$id": "62",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "61"
+              },
+              "Index": 0,
+              "Number": 46,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "63",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "61"
+              },
+              "Index": 1,
+              "Number": 47,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "64",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "61"
+              },
+              "Index": 2,
+              "Number": 48,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "65",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "61"
+              },
+              "Index": 3,
+              "Number": 49,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "66",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 1,
+              "Row": {
+                "$ref": "61"
+              },
+              "Index": 4,
+              "Number": 50,
+              "Heigth": 9999,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "67",
+          "Name": null,
+          "LocationIndex": 2,
+          "Index": 2,
+          "Location": {
+            "$ref": "54"
+          },
+          "Lots": [
+            {
+              "$id": "68",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "67"
+              },
+              "Index": 0,
+              "Number": 51,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "69",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "67"
+              },
+              "Index": 1,
+              "Number": 52,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "70",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "67"
+              },
+              "Index": 2,
+              "Number": 53,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "71",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "67"
+              },
+              "Index": 3,
+              "Number": 54,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "72",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 2,
+              "Row": {
+                "$ref": "67"
+              },
+              "Index": 4,
+              "Number": 55,
+              "Heigth": 9999,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "73",
+          "Name": null,
+          "LocationIndex": 2,
+          "Index": 3,
+          "Location": {
+            "$ref": "54"
+          },
+          "Lots": [
+            {
+              "$id": "74",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "73"
+              },
+              "Index": 0,
+              "Number": 56,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "75",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "73"
+              },
+              "Index": 1,
+              "Number": 57,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "76",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "73"
+              },
+              "Index": 2,
+              "Number": 58,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "77",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "73"
+              },
+              "Index": 3,
+              "Number": 59,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "78",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 3,
+              "Row": {
+                "$ref": "73"
+              },
+              "Index": 4,
+              "Number": 60,
+              "Heigth": 9999,
+              "HasCharger": false
+            }
+          ]
+        },
+        {
+          "$id": "79",
+          "Name": null,
+          "LocationIndex": 2,
+          "Index": 4,
+          "Location": {
+            "$ref": "54"
+          },
+          "Lots": [
+            {
+              "$id": "80",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "79"
+              },
+              "Index": 0,
+              "Number": 61,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "81",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "79"
+              },
+              "Index": 1,
+              "Number": 62,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "82",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "79"
+              },
+              "Index": 2,
+              "Number": 63,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "83",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "79"
+              },
+              "Index": 3,
+              "Number": 64,
+              "Heigth": 9999,
+              "HasCharger": false
+            },
+            {
+              "$id": "84",
+              "Name": "Unnamed",
+              "LocationIndex": 2,
+              "RowIndex": 4,
+              "Row": {
+                "$ref": "79"
+              },
+              "Index": 4,
+              "Number": 65,
+              "Heigth": 9999,
+              "HasCharger": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

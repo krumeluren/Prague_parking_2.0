@@ -40,7 +40,7 @@ namespace Prague_Parking_2_0_beta
             Console.Write("Ange en färg: ");
             Console.ReadLine();
 
-            Console.Write("Elbilsss: y/n ");
+            Console.Write("Elbil: y/n ");
             string answer = Console.ReadLine().Trim();
             if(answer == "y")
             {

@@ -7,14 +7,16 @@ namespace Prague_Parking_2_0_beta.Garage
     class Location
     {
         #region Properties
-        public string Name { get; set; }
-        public int Index { get; set; }
+        public string Name { get; set; } // Optional name
+        public int Index { get; set; } // Index inside garage
+        public MyGarage Garage { get; set; }
         public List<Row> Rows { get; set; }
         #endregion
 
         #region Constructor
-        public Location(int number, string name = "Unnamed location")
+        public Location(MyGarage garage, int number, string name = "Unnamed location")
         {
+            Garage = garage;
             Name = name;
             Rows = new List<Row>();
         }
@@ -216,9 +218,25 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"Location {Index}: Name: {Name}, Row Count: {Rows.Count}");
+            string name = Name == null ? $"Våning {Index}" : Name;
+            int lots = LotCount();
+            Console.WriteLine($"{name}: , Row Count: {lots}");
         }
         #endregion
+
+        #region LotCount()
+        /// <returns>Lot count of this Location</returns>
+        public int LotCount()
+        {
+            int c = 0;
+            for (int i = 0; i < Rows.Count; i++)
+            {
+                c += Rows[i].Lots.Length;
+            }
+            return c;
+        }
+        #endregion
+
         #region DisplayRows()
         /// <summary>
         /// Run Display() for each row in this Location object

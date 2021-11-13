@@ -9,13 +9,16 @@ namespace Prague_Parking_2_0_beta.Garage
         #region Properties
         public string Name { get; set; }
         public int Index { get; set; }
+        public MyGarage Garage { get; set; }
         public List<Row> Rows { get; set; }
+
         #endregion
 
         #region Constructor
         public Location() { }
-        public Location(string name = "Unnamed location")
+        public Location(MyGarage garage, string name = "Unnamed location")
         {
+            Garage = garage;
             Name = name;
             Rows = new List<Row>();
         }
@@ -25,7 +28,7 @@ namespace Prague_Parking_2_0_beta.Garage
         public void AddRow(int size, string name, int? heigth)
         {
             Rows.Add(new Row(size,  name, heigth ));
-            UpdateRowNumbers();
+            Garage.SetLotNumbers();
         }
         #endregion
 
@@ -377,7 +380,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     case "2":
                         {
                             Rows.Remove(row);
-                            UpdateRowNumbers();
+                            Garage.SetLotNumbers();
                             break;
                         }
                     #endregion
@@ -396,24 +399,9 @@ namespace Prague_Parking_2_0_beta.Garage
                             break;
                         }
                         #endregion
-
                 }
-
             }
-
-
         }
         #endregion
-
-        #region UpdateRowNumbers() - run after making changes to the Rows list of location
-        /// <summary>
-        /// Depricated
-        /// </summary>
-        private void UpdateRowNumbers()
-        {
-
-        }
-        #endregion
-
     }
 }

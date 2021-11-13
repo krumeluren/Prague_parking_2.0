@@ -26,7 +26,7 @@ namespace Prague_Parking_2_0_beta
 
         public static Truck UICreate()
         {
-            int heigth = 500;
+            int heigth = 250;
             string id = null;
             string color = null;
             bool electric = false;

@@ -69,7 +69,9 @@ namespace Prague_Parking_2_0_beta.Garage
         #region JsonSerialize
         public void JsonSerialize( object data, string filePath)
         {
-            File.WriteAllText(filePath, JsonConvert.SerializeObject(data));
+            // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(data, Formatting.Indented,
+            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }));
         }
         #endregion
         #region JsonDeserialize

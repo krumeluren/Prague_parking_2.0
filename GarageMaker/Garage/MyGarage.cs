@@ -38,6 +38,25 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
+        #region SetReferences()
+        public void SetReferences()
+        {
+            for (int i = 0; i < Locations.Count; i++)
+            {
+                Locations[i].Garage = this;
+                for (int ii = 0; ii < Locations[i].Rows.Count; ii++)
+                {
+                    Locations[i].Rows[ii].Location = Locations[i];
+                    for (int iii = 0; iii < Locations[i].Rows[ii].Lots.Length; iii++)
+                    {
+                        Locations[i].Rows[ii].Lots[iii].Row = Locations[i].Rows[ii];
+                    }
+                }
+            }
+        }
+        #endregion
+
+
         #region Constructor
         public MyGarage() { }
         public MyGarage(string name)
@@ -53,7 +72,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void AddLocation(string name = null)
         {
-            Location location = new Location(name);
+            Location location = new Location(this,name);
             Locations.Add(location);
             location.UIAddMultipleRows();
         }
@@ -146,6 +165,7 @@ namespace Prague_Parking_2_0_beta.Garage
         public void Save(string fileName)
         {
             SetLotNumbers();
+            SetReferences();
             string filePath = $"../../../templates/{fileName}.json";
             GarageSerializer garageSerializer = new GarageSerializer();
             garageSerializer.JsonSerialize(this, filePath);
