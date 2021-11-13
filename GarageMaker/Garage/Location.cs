@@ -232,7 +232,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"Location {Index}: Name: {Name}, Row Count: {Rows.Count}");
+            Console.WriteLine($"Location {Index+1}: Name: {Name}, Row Count: {Rows.Count}");
         }
         #endregion
 

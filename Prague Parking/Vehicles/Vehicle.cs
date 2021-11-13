@@ -45,7 +45,6 @@ namespace Prague_Parking_2_0_beta
             string electric = Electric == false ? $"Electric: No, " : $"Electric: Yes, ";
             string height = $"Height: {Heigth}, ";
             string arrival = $"Arrived: {Arrival}, ";
-
             Console.WriteLine($"{type}{id}{color}{height}{electric}{arrival}");
         }
         #endregion
@@ -57,7 +56,7 @@ namespace Prague_Parking_2_0_beta
         /// <returns>The vehicle created by user</returns>
         public static Vehicle UICreator()
         {
-
+            Console.Clear();
             Console.WriteLine("Ange ett fordonstyp: ");
             Console.WriteLine("[1] MC ");
             Console.WriteLine("[2] Personbil ");
@@ -198,41 +197,6 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
-        #region ParkOLD(row, filter, index) - Parks the vehicle on lot (or lots if larger vehicle)
-        /// <summary>
-        /// Try add the vehicle to the specified lot start point + more if larger vehicle 
-        /// </summary>
-        /// <returns>Parking success</returns>
-        public bool ParkOLD(Row row, List<Lot> filter, int l)
-        {
-            bool canFit = CheckLotsOLD(row, filter, l);
-            Lot lot = row.Lots[l];
-            int vehicleSizeLeft = Size;
-
-            if (canFit)
-            {
-                if (Size >= 4) // If car or bigger
-                {
-                    while (lot.SpaceLeft == 4 && vehicleSizeLeft != 0 && filter.Contains(lot)) // While the lot is empty and there is size left
-                    {
-                        lot.Vehicles.Add(this); // Add vehicle to lot
-                        lot.SpaceLeft -= 4; // Drain available lot of space
-                        vehicleSizeLeft -= 4; // Drain vehicle size
-                        l++; // Go to next lot
-                        lot = row.Lots[l];
-                    }
-                }
-                if (Size < 4) // If smaller than car
-                {
-                    lot.Vehicles.Add(this);
-                    lot.SpaceLeft -= vehicleSizeLeft;
-                }
-                return true;
-            }
-            else return false;
-        }
-        #endregion
-
         #region Park(garage, lot, filter) - Parks the vehicle on lot (or lots if larger vehicle)
         /// <summary>
         /// Try add the vehicle to the specified lot start point + more if larger vehicle 
@@ -275,11 +239,140 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
-        #region UIPark(garage) - Add the vehicle to the first available lot/lots
+        #region Unpark(garage)
+        /// <summary>
+        /// For every lot: if it contains the vehicle, remove it and update SpaceLeft of lot
+        /// </summary>
+        /// <param name="garage"></param>
+        /// <returns>true if successfully unparked</returns>
+        public bool Unpark(MyGarage garage)
+        {
+            bool removed = false;
+
+            for (int i = 0; i < garage.Locations.Count; i++){
+                for (int ii = 0; ii < garage.Locations[i].Rows.Count; ii++){
+                    for (int iii = 0; iii < garage.Locations[i].Rows[ii].Lots.Length; iii++)
+                    {
+                        Lot lot = garage.Locations[i].Rows[ii].Lots[iii];
+                        if (lot.Vehicles.Contains(this)){
+                            if (lot.Unpark(this))
+                            {
+                                removed = true;
+                            }}}}}
+            return removed;
+        }
+        #endregion
+
+        #region UIMenu
+        public void UIMenu(MyGarage garage)
+        {
+            while (true)
+            {
+                Console.Clear();
+                Display();
+                Console.WriteLine(" ");
+                Console.WriteLine(" [1]   Hämta ut fordon");
+                Console.WriteLine(" [2]   Flytta fordon");
+                Console.WriteLine(" [b]   Backa");
+                Console.Write("Val: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        {
+                            Unpark(garage);
+                            return;
+                        }
+                    case "2":
+                        {
+                            Move(garage);
+                            return;
+                        }
+                    case "b":
+                        {
+                            return;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Fel.");
+                            break;
+                        }
+                }
+            }
+        }
+        #endregion
+
+        #region Move()
+        /// <summary>
+        /// Remove the vehicle, then let user park it again
+        /// </summary>
+        /// <param name="garage"></param>
+        /// <returns>true if moved, else false</returns>
+        public bool Move(MyGarage garage)
+        {
+            if (Unpark(garage))
+            {
+                return UIPark(garage);
+            }
+            else
+            {
+                Console.WriteLine("Fel inträffade vid försök att flytta fordonet");
+            }
+            return false;
+        }
+        #endregion
+
+
+        #region UIPark - Main UI for parking the vehicle
+        /// <summary>
+        /// Main UI for parking the vehicle
+        /// </summary>
+        /// <param name="garage"></param>
+        /// <returns> True if vehicle parked, false if not</returns>
+        public bool UIPark(MyGarage garage)
+        {
+            bool isDone = false;
+            while (!isDone)
+            {
+                Console.Clear();
+                Display();
+                Console.WriteLine("Parkera fordon");
+                Console.WriteLine("[1]  Hitta första lediga plats");
+                Console.WriteLine("[2]  Låt mig bestämma");
+                Console.WriteLine("[3]  Ångra och backa");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        {
+                            return UIParkAuto(garage);
+                        }
+                    case "2":
+                        {
+                            return UIParkAt(garage);
+                        }
+                    case "3":
+                        {
+                            isDone = true;
+                            return false;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Fel!");
+                            break;
+                        }
+                }
+            }
+            Console.Clear();
+            return false;
+        }
+        #endregion
+
+        #region UIParkAuto(garage) - Add the vehicle to the first available lot/lots
         /// <summary>
         /// Add vehicle to first available lot/lots
         /// </summary>
-        public bool UIPark(MyGarage garage)
+        public bool UIParkAuto(MyGarage garage)
         {
             bool success = false;
             List<Lot> filter = Query.ByMinHeigth(garage.GetAllLots(), Heigth); // Returns all lots taller than the vehicle
@@ -308,39 +401,42 @@ namespace Prague_Parking_2_0_beta
         /// <summary>
         /// Let user filter the garage and pick a lot to park at
         /// </summary>
-        public void UIParkAt(MyGarage garage)
+        /// <returns>True if parked, false if not</returns>
+        public bool UIParkAt(MyGarage garage)
         {
+            
             List<Lot> queriedLots = new List<Lot>();
             List<Lot> filter = Query.ByMinHeigth(garage.GetAllLots(), Heigth); // Return all lots taller than the vehicle
 
-            bool parked = false;
             bool isDone = false;
-            while (!isDone && !parked) // While not exiting and hasn't parked vehicle yet
-
-            #region User interface
+            while (!isDone) // While not exiting
+            #region Switch Menu
             {
+                Console.Clear();
                 queriedLots = AvailableLots(filter, garage); // Available lots in garage using a filter
                 int nr = 1;
                 foreach (var lot in queriedLots) { Console.Write($"{nr}: "); lot.Display(); nr++; };
 
                 #region Menu
+                Console.WriteLine("");
                 Console.WriteLine("[1] Parkera fordonet");
                 Console.WriteLine("");
                 Console.WriteLine("[2] Hitta platser på våning: ");
-                Console.WriteLine("");
                 Console.WriteLine("[3] Filtrera Med/utan laddningsstation");
                 Console.WriteLine("[4] Filtrera min höjd");
                 Console.WriteLine("[5] Filtrera max höjd");
-                Console.WriteLine("");
                 Console.WriteLine("[x] Rensa filter");
                 Console.WriteLine("[b] Backa");
+                Console.Write("Val: ");
                 #endregion
-
                 switch (Console.ReadLine())
                 {
                     #region Parkera fordonet
                     case "1":
                         {
+                            Console.Clear();
+                            nr = 1;
+                            foreach (var lot in queriedLots) { Console.Write($"{nr}: "); lot.Display(); nr++; };
                             Console.Write("Ange nr från listan: ");
                             int i;
                             bool success = int.TryParse(Console.ReadLine(), out i);
@@ -348,7 +444,8 @@ namespace Prague_Parking_2_0_beta
                             {
                                 i -= 1;
                                 Lot lot = queriedLots[i]; //  Select lot by index in available lots
-                                parked = Park(garage, lot, filter); // Try parking vehicle. if success exit method
+                                Console.Clear();
+                                return Park(garage, lot, filter); // Try parking vehicle. if success exit method
                             }
                             break;
                         }
@@ -359,7 +456,7 @@ namespace Prague_Parking_2_0_beta
                             int i;
                             Console.Write("Våning: ");
                             bool success = int.TryParse(Console.ReadLine(), out i);
-                            if (success && i >= 0 && i < garage.Locations.Count)
+                            if (success && i > 0 && i <= garage.Locations.Count)
                             {
                                 filter = garage.Locations[i-1].GetAllLots();
                             }
@@ -399,7 +496,7 @@ namespace Prague_Parking_2_0_beta
                             Console.Write("Minsta höjd till tak: ");
                             int i;
                             bool success = int.TryParse(Console.ReadLine(), out i);
-                            if (success && i >= 0 && i < garage.Locations.Count)
+                            if (success && i >= 0)
                             {
                                 filter = Query.ByMinHeigth(filter, i);
                             }
@@ -412,7 +509,7 @@ namespace Prague_Parking_2_0_beta
                             Console.Write("Max höjd till tak: ");
                             int i;
                             bool success = int.TryParse(Console.ReadLine(), out i);
-                            if (success && i >= 0 && i < garage.Locations.Count)
+                            if (success && i >= 0)
                             {
                                 filter = Query.ByMaxHeigth(filter, i);
                             }
@@ -443,7 +540,11 @@ namespace Prague_Parking_2_0_beta
                         #endregion
                 }
             }
+
             #endregion End User interface
+            Console.Clear();
+            Console.WriteLine("Fordon ej parkerat");
+            return false;
         }
         #endregion
 
@@ -466,7 +567,7 @@ namespace Prague_Parking_2_0_beta
                     for (int iii = 0; iii < row.Lots.Length; iii++)
                     {
                         Lot lot = row.Lots[iii];
-                        while (garage.CheckLots(this, lot, filter))
+                        if (garage.CheckLots(this, lot, filter))
                         {
                             availableLots.Add(lot);
                         }

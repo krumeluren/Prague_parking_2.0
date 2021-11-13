@@ -26,6 +26,7 @@ namespace Prague_Parking_2_0_beta
 
         public static Truck UICreate()
         {
+            Console.Clear();
             int heigth = 250;
             string id = null;
             string color = null;

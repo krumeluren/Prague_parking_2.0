@@ -21,6 +21,7 @@ namespace Prague_Parking_2_0_beta
         }
         public static Bike UICreate()
         {
+            Console.Clear();
             int heigth = 150;
             string color = null;
             return new Bike(DateTime.Now, heigth, color);

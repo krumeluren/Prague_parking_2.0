@@ -13,69 +13,50 @@ namespace Prague_Parking_2_0_beta.Garage
     {
         public MyGarage Garage { get; set; }
 
-        #region BinarySerialize(object, filePath)
-        public void BinarySerialize(object data, string filePath)
-        {
-            FileStream fileStream;
-            BinaryFormatter bf = new BinaryFormatter();
-            if (File.Exists(filePath)) File.Delete(filePath);
-            fileStream = File.Create(filePath);
-            bf.Serialize(fileStream, data);
-            fileStream.Close();
-        }
-        #endregion
-        #region BinaryDeserialize(filePath)
-        public object BinaryDeserialize(string filePath)
-        {
-            object obj = null;
-            FileStream fileStream;
-            BinaryFormatter bf = new BinaryFormatter();
-            if (File.Exists(filePath))
-            {
-                fileStream = File.OpenRead(filePath);
-                obj = bf.Deserialize(fileStream);
-                fileStream.Close();
-            }
-            return obj;
-        }
-        #endregion
-
-        #region XmlSerialize(Type, object, filepath)
-        public void XmlSerialize(Type dataType, object data, string filePath)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(dataType);
-            if (File.Exists(filePath)) File.Delete(filePath);
-            TextWriter writer = new StreamWriter(filePath);
-            xmlSerializer.Serialize(writer, data);
-            writer.Close();
-        }
-        #endregion
-        #region XmlDeserialize(Type, filepath)
-        public object XmlDeserialize(Type dataType,  string filePath)
-        {
-            object obj = null;
-
-            XmlSerializer xmlSerializer = new XmlSerializer(dataType);
-            if (File.Exists(filePath))
-            {
-                TextReader textReader = new StreamReader(filePath);
-                obj = xmlSerializer.Deserialize(textReader);
-                textReader.Close();
-            }
-            return obj;
-        }
-        #endregion
-
         #region JsonSerialize
+        /// <summary>
+        /// Serialize a garage
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="filePath"></param>
         public void JsonSerialize( object data, string filePath)
         {
+
             // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
+            // https://stackoverflow.com/questions/8513042/json-net-serialize-deserialize-derived-types
+
             File.WriteAllText(filePath, JsonConvert.SerializeObject(data, Formatting.Indented,
-            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }));
+            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects, TypeNameHandling = TypeNameHandling.All }));
         }
         #endregion
+
         #region JsonDeserialize
+        /// <summary>
+        /// Deserialize a park from /parks. Remembers references and derived class types
+        /// </summary>
+        /// <param name="dataType"></param>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public object JsonDeserialize(Type dataType, string filePath)
+        {
+            // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
+            // https://stackoverflow.com/questions/8513042/json-net-serialize-deserialize-derived-types
+
+            MyGarage Garage = (MyGarage)JsonConvert.DeserializeObject(File.ReadAllText(filePath),
+            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects, TypeNameHandling = TypeNameHandling.All });
+
+            return Garage;
+        }
+        #endregion
+
+        #region JsonDeserializeTemplate
+        /// <summary>
+        /// Deserialize a template garage from GarageMaker/templates/
+        /// </summary>
+        /// <param name="dataType"></param>
+        /// <param name="filePath"></param>
+        /// <returns>A garage object with contents</returns>
+        public object JsonDeserializeTemplate(Type dataType, string filePath)
         {
             JObject obj = null;
             JsonSerializer jsonSerializer = new JsonSerializer();
@@ -83,59 +64,11 @@ namespace Prague_Parking_2_0_beta.Garage
             {
                 StreamReader sr = new StreamReader(filePath);
                 JsonReader jsonReader = new JsonTextReader(sr);
-                
                 obj = jsonSerializer.Deserialize(jsonReader) as JObject;
-                
                 jsonReader.Close();
                 sr.Close();
             }
-            Garage = (MyGarage)obj.ToObject(dataType);
-            // JSON load child class as parent class. This code goes through all json vehicles objects and recreates them with correct child class
-            for (int i = 0; i < Garage.Locations.Count; i++)
-            {
-                for (int ii = 0; ii < Garage.Locations[i].Rows.Count; ii++)
-                {
-                    for (int iii = 0; iii < Garage.Locations[i].Rows[ii].Lots.Length; iii++)
-                    {
-                        for (int iv = 0; iv < Garage.Locations[i].Rows[ii].Lots[iii].Vehicles.Count; iv++)
-                        {
-                            if(Garage.Locations[i].Rows[ii].Lots[iii].Vehicles[iv].Type == "Car")
-                            {
-                                List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
-                                for (int v = 0; v < vehicles.Count; v++)
-                                {
-                                    vehicles[v] = new Car(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
-                                }
-                            }
-                            if (Garage.Locations[i].Rows[ii].Lots[iii].Vehicles[iv].Type == "MC")
-                            {
-                                List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
-                                for (int v = 0; v < vehicles.Count; v++)
-                                {
-                                    vehicles[v] = new MC(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
-                                }
-                            }
-                            if (Garage.Locations[i].Rows[ii].Lots[iii].Vehicles[iv].Type == "Truck")
-                            {
-                                List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
-                                for (int v = 0; v < vehicles.Count; v++)
-                                {
-                                    vehicles[v] = new Truck(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Id, vehicles[v].Color, vehicles[v].Electric);
-                                }
-                            }
-                            if (Garage.Locations[i].Rows[ii].Lots[iii].Vehicles[iv].Type == "Bike")
-                            {
-                                List<Vehicle> vehicles = Garage.Locations[i].Rows[ii].Lots[iii].Vehicles;
-                                for (int v = 0; v < vehicles.Count; v++)
-                                {
-                                    vehicles[v] = new Bike(vehicles[v].Arrival, vehicles[v].Heigth, vehicles[v].Color);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return Garage;
+            return obj.ToObject(dataType);
         }
         #endregion
     }

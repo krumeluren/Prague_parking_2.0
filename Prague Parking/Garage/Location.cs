@@ -14,15 +14,13 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region Constructor
-        public Location(MyGarage garage, int number, string name = "Unnamed location")
+        public Location(int number, string name = "Unnamed location")
         {
-            Garage = garage;
             Name = name;
-            Rows = new List<Row>();
         }
         #endregion
 
-        #region Unused methods
+        #region Change lot data
         #region SetAllLotNames(string name) - set Name prop of all Lots in all Rows of this Location
         public void SetAllLotNames(string name)
         {
@@ -58,7 +56,7 @@ namespace Prague_Parking_2_0_beta.Garage
         public int? UITargetRow()
         {
             Display();
-            DisplayRows();
+            DisplayLots();
             Console.Write("Enter a Row number:");
             int i;
             if (int.TryParse(Console.ReadLine(), out i))
@@ -135,6 +133,8 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
+        #endregion
+
         #region UIMenu()
         /// <summary>
         /// Menu for this managing rows inside this location
@@ -159,7 +159,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     case "4":
                         {
                             Display();
-                            DisplayRows();
+                            DisplayLots();
                             break;
                         }
                     #endregion
@@ -210,7 +210,7 @@ namespace Prague_Parking_2_0_beta.Garage
 
         }
         #endregion
-        #endregion
+        
 
         #region Display()
         /// <summary>
@@ -218,9 +218,9 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
-            string name = Name == null ? $"Våning {Index}" : Name;
-            int lots = LotCount();
-            Console.WriteLine($"{name}: , Row Count: {lots}");
+            string locName = Name == null ? $"Floor: {Index}, " : $"{Name}, ";
+            string rowCount = $" Row Count: {Rows.Count.ToString()}, ";
+            Console.WriteLine($"{locName}{rowCount}");
         }
         #endregion
 
@@ -237,16 +237,15 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region DisplayRows()
+        #region DisplayLots()
         /// <summary>
-        /// Run Display() for each row in this Location object
+        /// Run DisplayLots() for each row in this location
         /// </summary>
-        public void DisplayRows()
+        public void DisplayLots()
         {
-            for (int i = 0; i < Rows.Count; i++)
+            foreach (Row row in Rows)
             {
-                Row row = Rows[i];
-                row.Display();
+                row.DisplayLots();
             }
         }
         #endregion
@@ -256,10 +255,9 @@ namespace Prague_Parking_2_0_beta.Garage
         {
             List<Lot> lots = new List<Lot>();
 
-            for (int i = 0; i < Rows.Count; i++)
+            foreach (Row row in Rows)
             {
-                Row row = Rows[i];
-                foreach (Lot lot in row.GetAllLots())
+                foreach (Lot lot in row.Lots)
                 {
                     lots.Add(lot);
                 }

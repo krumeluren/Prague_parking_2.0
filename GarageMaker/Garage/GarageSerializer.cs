@@ -9,83 +9,29 @@ namespace Prague_Parking_2_0_beta.Garage
 {
     class GarageSerializer
     {
-        #region BinarySerialize(object, filePath)
-        public void BinarySerialize(object data, string filePath)
-        {
-            FileStream fileStream;
-            BinaryFormatter bf = new BinaryFormatter();
-            if (File.Exists(filePath)) File.Delete(filePath);
-            fileStream = File.Create(filePath);
-            bf.Serialize(fileStream, data);
-            fileStream.Close();
-        }
-        #endregion
-
-        #region BinaryDeserialize(filePath)
-        public object BinaryDeserialize(string filePath)
-        {
-            object obj = null;
-            FileStream fileStream;
-            BinaryFormatter bf = new BinaryFormatter();
-            if (File.Exists(filePath))
-            {
-                fileStream = File.OpenRead(filePath);
-                obj = bf.Deserialize(fileStream);
-                fileStream.Close();
-            }
-            return obj;
-        }
-        #endregion
-
-        #region XmlSerialize(Type, object, filepath)
-        public void XmlSerialize(Type dataType, object data, string filePath)
-        {
-            XmlSerializer xmlSerializer = new XmlSerializer(dataType);
-            if (File.Exists(filePath)) File.Delete(filePath);
-            TextWriter writer = new StreamWriter(filePath);
-            xmlSerializer.Serialize(writer, data);
-            writer.Close();
-        }
-        #endregion
-
-        #region XmlDeserialize(Type, filepath)
-        public object XmlDeserialize(Type dataType,  string filePath)
-        {
-            object obj = null;
-
-            XmlSerializer xmlSerializer = new XmlSerializer(dataType);
-            if (File.Exists(filePath))
-            {
-                TextReader textReader = new StreamReader(filePath);
-                obj = xmlSerializer.Deserialize(textReader);
-                textReader.Close();
-            }
-            return obj;
-        }
-        #endregion
 
         #region JsonSerialize
         public void JsonSerialize(object data, string filePath)
         {
+
             // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
-            File.WriteAllText(filePath, JsonConvert.SerializeObject(data, 
-                Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }));
+            // https://stackoverflow.com/questions/8513042/json-net-serialize-deserialize-derived-types
+
+            File.WriteAllText(filePath, JsonConvert.SerializeObject(data, Formatting.Indented,
+            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects, TypeNameHandling = TypeNameHandling.All }));
         }
         #endregion
-        #region JsonSerialize
+
+        #region JsonDeserialize
         public object JsonDeserialize(Type dataType, string filePath)
         {
-            JObject obj = null;
-            JsonSerializer jsonSerializer = new JsonSerializer();
-            if (File.Exists(filePath))
-            {
-                StreamReader sr = new StreamReader(filePath);
-                JsonReader jsonReader = new JsonTextReader(sr);
-                obj = jsonSerializer.Deserialize(jsonReader) as JObject;
-                jsonReader.Close();
-                sr.Close();
-            }
-            return obj.ToObject(dataType);
+            // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
+            // https://stackoverflow.com/questions/8513042/json-net-serialize-deserialize-derived-types
+
+            MyGarage Garage = (MyGarage)JsonConvert.DeserializeObject(File.ReadAllText(filePath),
+            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects, TypeNameHandling = TypeNameHandling.All });
+
+            return Garage;
         }
         #endregion
     }

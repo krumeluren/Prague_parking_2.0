@@ -19,9 +19,8 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region Constructor
-        public Lot(Row row, string name = null, int heigth = 0, bool hasCharger = false)
+        public Lot(string name = null, int heigth = 0, bool hasCharger = false)
         {
-            Row = row;
             Name = name == null ? "Unnamed" : name;
             Heigth = heigth;
             HasCharger = hasCharger;
@@ -106,9 +105,9 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
         #endregion
 
-        #region Display() Display the properties of the Lot
+        #region Display() - display the lot and all vehicles
         /// <summary>
-        /// Display the Lot. Format: Lot: name, Heigth: number, Charger: true/false
+        /// Display() the Lot and vehicles
         /// </summary>
         public void Display()
         {
@@ -119,6 +118,45 @@ namespace Prague_Parking_2_0_beta.Garage
             {
                 vehicle.Display();
             }
+        }
+        #endregion
+
+        #region Unpark()
+        /// <summary>
+        /// Remove vehicle from the lot and UpdateAvailableSpace()
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <return>true if successfully removed</return>
+        public bool Unpark(Vehicle vehicle)
+        {
+            if (Vehicles.Remove(vehicle))
+            {
+                UpdateAvailableSpace();
+                return true;
+            } 
+            return false;
+        }
+        #endregion
+
+        #region UpdateAvailableSpace()
+        /// <summary>
+        /// Update available space on the lot based on parked vehicles 
+        /// </summary>
+        public void UpdateAvailableSpace()
+        {
+            int spaceUsed = 0;
+            foreach (Vehicle vehicle in Vehicles)
+            {
+                if (vehicle.Size >= 4)
+                {
+                    spaceUsed += 4;
+                }
+                else
+                {
+                    spaceUsed += vehicle.Size;
+                }
+            }
+            SpaceLeft = Space - spaceUsed;
         }
         #endregion
 

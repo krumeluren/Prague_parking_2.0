@@ -9,7 +9,7 @@ namespace Prague_Parking_2_0_beta.Garage
         #region Properties
         public string Name { get; set; }
         public int Size { get; set; }
-        public List<Location> Locations { get; set; }
+        public List<Location> Locations { get; set; } = new List<Location>();
         #endregion
 
         #region SetLotNumbers()
@@ -56,13 +56,11 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-
         #region Constructor
         public MyGarage() { }
         public MyGarage(string name)
         {
             Name = name;
-            Locations = new List<Location>();
         }
         #endregion
 
@@ -72,7 +70,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void AddLocation(string name = null)
         {
-            Location location = new Location(this,name);
+            Location location = new Location(this, name);
             Locations.Add(location);
             location.UIAddMultipleRows();
         }

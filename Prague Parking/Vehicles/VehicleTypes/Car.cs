@@ -26,6 +26,7 @@ namespace Prague_Parking_2_0_beta
 
         public static Car UICreate()
         {
+            Console.Clear();
             int heigth = 0;
             string id = null;
             string color = null;

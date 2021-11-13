@@ -14,17 +14,15 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region Constructor
-        public Row(Location location,int size, int number, string name = "Unnamed row", int heigth = 0)
+        public Row(int size, int number, string name = "Unnamed row", int heigth = 0)
         {
-            Location = location;
             Name = name;
             Index = number;
             size = size < 1 ? 1 : size; //  If size is less than 1, set to 1.
-            Lots = new Lot[size];
         }
         #endregion
 
-        #region Unused methods
+        #region Change lot data
         #region SetAllLotNames(string name) - set Name for all lots of this row
         public void SetAllLotNames(string name)
         {
@@ -167,15 +165,16 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region Display() - Displays properties of row for user
+        #region Display() - Displays properties of row
         /// <summary>
         /// Displays relevant properties of the Row object
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"Row {Index}: Name: {Name}, Lots: {Lots.Length} ");
+            Console.WriteLine($"Row {Index+1}: Name: {Name}, Lots: {Lots.Length} ");
         }
         #endregion
+
         #region DisplayLots() - Displays properties of every lot on this Row
         /// <summary>
         /// Displays relevant properties of each lot in the Row object
