@@ -9,7 +9,7 @@ namespace Prague_Parking_2_0_beta.Garage
         #region Properties
         public string Name { get; set; } // Optional name
         public int Index { get; set; } // Index inside garage
-        public MyGarage Garage { get; set; }
+        public Garage Garage { get; set; }
         public List<Row> Rows { get; set; }
         #endregion
 
@@ -20,18 +20,6 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region Change lot data
-        #region SetAllLotNames(string name) - set Name prop of all Lots in all Rows of this Location
-        public void SetAllLotNames(string name)
-        {
-            Name = name == null ? Name : name;
-            for (int i = 0; i < Rows.Count; i++)
-            {
-                Row row = Rows[i];
-                row.SetAllLotNames(name);
-            }
-        }
-        #endregion
         #region SetAllLotHeigths(int heigth) - set Heigth prop of all Lots in all Rows of this Location
         public void SetAllLotHeigths(int heigth)
         {
@@ -52,77 +40,44 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
-        #region UITargetRow() - User input. Return a number or null
-        public int? UITargetRow()
-        {
-            Display();
-            DisplayLots();
-            Console.Write("Enter a Row number:");
-            int i;
-            if (int.TryParse(Console.ReadLine(), out i))
-            {
-                i -= 1;
-                if (i < Rows.Count && i >= 0)
-                {
-                    return i;
-                }
-                else
-                {
-                    Console.WriteLine("Out of range");
-                    return null;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid.");
-                return null;
-            }
-        }
-        #endregion
         #region UISetName()
         /// <summary>
-        /// Ask user for a name
+        /// Ask user for a name of this location
         /// </summary>
-        /// <returns>A name or null</returns>
-        public static string UISetName()
+        public void UISetName()
         {
-            Console.Write("Location Name: ");
+            Console.WriteLine("Enter för att skippa");
+            Console.Write("Namn: ");
             string name = Console.ReadLine().Trim();
-            return name == "" ? null : name;
+            Name = name == null ? Name : name;
         }
         #endregion
         #region UISetHeigth()
-        public static int? UISetHeigth()
+        /// <summary>
+        /// Ask for user input, if not empty, set height of all lots
+        /// </summary>
+        public void UISetHeigth()
         {
-            int? heigth;
-            Console.Write("Location Max Heigth: ");
+            int heigth;
+            Console.WriteLine("Enter för att skippa");
+            Console.Write("Höjd: ");
             string heigthStr = Console.ReadLine().Trim();
-            int h;
             if (heigthStr != "") // If not empty input
             {
-                while (!(int.TryParse(heigthStr, out h))) // While parse fails
+                if (int.TryParse(heigthStr, out heigth)) // While parse fails
                 {
-                    Console.Write("Invalid. Try again: ");
-                    heigthStr = Console.ReadLine().Trim();
+                    SetAllLotHeigths(heigth);
                 }
-                Console.WriteLine("");
-                heigth = h; //  On success
             }
-            else //if heigth not set
-            {
-                heigth = 0;
-            }
-            heigth = heigth >= 0 ? heigth : null;
-            return heigth;
         }
         #endregion
         #region UISetHasCharger() Change the HasCharger bool
         /// <summary>
-        /// Updates the HasCharger bool of the lot
+        /// Updates the HasCharger bool of all lots
         /// </summary>
         public void UISetHasCharger()
         {
-            Console.WriteLine("Does this location have a charging station?");
+            Console.WriteLine("Sätt laddningsstation för alla parkeringar. Enter för att backa.");
             Console.Write("y/n: ");
             string answer = Console.ReadLine();
             switch (answer)
@@ -132,7 +87,6 @@ namespace Prague_Parking_2_0_beta.Garage
                 default: Console.WriteLine("Didn't change"); break;
             }
         }
-        #endregion
         #endregion
 
         #region UIMenu()
@@ -144,56 +98,73 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
+                Console.Clear();
+                DisplayLots();
+                Console.WriteLine(" ");
                 Display();
-                Console.WriteLine("Location Menu");
-                
-                Console.WriteLine("[4] Display Rows");
-                Console.WriteLine("[5] Set all lot names in the Location");
-                Console.WriteLine("[6] Set the heigth of the location");
-                Console.WriteLine("[7] Set charging stations of all lots in the location");
-                Console.WriteLine("[8] Exit to Garage Menu");
-                Console.Write("Option: ");
+                Console.WriteLine(" ");
+                #region Menu
+                Console.WriteLine($"{GetName()} Meny");
+                Console.WriteLine(" 1) Visa alla platser");
+                Console.WriteLine(" 2) Gå in i en rad");
+                Console.WriteLine(" 3) Byt namn");
+                Console.WriteLine(" 4) Sätt höjden på alla parkeringar");
+                Console.WriteLine(" 5) Ändra laddningsstation på alla parkeringar");
+                Console.WriteLine(" b) Backa");
+                #endregion
+                Console.Write("Val: ");
                 switch (Console.ReadLine())
                 {
-                    #region Display rows of location
-                    case "4":
+                    #region Display lots
+                    case "1":
                         {
                             Display();
-                            DisplayLots();
                             break;
                         }
                     #endregion
-                    #region Set name of all lots in this location
-                    case "5":
+                    #region Enter a row
+                    case "2":
                         {
-                            string name = UISetName();
-                            SetAllLotNames(name);
+                            Console.Clear();
+                            foreach (var row in Rows)
+                            {
+                                Console.WriteLine($"{row.Index+1}: Antal platser: {row.Lots.Length}");
+                            }
+                            Console.Write("Nummer: ");
+                            int i = 0;
+                            if (int.TryParse(Console.ReadLine(), out i))
+                            {
+                                if(i - 1 >= 0 && i - 1 < Rows.Count)
+                                Rows[i-1].UIMenu();
+                            }
                             break;
                         }
                     #endregion
                     #region Set the heigth of the location
-                    case "6":
+                    case "3":
                         {
-                            int? heigth = UISetHeigth();
-                            if (heigth != null)
-                            {
-                                SetAllLotHeigths((int)heigth);
-                            }
-
+                            UISetName();
+                            break;
+                        }
+                    #endregion
+                    #region Set Height of all lots
+                    case "4":
+                        {
+                            UISetHeigth();
                             break;
                         }
                     #endregion
                     #region Set charging stations of all lots in the Park
-                    case "7":
+                    case "5":
                         {
                             UISetHasCharger();
                             break;
                         }
                     #endregion
-                    #region Go back to Location.ILocationMenu()
-                    case "8":
+                    #region Back
+                    case "b":
                         {
-                            Console.WriteLine("Exiting menu..");
+                            Console.WriteLine("Backar");
                             isDone = true;
                             break;
                         }
@@ -207,20 +178,41 @@ namespace Prague_Parking_2_0_beta.Garage
                         #endregion
                 }
             }
-
         }
         #endregion
-        
+
+        #region GetName()
+        /// <returns>Name, or index if null</returns>
+        public string GetName()
+        {
+            return Name == null ? $"Område: {Index}, " : $"{Name}";
+        }
+        #endregion
 
         #region Display()
         /// <summary>
-        ///  Displays relevant properties of the Location.
+        ///  Displays location status
         /// </summary>
         public void Display()
         {
-            string locName = Name == null ? $"Floor: {Index}, " : $"{Name}, ";
-            string rowCount = $" Row Count: {Rows.Count.ToString()}, ";
-            Console.WriteLine($"{locName}{rowCount}");
+            string locName = GetName();
+            int lotCount = 0;
+            int freeLot = 0;
+            int occupiedLot = 0;
+            int partOccupiedLot = 0;
+            foreach (var row in Rows)
+            {
+                foreach (var lot in row.Lots)
+                {
+                    if(lot.SpaceLeft == lot.Space)
+                        freeLot++;
+                    else if(lot.SpaceLeft == 0)
+                        occupiedLot++;
+                    else if(lot.SpaceLeft != 0 && lot.SpaceLeft != lot.Space )
+                        partOccupiedLot++;
+                }
+            }
+            Console.WriteLine($"{locName}, Lediga platser: {freeLot}, Upptagna platser: {occupiedLot}, Delvis upptagna platser {partOccupiedLot}.");
         }
         #endregion
 
@@ -239,7 +231,7 @@ namespace Prague_Parking_2_0_beta.Garage
 
         #region DisplayLots()
         /// <summary>
-        /// Run DisplayLots() for each row in this location
+        /// Display all lots
         /// </summary>
         public void DisplayLots()
         {

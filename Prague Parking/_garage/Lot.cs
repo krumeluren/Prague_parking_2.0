@@ -10,7 +10,6 @@ namespace Prague_Parking_2_0_beta.Garage
         public int Index { get; set; } // Index inside row
         public Row Row { get; set; }
         public int Number { get; set; } // Index of all lots in garage
-        public string Name { get; set; } // Optional name
         public int Heigth { get; set; } // Max height to fit a vehicle
         public bool HasCharger { get; set; } // If it has a charging station
         public List<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
@@ -19,21 +18,13 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region Constructor
-        public Lot(string name = null, int heigth = 0, bool hasCharger = false)
+        public Lot(int heigth = 0, bool hasCharger = false)
         {
-            Name = name == null ? "Unnamed" : name;
             Heigth = heigth;
             HasCharger = hasCharger;
         }
         #endregion
 
-        #region Unused methods
-        #region SetName() set Name prop
-        public void SetName(string name)
-        {
-            Name = name == null ? Name : name;
-        }
-        #endregion
         #region SetHeigth() set Heigth prop
         public void SetHeigth(int h)
         {
@@ -49,40 +40,23 @@ namespace Prague_Parking_2_0_beta.Garage
             HasCharger = hasCharger;
         }
         #endregion
-        #region UISetName() Change the Name string
+        
+        #region UISetHeigth() - Interface for setting Heigth
         /// <summary>
-        /// Ask user for name. If empty or only spaces it doesn't change.
+        /// Ask for int, if not empty, set height
         /// </summary>
-        public void UISetName()
+        public void UISetHeight()
         {
-            Console.Write("Name: ");
-            string name = Console.ReadLine().Trim();
-            name = name == "" ? null : name;
-            SetName(name);
-        }
-        #endregion
-        #region UISetHeigth() Change the Heigth int
-        /// <summary>
-        /// Ask user for input heigth. Must be greater >= 0
-        /// </summary>
-        public void UISetHeigth()
-        {
-            Console.Write("Heigth: ");
+            int heigth;
+            Console.WriteLine("Enter för att skippa");
+            Console.Write("Höjd: ");
             string heigthStr = Console.ReadLine().Trim();
-            int h;
             if (heigthStr != "") // If not empty input
             {
-                while (!(int.TryParse(heigthStr, out h))) // While parse fails
+                if (int.TryParse(heigthStr, out heigth)) // While parse fails
                 {
-                    Console.Write("Invalid. Try again: ");
-                    heigthStr = Console.ReadLine().Trim();
+                    Heigth = heigth;
                 }
-                //  On success
-                SetHeigth(h);
-            }
-            else //if heigth not set
-            {
-                Console.WriteLine("Heigth didn't change");
             }
         }
         #endregion
@@ -92,7 +66,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void UISetHasCharger()
         {
-            Console.WriteLine("Does this lot have a charging station?");
+            Console.WriteLine("Har denna parkering en laddningsstation?");
             Console.Write("y/n: ");
             string answer = Console.ReadLine();
             switch (answer)
@@ -103,20 +77,67 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
-        #endregion
 
         #region Display() - display the lot and all vehicles
         /// <summary>
-        /// Display() the Lot and vehicles
+        /// Display the Lot and vehicles
         /// </summary>
         public void Display()
         {
-            string hasCharger = HasCharger == true ? "Yes" : "No";
-            string floorName = Row.Location.Name == null ? $"Floor: {Row.Location.Index.ToString()}" : Row.Location.Name;
-            Console.WriteLine($"{floorName}, Nr: {Number}, Height: {Heigth}, Charging port: {hasCharger}");
+            string hasCharger = HasCharger == true ? "Ja" : "Nej";
+            string floorName = Row.Location.Name == null ? $"Våning: {Row.Location.Index.ToString()}" : Row.Location.Name;
+            Console.Write($"{floorName}, Nr: {Number}, Height: {Heigth}, Laddningsstation: {hasCharger}\n");
             foreach (Vehicle vehicle in Vehicles)
             {
                 vehicle.Display();
+            }
+        }
+        #endregion
+
+        #region UIMenu
+        /// <summary>
+        /// Main UI for the lot
+        /// </summary>
+        public void UIMenu()
+        {
+            bool isDone = false;
+            while (!isDone)
+            {
+                Console.Clear();
+                Display();
+                #region Menu
+                Console.WriteLine($"Parkering {Number} Menu");
+                Console.WriteLine(" 1) Sätt höjden på parkering");
+                Console.WriteLine(" 2) Ändra laddningsstation på parkering");
+                Console.WriteLine(" b) Backa");
+                #endregion
+                Console.Write("Val: ");
+                #region Switch
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        {
+                            UISetHeight();
+                            break;
+                        }
+                    case "2":
+                        {
+                            UISetHasCharger();
+                            break;
+                        }
+                    case "b":
+                        {
+                            Console.WriteLine("Backar..");
+                            isDone = true;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Fel.");
+                            break;
+                        }
+                }
+                #endregion
             }
         }
         #endregion

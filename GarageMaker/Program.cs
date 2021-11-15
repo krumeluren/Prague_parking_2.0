@@ -29,7 +29,7 @@ namespace Prague_Parking_2_0_beta
                         string fileName = Console.ReadLine();
                         string filePath = $"../../../templates/{fileName}.json";
                         GarageSerializer garageSerializer = new GarageSerializer();
-                        MyGarage garage = garageSerializer.JsonDeserialize(typeof(MyGarage), filePath) as MyGarage;
+                        Garage.Garage garage = garageSerializer.JsonDeserialize(typeof(Garage.Garage), filePath) as Garage.Garage;
                         garage.SetReferences();
                         garage.UIMenu();
                         break;
@@ -39,7 +39,7 @@ namespace Prague_Parking_2_0_beta
                 case "2":
                     {
                         Console.Write("\nEnter a name: ");
-                        MyGarage garage = new MyGarage(Console.ReadLine());
+                        Garage.Garage garage = new Garage.Garage(Console.ReadLine());
                         garage.UIMenu();
                         break;
                     }

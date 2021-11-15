@@ -40,12 +40,12 @@ namespace Prague_Parking_2_0_beta
         #region Display()
         public void Display()
         {
-            string type = $"Type: {Type}, ";
-            string id = Id == null ? null : $"ID: {Id}, ";
-            string color = Color == null ? null : $"Color: {Color}, ";
-            string electric = Electric == false ? $"Electric: No, " : $"Electric: Yes, ";
+            string type = $"Typ: {Type}, ";
+            string id = Id == null ? null : $"Regnr: {Id}, ";
+            string color = Color == null ? null : $"Färg: {Color}, ";
+            string electric = Electric == false ? $"Eldriven: Nej, " : $"Eldriven: Ja, ";
             string height = $"Height: {Heigth}, ";
-            string arrival = $"Arrived: {Arrival}, ";
+            string arrival = $"Ankom: {Arrival}";
             Console.WriteLine($"{type}{id}{color}{height}{electric}{arrival}");
         }
         #endregion
@@ -81,7 +81,7 @@ namespace Prague_Parking_2_0_beta
         /// Try add the vehicle to the specified lot start point + more if larger vehicle 
         /// </summary>
         /// <returns>Parking success</returns>
-        public bool Park(MyGarage garage, Lot lot, List<Lot> filter)
+        public bool Park(Garage.Garage garage, Lot lot, List<Lot> filter)
         {
             bool canFit = garage.CheckLots(this, lot, filter);
             Row row = lot.Row;
@@ -124,7 +124,7 @@ namespace Prague_Parking_2_0_beta
         /// </summary>
         /// <param name="garage"></param>
         /// <returns>true if successfully unparked</returns>
-        public bool Unpark(MyGarage garage)
+        public bool Unpark(Garage.Garage garage)
         {
             bool removed = false;
 
@@ -147,7 +147,7 @@ namespace Prague_Parking_2_0_beta
         /// Menu of the vehicle.
         /// </summary>
         /// <param name="garage"></param>
-        public void UIMenu(MyGarage garage)
+        public void UIMenu(Garage.Garage garage)
         {
             while (true)
             {
@@ -197,7 +197,7 @@ namespace Prague_Parking_2_0_beta
         /// </summary>
         /// <param name="garage"></param>
         /// <returns>true if moved, else false</returns>
-        public bool Move(MyGarage garage)
+        public bool Move(Garage.Garage garage)
         {
             if (Unpark(garage))
             {
@@ -290,8 +290,9 @@ namespace Prague_Parking_2_0_beta
         /// </summary>
         /// <param name="garage"></param>
         /// <returns> True if vehicle parked, false if not</returns>
-        public bool UIPark(MyGarage garage)
+        public bool UIPark(Garage.Garage garage)
         {
+            bool isParked = false;
             bool isDone = false;
             while (!isDone)
             {
@@ -306,11 +307,15 @@ namespace Prague_Parking_2_0_beta
                 {
                     case "1":
                         {
-                            return UIParkAuto(garage);
+                            isParked = UIParkAuto(garage);
+                            isDone = true;
+                            break;
                         }
                     case "2":
                         {
-                            return UIParkAt(garage);
+                            isParked = UIParkAt(garage);
+                            isDone = true;
+                            break;
                         }
                     case "3":
                         {
@@ -329,14 +334,17 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
+
         #region UIParkAuto(garage) - Add the vehicle to the first available lot/lots
         /// <summary>
         /// Add vehicle to first available lot/lots
         /// </summary>
-        public bool UIParkAuto(MyGarage garage)
+        /// <returns>True if parked, false if not</returns>
+        public bool UIParkAuto(Garage.Garage garage)
         {
-            bool success = false;
             List<Lot> filter = Query.ByMinHeigth(garage.GetAllLots(), Heigth); // Returns all lots taller than the vehicle
+
+            // Foreach lot in garage
             for (int i = 0; i < garage.Locations.Count; i++)
             {
                 Location location = garage.Locations[i];
@@ -346,24 +354,43 @@ namespace Prague_Parking_2_0_beta
                     for (int iii = 0; iii < row.Lots.Length; iii++)
                     {
                         Lot lot = row.Lots[iii];
-                        success = Park(garage, lot, filter);
-                        if (success)
+                        // Do
+                        if (garage.CheckLots(this, lot, filter))
                         {
-                            return success;
-                        }
+                            UIParkCommand(lot);
+                            if (Park(garage, lot, filter))
+                            {
+                                return true;
+                            }
+                            else Console.WriteLine("Fel.");
+                        } 
                     }
                 }
             }
-            return success;
+            return false;
         }
         #endregion
+
+        #region UIParkCommand
+        /// <summary>
+        /// Tell user to park the vehicle at a lot
+        /// </summary>
+        /// <param name="lot"> The lot to park at</param>
+        public void UIParkCommand(Lot lot)
+        {
+            Console.WriteLine($"Parkera fordonet på plats {lot.Number+1} vid {lot.Row.Location.GetName()}");
+            Console.WriteLine("Tryck för att fortsätta");
+            Console.ReadKey();
+        }
+        #endregion
+
 
         #region UIParkAt(garage) - Let user filter the garage and pick a lot to park at
         /// <summary>
         /// Let user filter the garage and pick a lot to park at
         /// </summary>
         /// <returns>True if parked, false if not</returns>
-        public bool UIParkAt(MyGarage garage)
+        public bool UIParkAt(Garage.Garage garage)
         {
             
             List<Lot> queriedLots = new List<Lot>();
@@ -406,7 +433,16 @@ namespace Prague_Parking_2_0_beta
                                 i -= 1;
                                 Lot lot = queriedLots[i]; //  Select lot by index in available lots
                                 Console.Clear();
-                                return Park(garage, lot, filter); // Try parking vehicle. if success exit method
+                                // Try parking vehicle. if success exit method
+                                if (garage.CheckLots(this, lot, filter)) 
+                                {
+                                    UIParkCommand(lot);
+                                    if (Park(garage, lot, filter))
+                                    {
+                                        return true;
+                                    }
+                                    else Console.WriteLine("Fel.");
+                                }
                             }
                             break;
                         }
@@ -516,7 +552,7 @@ namespace Prague_Parking_2_0_beta
         /// <param name="filter">A list of lots used as filter. Lot has to be inside. Do filter = garage.GetAllLots() if you want to check all lots</param>
         /// <param name="garage">The garage to check</param>
         /// <returns>A list of available lots to park at</returns>
-        private List<Lot> AvailableLots(List<Lot> filter, MyGarage garage)
+        private List<Lot> AvailableLots(List<Lot> filter, Garage.Garage garage)
         {
             List<Lot> availableLots = new List<Lot>();
             for (int i = 0; i < garage.Locations.Count; i++)

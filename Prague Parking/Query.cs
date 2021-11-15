@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace Prague_Parking_2_0_beta
 {
     /// <summary>
-    /// Static methods filtering and returning a list of lots
+    /// Static methods filtering and returning list of lots
     /// </summary>
     class Query
     {
@@ -143,7 +143,7 @@ namespace Prague_Parking_2_0_beta
             #endregion
             #region ByFloor()
             /// <returns>A list of vehicles on a floor</returns>
-            static public List<Vehicle> ByFloor(MyGarage garage, List<Vehicle> list, string n)
+            static public List<Vehicle> ByFloor(Garage.Garage garage, List<Vehicle> list, string n)
             {
                 List<Vehicle> query = new List<Vehicle>();
                 int i = 0;
@@ -172,7 +172,7 @@ namespace Prague_Parking_2_0_beta
             #endregion
             #region ByLotIndex()
             /// <returns>A list of vehicles on a lot</returns>
-            static public List<Vehicle> ByLotIndex(MyGarage garage, List<Vehicle> list, string n)
+            static public List<Vehicle> ByLotIndex(Garage.Garage garage, List<Vehicle> list, string n)
             {
                 int i = 0;
                 if (int.TryParse(n, out i))

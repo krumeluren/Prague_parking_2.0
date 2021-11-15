@@ -8,7 +8,7 @@ namespace Prague_Parking_2_0_beta.Garage
 {
     class GarageSerializer
     {
-        public MyGarage Garage { get; set; }
+        public Garage Garage { get; set; }
 
         #region JsonSerialize
         /// <summary>
@@ -37,7 +37,7 @@ namespace Prague_Parking_2_0_beta.Garage
             // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
             // https://stackoverflow.com/questions/8513042/json-net-serialize-deserialize-derived-types
 
-            MyGarage Garage = (MyGarage)JsonConvert.DeserializeObject(File.ReadAllText(filePath),
+            Garage Garage = (Garage)JsonConvert.DeserializeObject(File.ReadAllText(filePath),
             new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects, TypeNameHandling = TypeNameHandling.All });
 
             return Garage;

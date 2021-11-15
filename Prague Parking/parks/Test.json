@@ -1,6 +1,6 @@
 {
   "$id": "1",
-  "$type": "Prague_Parking_2_0_beta.Garage.MyGarage, Prague Parking 2_0 beta",
+  "$type": "Prague_Parking_2_0_beta.Garage.Garage, Prague Parking 2_0 beta",
   "Name": "Test",
   "FileName": "Test",
   "Locations": {
@@ -9,7 +9,7 @@
       {
         "$id": "2",
         "$type": "Prague_Parking_2_0_beta.Garage.Location, Prague Parking 2_0 beta",
-        "Name": "Floor 1",
+        "Name": "Våning 1",
         "Index": 0,
         "Garage": {
           "$ref": "1"
@@ -20,7 +20,6 @@
             {
               "$id": "3",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
               "Index": 0,
               "Location": {
                 "$ref": "2"
@@ -32,40 +31,72 @@
                     "$id": "4",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 4,
+                    "SpaceLeft": 2,
                     "Index": 0,
                     "Row": {
                       "$ref": "3"
                     },
                     "Number": 0,
-                    "Name": "Unnamed",
                     "Heigth": 400,
-                    "HasCharger": true,
+                    "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
+                      "$values": [
+                        {
+                          "$id": "5",
+                          "$type": "Prague_Parking_2_0_beta.MC, Prague Parking 2_0 beta",
+                          "Type": "MC",
+                          "Id": "ABC-123",
+                          "Size": 2,
+                          "Color": "RÖD",
+                          "Heigth": 130,
+                          "Electric": false,
+                          "Arrival": "2021-11-15T18:48:16.7822276+01:00",
+                          "Row": -1,
+                          "LotsOccupied": {
+                            "$type": "System.Collections.Generic.List`1[[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+                            "$values": []
+                          }
+                        }
+                      ]
                     }
                   },
                   {
-                    "$id": "5",
+                    "$id": "6",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 4,
+                    "SpaceLeft": 0,
                     "Index": 1,
                     "Row": {
                       "$ref": "3"
                     },
                     "Number": 1,
-                    "Name": "Unnamed",
                     "Heigth": 400,
-                    "HasCharger": true,
+                    "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
+                      "$values": [
+                        {
+                          "$id": "7",
+                          "$type": "Prague_Parking_2_0_beta.Car, Prague Parking 2_0 beta",
+                          "Type": "Car",
+                          "Id": "DHE-2324",
+                          "Size": 4,
+                          "Color": null,
+                          "Heigth": 250,
+                          "Electric": true,
+                          "Arrival": "2021-11-15T18:49:14.301309+01:00",
+                          "Row": -1,
+                          "LotsOccupied": {
+                            "$type": "System.Collections.Generic.List`1[[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+                            "$values": []
+                          }
+                        }
+                      ]
                     }
                   },
                   {
-                    "$id": "6",
+                    "$id": "8",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
@@ -74,16 +105,15 @@
                       "$ref": "3"
                     },
                     "Number": 2,
-                    "Name": "Unnamed",
                     "Heigth": 400,
-                    "HasCharger": true,
+                    "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
                       "$values": []
                     }
                   },
                   {
-                    "$id": "7",
+                    "$id": "9",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
@@ -92,56 +122,53 @@
                       "$ref": "3"
                     },
                     "Number": 3,
-                    "Name": "Unnamed",
                     "Heigth": 400,
-                    "HasCharger": true,
+                    "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
                       "$values": []
                     }
                   },
                   {
-                    "$id": "8",
+                    "$id": "10",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 0,
+                    "SpaceLeft": 4,
                     "Index": 4,
                     "Row": {
                       "$ref": "3"
                     },
                     "Number": 4,
-                    "Name": "Unnamed",
                     "Heigth": 400,
-                    "HasCharger": true,
+                    "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": [
-                        {
-                          "$id": "9",
-                          "$type": "Prague_Parking_2_0_beta.Car, Prague Parking 2_0 beta",
-                          "Type": "Car",
-                          "Id": "ABC-123",
-                          "Size": 4,
-                          "Color": null,
-                          "Heigth": 400,
-                          "Electric": false,
-                          "Arrival": "2021-11-13T23:27:34.8255711+01:00",
-                          "Row": -1,
-                          "LotsOccupied": {
-                            "$type": "System.Collections.Generic.List`1[[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
-                            "$values": []
-                          }
-                        }
-                      ]
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "11",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "3"
+                    },
+                    "Number": 5,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
                     }
                   }
                 ]
               }
             },
             {
-              "$id": "10",
+              "$id": "12",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
               "Index": 1,
               "Location": {
                 "$ref": "2"
@@ -150,104 +177,54 @@
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "11",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 0,
-                    "Index": 0,
-                    "Row": {
-                      "$ref": "10"
-                    },
-                    "Number": 5,
-                    "Name": "Unnamed",
-                    "Heigth": 400,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": [
-                        {
-                          "$id": "12",
-                          "$type": "Prague_Parking_2_0_beta.Truck, Prague Parking 2_0 beta",
-                          "Type": "Truck",
-                          "Id": null,
-                          "Size": 16,
-                          "Color": null,
-                          "Heigth": 250,
-                          "Electric": false,
-                          "Arrival": "2021-11-13T23:28:53.9357949+01:00",
-                          "Row": -1,
-                          "LotsOccupied": {
-                            "$type": "System.Collections.Generic.List`1[[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
-                            "$values": []
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
                     "$id": "13",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 0,
-                    "Index": 1,
+                    "SpaceLeft": 4,
+                    "Index": 0,
                     "Row": {
-                      "$ref": "10"
+                      "$ref": "12"
                     },
                     "Number": 6,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": [
-                        {
-                          "$ref": "12"
-                        }
-                      ]
+                      "$values": []
                     }
                   },
                   {
                     "$id": "14",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 0,
-                    "Index": 2,
+                    "SpaceLeft": 4,
+                    "Index": 1,
                     "Row": {
-                      "$ref": "10"
+                      "$ref": "12"
                     },
                     "Number": 7,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": [
-                        {
-                          "$ref": "12"
-                        }
-                      ]
+                      "$values": []
                     }
                   },
                   {
                     "$id": "15",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 0,
-                    "Index": 3,
+                    "SpaceLeft": 4,
+                    "Index": 2,
                     "Row": {
-                      "$ref": "10"
+                      "$ref": "12"
                     },
                     "Number": 8,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": [
-                        {
-                          "$ref": "12"
-                        }
-                      ]
+                      "$values": []
                     }
                   },
                   {
@@ -255,12 +232,45 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 4,
+                    "Index": 3,
                     "Row": {
-                      "$ref": "10"
+                      "$ref": "12"
                     },
                     "Number": 9,
-                    "Name": "Unnamed",
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "17",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "12"
+                    },
+                    "Number": 10,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "18",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "12"
+                    },
+                    "Number": 11,
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -272,9 +282,8 @@
               }
             },
             {
-              "$id": "17",
+              "$id": "19",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
               "Index": 2,
               "Location": {
                 "$ref": "2"
@@ -283,52 +292,15 @@
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "18",
+                    "$id": "20",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 0,
                     "Row": {
-                      "$ref": "17"
-                    },
-                    "Number": 10,
-                    "Name": "Unnamed",
-                    "Heigth": 400,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "19",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 1,
-                    "Row": {
-                      "$ref": "17"
-                    },
-                    "Number": 11,
-                    "Name": "Unnamed",
-                    "Heigth": 400,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "20",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 2,
-                    "Row": {
-                      "$ref": "17"
+                      "$ref": "19"
                     },
                     "Number": 12,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -341,12 +313,11 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 1,
                     "Row": {
-                      "$ref": "17"
+                      "$ref": "19"
                     },
                     "Number": 13,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -359,44 +330,45 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 4,
+                    "Index": 2,
                     "Row": {
-                      "$ref": "17"
+                      "$ref": "19"
                     },
                     "Number": 14,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
                       "$values": []
                     }
-                  }
-                ]
-              }
-            },
-            {
-              "$id": "23",
-              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 3,
-              "Location": {
-                "$ref": "2"
-              },
-              "Lots": {
-                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
-                "$values": [
+                  },
+                  {
+                    "$id": "23",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "19"
+                    },
+                    "Number": 15,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
                   {
                     "$id": "24",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 0,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "23"
+                      "$ref": "19"
                     },
-                    "Number": 15,
-                    "Name": "Unnamed",
+                    "Number": 16,
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -409,48 +381,41 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 1,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "23"
-                    },
-                    "Number": 16,
-                    "Name": "Unnamed",
-                    "Heigth": 400,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "26",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 2,
-                    "Row": {
-                      "$ref": "23"
+                      "$ref": "19"
                     },
                     "Number": 17,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
                       "$values": []
                     }
-                  },
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "26",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 3,
+              "Location": {
+                "$ref": "2"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
                   {
                     "$id": "27",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 0,
                     "Row": {
-                      "$ref": "23"
+                      "$ref": "26"
                     },
                     "Number": 18,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -463,44 +428,45 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 4,
+                    "Index": 1,
                     "Row": {
-                      "$ref": "23"
+                      "$ref": "26"
                     },
                     "Number": 19,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
                       "$values": []
                     }
-                  }
-                ]
-              }
-            },
-            {
-              "$id": "29",
-              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 4,
-              "Location": {
-                "$ref": "2"
-              },
-              "Lots": {
-                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
-                "$values": [
+                  },
+                  {
+                    "$id": "29",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "26"
+                    },
+                    "Number": 20,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
                   {
                     "$id": "30",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 0,
+                    "Index": 3,
                     "Row": {
-                      "$ref": "29"
+                      "$ref": "26"
                     },
-                    "Number": 20,
-                    "Name": "Unnamed",
+                    "Number": 21,
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -513,12 +479,11 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 1,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "29"
+                      "$ref": "26"
                     },
-                    "Number": 21,
-                    "Name": "Unnamed",
+                    "Number": 22,
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -531,48 +496,11 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 2,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "29"
-                    },
-                    "Number": 22,
-                    "Name": "Unnamed",
-                    "Heigth": 400,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "33",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 3,
-                    "Row": {
-                      "$ref": "29"
+                      "$ref": "26"
                     },
                     "Number": 23,
-                    "Name": "Unnamed",
-                    "Heigth": 400,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "34",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 4,
-                    "Row": {
-                      "$ref": "29"
-                    },
-                    "Number": 24,
-                    "Name": "Unnamed",
                     "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
@@ -582,44 +510,79 @@
                   }
                 ]
               }
-            }
-          ]
-        }
-      },
-      {
-        "$id": "35",
-        "$type": "Prague_Parking_2_0_beta.Garage.Location, Prague Parking 2_0 beta",
-        "Name": "Floor 2",
-        "Index": 1,
-        "Garage": {
-          "$ref": "1"
-        },
-        "Rows": {
-          "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta]], System.Private.CoreLib",
-          "$values": [
+            },
             {
-              "$id": "36",
+              "$id": "33",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 0,
+              "Index": 4,
               "Location": {
-                "$ref": "35"
+                "$ref": "2"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "37",
+                    "$id": "34",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 0,
                     "Row": {
-                      "$ref": "36"
+                      "$ref": "33"
+                    },
+                    "Number": 24,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "35",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "33"
                     },
                     "Number": 25,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "36",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "33"
+                    },
+                    "Number": 26,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "37",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "33"
+                    },
+                    "Number": 27,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -631,13 +594,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 1,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "36"
+                      "$ref": "33"
                     },
-                    "Number": 26,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 28,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -649,49 +611,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 2,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "36"
-                    },
-                    "Number": 27,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "40",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 3,
-                    "Row": {
-                      "$ref": "36"
-                    },
-                    "Number": 28,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "41",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 4,
-                    "Row": {
-                      "$ref": "36"
+                      "$ref": "33"
                     },
                     "Number": 29,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -702,28 +627,60 @@
               }
             },
             {
-              "$id": "42",
+              "$id": "40",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 1,
+              "Index": 5,
               "Location": {
-                "$ref": "35"
+                "$ref": "2"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "43",
+                    "$id": "41",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 0,
                     "Row": {
-                      "$ref": "42"
+                      "$ref": "40"
                     },
                     "Number": 30,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "42",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "40"
+                    },
+                    "Number": 31,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "43",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "40"
+                    },
+                    "Number": 32,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -735,13 +692,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 1,
+                    "Index": 3,
                     "Row": {
-                      "$ref": "42"
+                      "$ref": "40"
                     },
-                    "Number": 31,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 33,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -753,13 +709,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 2,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "42"
+                      "$ref": "40"
                     },
-                    "Number": 32,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 34,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -771,31 +726,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "42"
+                      "$ref": "40"
                     },
-                    "Number": 33,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "47",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 4,
-                    "Row": {
-                      "$ref": "42"
-                    },
-                    "Number": 34,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 35,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -806,28 +742,43 @@
               }
             },
             {
-              "$id": "48",
+              "$id": "47",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 2,
+              "Index": 6,
               "Location": {
-                "$ref": "35"
+                "$ref": "2"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "49",
+                    "$id": "48",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 0,
                     "Row": {
-                      "$ref": "48"
+                      "$ref": "47"
                     },
-                    "Number": 35,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 36,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "49",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "47"
+                    },
+                    "Number": 37,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -839,13 +790,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 1,
+                    "Index": 2,
                     "Row": {
-                      "$ref": "48"
+                      "$ref": "47"
                     },
-                    "Number": 36,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 38,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -857,13 +807,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 2,
+                    "Index": 3,
                     "Row": {
-                      "$ref": "48"
+                      "$ref": "47"
                     },
-                    "Number": 37,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 39,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -875,13 +824,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "48"
+                      "$ref": "47"
                     },
-                    "Number": 38,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 40,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -893,13 +841,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 4,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "48"
+                      "$ref": "47"
                     },
-                    "Number": 39,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 41,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -912,10 +859,9 @@
             {
               "$id": "54",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 3,
+              "Index": 7,
               "Location": {
-                "$ref": "35"
+                "$ref": "2"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
@@ -929,9 +875,8 @@
                     "Row": {
                       "$ref": "54"
                     },
-                    "Number": 40,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 42,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -947,9 +892,8 @@
                     "Row": {
                       "$ref": "54"
                     },
-                    "Number": 41,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 43,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -965,9 +909,8 @@
                     "Row": {
                       "$ref": "54"
                     },
-                    "Number": 42,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 44,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -983,9 +926,8 @@
                     "Row": {
                       "$ref": "54"
                     },
-                    "Number": 43,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 45,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1001,9 +943,25 @@
                     "Row": {
                       "$ref": "54"
                     },
-                    "Number": 44,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 46,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "60",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "54"
+                    },
+                    "Number": 47,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1014,46 +972,26 @@
               }
             },
             {
-              "$id": "60",
+              "$id": "61",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 4,
+              "Index": 8,
               "Location": {
-                "$ref": "35"
+                "$ref": "2"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "61",
+                    "$id": "62",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 0,
                     "Row": {
-                      "$ref": "60"
+                      "$ref": "61"
                     },
-                    "Number": 45,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "62",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 1,
-                    "Row": {
-                      "$ref": "60"
-                    },
-                    "Number": 46,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 48,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1065,13 +1003,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 2,
+                    "Index": 1,
                     "Row": {
-                      "$ref": "60"
+                      "$ref": "61"
                     },
-                    "Number": 47,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 49,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1083,13 +1020,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 2,
                     "Row": {
-                      "$ref": "60"
+                      "$ref": "61"
                     },
-                    "Number": 48,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 50,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1101,13 +1037,46 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "61"
+                    },
+                    "Number": 51,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "66",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
                     "Index": 4,
                     "Row": {
-                      "$ref": "60"
+                      "$ref": "61"
                     },
-                    "Number": 49,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 52,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "67",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "61"
+                    },
+                    "Number": 53,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1118,64 +1087,26 @@
               }
             },
             {
-              "$id": "66",
+              "$id": "68",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 5,
+              "Index": 9,
               "Location": {
-                "$ref": "35"
+                "$ref": "2"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "67",
+                    "$id": "69",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 0,
                     "Row": {
-                      "$ref": "66"
+                      "$ref": "68"
                     },
-                    "Number": 50,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "68",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 1,
-                    "Row": {
-                      "$ref": "66"
-                    },
-                    "Number": 51,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "69",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 2,
-                    "Row": {
-                      "$ref": "66"
-                    },
-                    "Number": 52,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 54,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1187,13 +1118,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 1,
                     "Row": {
-                      "$ref": "66"
+                      "$ref": "68"
                     },
-                    "Number": 53,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 55,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1205,45 +1135,46 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 4,
+                    "Index": 2,
                     "Row": {
-                      "$ref": "66"
+                      "$ref": "68"
                     },
-                    "Number": 54,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 56,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
                       "$values": []
                     }
-                  }
-                ]
-              }
-            },
-            {
-              "$id": "72",
-              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 6,
-              "Location": {
-                "$ref": "35"
-              },
-              "Lots": {
-                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
-                "$values": [
+                  },
+                  {
+                    "$id": "72",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "68"
+                    },
+                    "Number": 57,
+                    "Heigth": 400,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
                   {
                     "$id": "73",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 0,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "72"
+                      "$ref": "68"
                     },
-                    "Number": 55,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 58,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1255,67 +1186,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 1,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "72"
-                    },
-                    "Number": 56,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "75",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 2,
-                    "Row": {
-                      "$ref": "72"
-                    },
-                    "Number": 57,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "76",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 3,
-                    "Row": {
-                      "$ref": "72"
-                    },
-                    "Number": 58,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "77",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 4,
-                    "Row": {
-                      "$ref": "72"
+                      "$ref": "68"
                     },
                     "Number": 59,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Heigth": 400,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1324,70 +1200,126 @@
                   }
                 ]
               }
-            },
+            }
+          ]
+        }
+      },
+      {
+        "$id": "75",
+        "$type": "Prague_Parking_2_0_beta.Garage.Location, Prague Parking 2_0 beta",
+        "Name": "Våning 2",
+        "Index": 1,
+        "Garage": {
+          "$ref": "1"
+        },
+        "Rows": {
+          "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta]], System.Private.CoreLib",
+          "$values": [
             {
-              "$id": "78",
+              "$id": "76",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 7,
+              "Index": 0,
               "Location": {
-                "$ref": "35"
+                "$ref": "75"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "79",
+                    "$id": "77",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 4,
+                    "SpaceLeft": 0,
                     "Index": 0,
                     "Row": {
-                      "$ref": "78"
+                      "$ref": "76"
                     },
                     "Number": 60,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
+                      "$values": [
+                        {
+                          "$id": "78",
+                          "$type": "Prague_Parking_2_0_beta.Truck, Prague Parking 2_0 beta",
+                          "Type": "Truck",
+                          "Id": "DGH-932",
+                          "Size": 16,
+                          "Color": "BLÅ",
+                          "Heigth": 500,
+                          "Electric": false,
+                          "Arrival": "2021-11-15T18:48:42.557538+01:00",
+                          "Row": -1,
+                          "LotsOccupied": {
+                            "$type": "System.Collections.Generic.List`1[[System.Int32, System.Private.CoreLib]], System.Private.CoreLib",
+                            "$values": []
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$id": "79",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 0,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "76"
+                    },
+                    "Number": 61,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": [
+                        {
+                          "$ref": "78"
+                        }
+                      ]
                     }
                   },
                   {
                     "$id": "80",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 1,
+                    "SpaceLeft": 0,
+                    "Index": 2,
                     "Row": {
-                      "$ref": "78"
+                      "$ref": "76"
                     },
-                    "Number": 61,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 62,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
+                      "$values": [
+                        {
+                          "$ref": "78"
+                        }
+                      ]
                     }
                   },
                   {
                     "$id": "81",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 2,
+                    "SpaceLeft": 0,
+                    "Index": 3,
                     "Row": {
-                      "$ref": "78"
+                      "$ref": "76"
                     },
-                    "Number": 62,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 63,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
+                      "$values": [
+                        {
+                          "$ref": "78"
+                        }
+                      ]
                     }
                   },
                   {
@@ -1395,13 +1327,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "78"
+                      "$ref": "76"
                     },
-                    "Number": 63,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 64,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1413,13 +1344,46 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 4,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "78"
+                      "$ref": "76"
                     },
-                    "Number": 64,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 65,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "84",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 6,
+                    "Row": {
+                      "$ref": "76"
+                    },
+                    "Number": 66,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "85",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "76"
+                    },
+                    "Number": 67,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1430,64 +1394,26 @@
               }
             },
             {
-              "$id": "84",
+              "$id": "86",
               "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 8,
+              "Index": 1,
               "Location": {
-                "$ref": "35"
+                "$ref": "75"
               },
               "Lots": {
                 "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
                 "$values": [
                   {
-                    "$id": "85",
+                    "$id": "87",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 0,
                     "Row": {
-                      "$ref": "84"
+                      "$ref": "86"
                     },
-                    "Number": 65,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "86",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 1,
-                    "Row": {
-                      "$ref": "84"
-                    },
-                    "Number": 66,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
-                    "HasCharger": false,
-                    "Vehicles": {
-                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
-                      "$values": []
-                    }
-                  },
-                  {
-                    "$id": "87",
-                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
-                    "Space": 4,
-                    "SpaceLeft": 4,
-                    "Index": 2,
-                    "Row": {
-                      "$ref": "84"
-                    },
-                    "Number": 67,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 68,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1499,13 +1425,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 3,
+                    "Index": 1,
                     "Row": {
-                      "$ref": "84"
+                      "$ref": "86"
                     },
-                    "Number": 68,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 69,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1517,45 +1442,46 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 4,
+                    "Index": 2,
                     "Row": {
-                      "$ref": "84"
+                      "$ref": "86"
                     },
-                    "Number": 69,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 70,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
                       "$values": []
                     }
-                  }
-                ]
-              }
-            },
-            {
-              "$id": "90",
-              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
-              "Name": null,
-              "Index": 9,
-              "Location": {
-                "$ref": "35"
-              },
-              "Lots": {
-                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
-                "$values": [
+                  },
+                  {
+                    "$id": "90",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "86"
+                    },
+                    "Number": 71,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
                   {
                     "$id": "91",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 0,
+                    "Index": 4,
                     "Row": {
-                      "$ref": "90"
+                      "$ref": "86"
                     },
-                    "Number": 70,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 72,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1567,13 +1493,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 1,
+                    "Index": 5,
                     "Row": {
-                      "$ref": "90"
+                      "$ref": "86"
                     },
-                    "Number": 71,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 73,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1585,13 +1510,12 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
-                    "Index": 2,
+                    "Index": 6,
                     "Row": {
-                      "$ref": "90"
+                      "$ref": "86"
                     },
-                    "Number": 72,
-                    "Name": "Unnamed",
-                    "Heigth": 9999,
+                    "Number": 74,
+                    "Heigth": 500,
                     "HasCharger": false,
                     "Vehicles": {
                       "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
@@ -1603,12 +1527,949 @@
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "86"
+                    },
+                    "Number": 75,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "95",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 2,
+              "Location": {
+                "$ref": "75"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "96",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "95"
+                    },
+                    "Number": 76,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "97",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "95"
+                    },
+                    "Number": 77,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "98",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "95"
+                    },
+                    "Number": 78,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "99",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
                     "Index": 3,
                     "Row": {
-                      "$ref": "90"
+                      "$ref": "95"
                     },
-                    "Number": 73,
-                    "Name": "Unnamed",
+                    "Number": 79,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "100",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "95"
+                    },
+                    "Number": 80,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "101",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "95"
+                    },
+                    "Number": 81,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "102",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 6,
+                    "Row": {
+                      "$ref": "95"
+                    },
+                    "Number": 82,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "103",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "95"
+                    },
+                    "Number": 83,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "104",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 3,
+              "Location": {
+                "$ref": "75"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "105",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 84,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "106",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 85,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "107",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 86,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "108",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 87,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "109",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 88,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "110",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 89,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "111",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 6,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 90,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "112",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "104"
+                    },
+                    "Number": 91,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "113",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 4,
+              "Location": {
+                "$ref": "75"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "114",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 92,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "115",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 93,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "116",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 94,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "117",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 95,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "118",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 96,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "119",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 97,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "120",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 6,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 98,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "121",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "113"
+                    },
+                    "Number": 99,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "122",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 5,
+              "Location": {
+                "$ref": "75"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "123",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 100,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "124",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 101,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "125",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 102,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "126",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 103,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "127",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 104,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "128",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 105,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "129",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 6,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 106,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "130",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "122"
+                    },
+                    "Number": 107,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "131",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 6,
+              "Location": {
+                "$ref": "75"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "132",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 108,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "133",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 109,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "134",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 110,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "135",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 111,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "136",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 112,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "137",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 113,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "138",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 6,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 114,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "139",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "131"
+                    },
+                    "Number": 115,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "140",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 7,
+              "Location": {
+                "$ref": "75"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "141",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 116,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "142",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 117,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "143",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 118,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "144",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 119,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "145",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 120,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "146",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 121,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "147",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 6,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 122,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "148",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 7,
+                    "Row": {
+                      "$ref": "140"
+                    },
+                    "Number": 123,
+                    "Heigth": 500,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "$id": "149",
+        "$type": "Prague_Parking_2_0_beta.Garage.Location, Prague Parking 2_0 beta",
+        "Name": "Takvåning",
+        "Index": 2,
+        "Garage": {
+          "$ref": "1"
+        },
+        "Rows": {
+          "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$id": "150",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 0,
+              "Location": {
+                "$ref": "149"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "151",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "150"
+                    },
+                    "Number": 124,
                     "Heigth": 9999,
                     "HasCharger": false,
                     "Vehicles": {
@@ -1617,16 +2478,428 @@
                     }
                   },
                   {
-                    "$id": "95",
+                    "$id": "152",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "150"
+                    },
+                    "Number": 125,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "153",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "150"
+                    },
+                    "Number": 126,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "154",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "150"
+                    },
+                    "Number": 127,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "155",
                     "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
                     "Space": 4,
                     "SpaceLeft": 4,
                     "Index": 4,
                     "Row": {
-                      "$ref": "90"
+                      "$ref": "150"
                     },
-                    "Number": 74,
-                    "Name": "Unnamed",
+                    "Number": 128,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "156",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "150"
+                    },
+                    "Number": 129,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "157",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 1,
+              "Location": {
+                "$ref": "149"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "158",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "157"
+                    },
+                    "Number": 130,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "159",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "157"
+                    },
+                    "Number": 131,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "160",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "157"
+                    },
+                    "Number": 132,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "161",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "157"
+                    },
+                    "Number": 133,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "162",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "157"
+                    },
+                    "Number": 134,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "163",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "157"
+                    },
+                    "Number": 135,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "164",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 2,
+              "Location": {
+                "$ref": "149"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "165",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "164"
+                    },
+                    "Number": 136,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "166",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "164"
+                    },
+                    "Number": 137,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "167",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "164"
+                    },
+                    "Number": 138,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "168",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "164"
+                    },
+                    "Number": 139,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "169",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "164"
+                    },
+                    "Number": 140,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "170",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "164"
+                    },
+                    "Number": 141,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "$id": "171",
+              "$type": "Prague_Parking_2_0_beta.Garage.Row, Prague Parking 2_0 beta",
+              "Index": 3,
+              "Location": {
+                "$ref": "149"
+              },
+              "Lots": {
+                "$type": "Prague_Parking_2_0_beta.Garage.Lot[], Prague Parking 2_0 beta",
+                "$values": [
+                  {
+                    "$id": "172",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 0,
+                    "Row": {
+                      "$ref": "171"
+                    },
+                    "Number": 142,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "173",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 1,
+                    "Row": {
+                      "$ref": "171"
+                    },
+                    "Number": 143,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "174",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 2,
+                    "Row": {
+                      "$ref": "171"
+                    },
+                    "Number": 144,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "175",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 3,
+                    "Row": {
+                      "$ref": "171"
+                    },
+                    "Number": 145,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "176",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 4,
+                    "Row": {
+                      "$ref": "171"
+                    },
+                    "Number": 146,
+                    "Heigth": 9999,
+                    "HasCharger": false,
+                    "Vehicles": {
+                      "$type": "System.Collections.Generic.List`1[[Prague_Parking_2_0_beta.Vehicle, Prague Parking 2_0 beta]], System.Private.CoreLib",
+                      "$values": []
+                    }
+                  },
+                  {
+                    "$id": "177",
+                    "$type": "Prague_Parking_2_0_beta.Garage.Lot, Prague Parking 2_0 beta",
+                    "Space": 4,
+                    "SpaceLeft": 4,
+                    "Index": 5,
+                    "Row": {
+                      "$ref": "171"
+                    },
+                    "Number": 147,
                     "Heigth": 9999,
                     "HasCharger": false,
                     "Vehicles": {
@@ -1642,5 +2915,5 @@
       }
     ]
   },
-  "Size": 75
+  "Size": 148
 }

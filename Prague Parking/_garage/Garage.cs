@@ -3,35 +3,22 @@ using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta.Garage
 {
-    class MyGarage
+    class Garage
     {
         #region Properties
         public string Name { get; set; } // Name of garage
-        public string FileName { get; set; } // The name of the file loaded (initially same as Name)
+        public string FileName { get; set; } // The name of the file loaded
         public List<Location> Locations { get; set; }
         public int Size { get; set; } // lot count in garage
         #endregion
 
         #region Constructor
-        public MyGarage(string name)
+        public Garage(string name)
         {
             Name = name;
         }
         #endregion
 
-        #region Change lot data
-        #region UISetName() Get a Name and SetAllLotNames(name);
-        /// <summary>
-        /// Ask user for name. Return the string on null
-        /// </summary>
-        public string UISetName()
-        {
-            Console.Write("Name: ");
-            string name = Console.ReadLine().Trim();
-            name = name == "" ? null : name;
-            return name;
-        }
-        #endregion
         #region UISetHeigth() Get the Heigth and SetAllLotHeigths(h);
         /// <summary>
         /// Ask user for input heigth. Returns int >=0 or null
@@ -77,18 +64,6 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
-        #region SetAllLotNames(string name) - set Name prop of all Lots in all Rows in all Locations
-        public void SetAllLotNames(string name)
-        {
-
-            for (int i = 0; i < Locations.Count; i++)
-            {
-                Location location = Locations[i];
-                location.SetAllLotNames(name);
-            }
-            
-        }
-        #endregion
         #region SetAllLotHeigths(int heigth) - set Heigth prop of all Lots in all Rows in all Locations
         public void SetAllLotHeigths(int heigth)
         {
@@ -110,7 +85,6 @@ namespace Prague_Parking_2_0_beta.Garage
             }
             Console.WriteLine("Success");
         }
-        #endregion
         #endregion
 
         #region Display()
@@ -164,23 +138,22 @@ namespace Prague_Parking_2_0_beta.Garage
        
         #region UIMenu()
         /// <summary>
-        /// Outer user menu for managing this garage. Add locations, step in to locations etc
+        /// User interface for managing this garage.
         /// </summary>
         public void UIMenu()
         {
-            Console.Clear();
             bool isDone = false;
             while (!isDone)
             {
+                Console.Clear();
+                Display2();
                 #region Menu
-                Console.WriteLine($"Garage {Name} Menu");
-                Console.WriteLine("[1] Find a vehicle");
-                Console.WriteLine("[2] Add a vehicle");
-                Console.WriteLine("[3] Display Garage");
-                Console.WriteLine("[4] Set all lot names in the Park");
-                Console.WriteLine("[5] Set the heigth of the Park");
-                Console.WriteLine("[6] Set charging stations of all lots in the Park");
-                Console.WriteLine("[7] Exit Garage Menu");
+                Console.WriteLine(" ");
+                Console.WriteLine($"\nGarage {Name} Menu");
+                Console.WriteLine(" 1) Hitta fordon");
+                Console.WriteLine(" 2) Lägg till fordon");
+                Console.WriteLine(" 3) Visa detaljerat garage");
+                Console.WriteLine(" 4) Gå in i en våning");
                 Console.Write("Val: ");
                 #endregion
 
@@ -221,14 +194,26 @@ namespace Prague_Parking_2_0_beta.Garage
                     case "3":
                         {
                             Display();
+                            Console.Write("Tryck för att fortsätta");
+                            Console.ReadKey();
+                            Console.Clear();
                             break;
                         }
                     #endregion
-                    #region UISetName();
+                    #region Enter a location menu
                     case "4":
                         {
-                            string name = UISetName();
-                            SetAllLotNames(name);
+                            foreach (var loc in Locations)
+                            {
+                                Console.WriteLine($"{loc.Index + 1}: {loc.Name}");
+                            }
+                            Console.Write("Nummer: ");
+                            int i = 0;
+                            if (int.TryParse(Console.ReadLine(), out i))
+                            {
+                                if (i - 1 >= 0 && i - 1 < Locations.Count)
+                                    Locations[i-1].UIMenu();
+                            }
                             break;
                         }
                     #endregion
@@ -270,6 +255,7 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
+
         #region UISave() - Serialize the garage to /parks
         /// <summary>
         /// UI for saving the park to a json in /parks. Ask save or save as
@@ -351,8 +337,62 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
+        #region Display2
+        /// <summary>
+        /// Graphical overview of the garage
+        /// </summary>
+        public void Display2()
+        {
+            foreach (Location location in Locations)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.WriteLine(" ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                location.Display();
+                int counter = 0;
+                foreach (Row row in location.Rows)
+                {
+                    if (counter > 20)
+                    {
+                        counter = 0;
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.WriteLine(" ");
+                        
+                    }
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.Write(" ");
 
-        #region CheckLots(vehicle, lot, filter) - Goes over lot/lots in a Row until remaining vehicle size is 0 
+                    foreach (Lot lot in row.Lots)
+                    {
+                        if (lot.SpaceLeft == lot.Space)
+                        {
+                            Console.BackgroundColor = ConsoleColor.Green;
+                            Console.Write($"[{lot.Number}]");
+                        }
+
+                        else if (lot.SpaceLeft == 0)
+                        {
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write($"[{lot.Number}]");
+                        }
+                        else if (lot.SpaceLeft == 0 || lot.SpaceLeft != lot.Space)
+                        {
+                            Console.BackgroundColor = ConsoleColor.Blue;
+                            Console.Write($"[{lot.Number}]");
+                        }
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        counter++;
+                    }
+
+                    
+                }
+                
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+        }
+        #endregion
+
+        #region CheckLots()
         /// <summary>
         /// Goes over lot(s) staring at input lot, filling each lot, until remaining vehicle size is 0,
         /// </summary>
@@ -410,29 +450,34 @@ namespace Prague_Parking_2_0_beta.Garage
             while (!isDone)
             {
                 Console.Clear();
-                Console.WriteLine("Sök efter ett fordon");
+                Console.WriteLine("Lista av fordon");
+                int i = 1;
                 foreach (Vehicle v in vehicles)
                 {
-                    int i = 0;
-                    Console.Write($"{i + 1}: ");
+                    Console.BackgroundColor = i % 2 == 0 ? ConsoleColor.White : ConsoleColor.Black;
+                    Console.ForegroundColor = i % 2 == 0 ? ConsoleColor.Black : ConsoleColor.White;
+                    Console.Write($"{i}: ");
                     v.Display();
                     i++;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 #region Menu
-                Console.WriteLine("");
-                Console.WriteLine("[x]  Välj ett fordon");
+               
                 Console.WriteLine("");
                 Console.WriteLine("Sök efter: ");
-                Console.WriteLine(" [1]  Regnr");
-                Console.WriteLine(" [2]  Typ");
-                Console.WriteLine(" [3]  Färg");
-                Console.WriteLine(" [4]  Våning");
-                Console.WriteLine(" [5]  Parkeringsnummer");
+                Console.WriteLine("  1)  Regnr");
+                Console.WriteLine("  2)  Typ");
+                Console.WriteLine("  3)  Färg");
+                Console.WriteLine("  4)  Våning");
+                Console.WriteLine("  5)  Parkeringsnummer");
+                Console.WriteLine("  6)  Gör om");
+                Console.WriteLine("  b)  Backa");
                 Console.WriteLine("");
-                Console.WriteLine("[6]  Gör om");
-                Console.WriteLine("[b]  Backa");
-                Console.Write("Val: ");
+                Console.WriteLine("  x)  Välj ett fordon");
+                Console.WriteLine("");
+                Console.Write(" Val: ");
                 #endregion
 
                 switch (Console.ReadLine().ToLower())
@@ -540,10 +585,9 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-
         #region UIPickVehicle()
         /// <summary>
-        /// Pick a vehicle from the list
+        /// Let user pick a vehicle from a list
         /// </summary>
         /// <param name="vehicles"></param>
         /// <returns> A vehicle or null</returns>
@@ -553,15 +597,19 @@ namespace Prague_Parking_2_0_beta.Garage
             while (tries < 5) // user has 5 tries before exiting
             {
                 Console.Clear();
+                int i = 1;
                 foreach (Vehicle v in vehicles)
                 {
-                    int index = 0;
-                    Console.WriteLine($"{index + 1}: ");
+                    Console.BackgroundColor = i % 2 == 0 ? ConsoleColor.White : ConsoleColor.Black;
+                    Console.ForegroundColor = i % 2 == 0 ? ConsoleColor.Black : ConsoleColor.White;
+                    Console.Write($"{i}: ");
                     v.Display();
-                    index++;
+                    i++;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.Write("Ange ett nummer: ");
-                int i = 0;
+                i = 0;
                 if (int.TryParse(Console.ReadLine(), out i)) 
                 {
                     i -= 1;
@@ -576,18 +624,17 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-
-        #region Load() - Load and return a json MyGarage object
+        #region Load() - Load json garage
         /// <summary>
-        /// Load a MyGarage object with contents from a json file in /parks and required initial methods
+        /// Load a Garage object with contents from a json file in /parks and required initial methods
         /// </summary>
         /// <returns>The loaded park</returns>
-        public static MyGarage Load(string fileName)
+        public static Garage Load(string fileName)
         {
             Console.Clear();
             string filePath = $"../../../parks/{fileName}.json";
             GarageSerializer garageSerializer = new GarageSerializer();
-            MyGarage garage = garageSerializer.JsonDeserialize(filePath) as MyGarage;
+            Garage garage = garageSerializer.JsonDeserialize(filePath) as Garage;
             garage.SetIndexes();
             garage.SetReferences();
             return garage;

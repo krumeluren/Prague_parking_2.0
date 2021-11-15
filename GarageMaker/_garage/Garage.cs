@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta.Garage
 {
-    public class MyGarage
+    public class Garage
     {
         #region Properties
         public string Name { get; set; }
@@ -57,8 +57,8 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region Constructor
-        public MyGarage() { }
-        public MyGarage(string name)
+        public Garage() { }
+        public Garage(string name)
         {
             Name = name;
         }

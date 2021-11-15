@@ -9,14 +9,14 @@ namespace Prague_Parking_2_0_beta.Garage
         #region Properties
         public string Name { get; set; }
         public int Index { get; set; }
-        public MyGarage Garage { get; set; }
+        public Garage Garage { get; set; }
         public List<Row> Rows { get; set; }
 
         #endregion
 
         #region Constructor
         public Location() { }
-        public Location(MyGarage garage, string name = "Unnamed location")
+        public Location(Garage garage, string name = "Unnamed location")
         {
             Garage = garage;
             Name = name;
