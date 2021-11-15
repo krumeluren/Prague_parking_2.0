@@ -78,15 +78,34 @@ namespace Prague_Parking_2_0_beta
         static public class VehicleQ
         {
             #region ById()
-            /// <returns>A list of vehicles containing the id</returns>
+            /// <returns>A list of vehicles with identical or similar ID to search string</returns>
             static public List<Vehicle> ById(List<Vehicle> list, string id)
             {
                 List<Vehicle> query = new List<Vehicle>();
+                char[] idChars = id.ToUpper().ToCharArray();
+
                 foreach (Vehicle vehicle in list)
                 {
-                    if (vehicle.Id == id.Trim().ToUpper().Replace("-", ""))
+                    // If search id is same as vehicle id
+                    if (vehicle.Id.Contains(id))
                     {
                         query.Add(vehicle);
+                    }
+                    // else Compare each chars. If atleast half of chars in search exist in vehicle.Id
+                    else
+                    {
+                        int similarity = 0;
+                        foreach (char c in idChars)
+                        {
+                            if (vehicle.Id.Contains(c))
+                            {
+                                similarity++;
+                            }
+                        }
+                        if(similarity >= (idChars.Length / 2))
+                        {
+                            query.Add(vehicle);
+                        }
                     }
                 }
                 return query;
@@ -112,13 +131,9 @@ namespace Prague_Parking_2_0_beta
             static public List<Vehicle> ByColor(List<Vehicle> list, string color)
             {
                 List<Vehicle> query = new List<Vehicle>();
-
-                Regex rgx = new Regex("[^a-zA-Z0-9]");
-                color = rgx.Replace(color, "");
-
                 foreach (Vehicle vehicle in list)
                 {
-                    if (vehicle.Color == color)
+                    if (vehicle.Color == color.ToLower().Trim())
                     {
                         query.Add(vehicle);
                     }

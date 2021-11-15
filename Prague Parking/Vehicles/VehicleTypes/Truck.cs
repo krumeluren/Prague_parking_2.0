@@ -6,6 +6,7 @@ namespace Prague_Parking_2_0_beta
 {
     class Truck : Vehicle
     {
+        #region Constructor
         public Truck(
             DateTime arrival,
             int heigth,
@@ -23,15 +24,22 @@ namespace Prague_Parking_2_0_beta
             Size = 16;
             this.Type = "Truck";
         }
+        #endregion
 
         public static Truck UICreate()
         {
             Console.Clear();
-            int heigth = 250;
             string id = null;
             string color = null;
             bool electric = false;
-            return new Truck(DateTime.Now, heigth, id, color, electric);
+            int height = int.MaxValue;
+
+            id = SetId();
+            height = SetHeight();
+            color = SetColor();
+            electric = SetHasCharger();
+
+            return new Truck(DateTime.Now, height, id, color, electric);
         }
     }
 }

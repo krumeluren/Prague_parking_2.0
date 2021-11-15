@@ -1,4 +1,5 @@
-﻿using Prague_Parking_2_0_beta.Garage;
+﻿using Prague_Parking;
+using Prague_Parking_2_0_beta.Garage;
 using System;
 using System.Collections.Generic;
 
@@ -58,10 +59,10 @@ namespace Prague_Parking_2_0_beta
         {
             Console.Clear();
             Console.WriteLine("Ange ett fordonstyp: ");
-            Console.WriteLine("[1] MC ");
-            Console.WriteLine("[2] Personbil ");
-            Console.WriteLine("[3] Cykel ");
-            Console.WriteLine("[4] Lastbil ");
+            Console.WriteLine(" 1) MC ");
+            Console.WriteLine(" 2) Personbil ");
+            Console.WriteLine(" 3) Cykel ");
+            Console.WriteLine(" 4) Lastbil ");
             Console.Write("Val: ");
             switch (Console.ReadLine())
             {
@@ -72,128 +73,6 @@ namespace Prague_Parking_2_0_beta
                 default: Console.WriteLine("Ogiltigt\n"); break;
             }
             return null;
-
-            #region copypaste later
-            //string id = null;
-            //DateTime arrival;
-            //string color = null;
-            //int heigth = 9999;
-            //bool electric = false;
-
-
-            //#region Interface for vehicle data
-            //bool isDone = false; // exit while loop
-            //while (!isDone)
-            //{
-            //    Console.WriteLine("Lägg till ett fordon");
-            //    Console.Write("Ange ett registreringsnummer (Valfri): ");
-            //    id = Console.ReadLine().Trim().ToUpper();
-            //    id = id == "" ? id = null : id;
-
-
-
-            //    Console.WriteLine("");
-            //    Console.Write("Ange en färg (Valfri) : ");
-            //    color = Console.ReadLine();
-            //    color = color == "" ? color = null : color;
-
-            //    #region Set heigth
-            //    bool parseError = true;
-            //    while (parseError)
-            //    {
-            //        Console.WriteLine("Enter för att skippa");
-            //        Console.Write("Ange en höjd i cm: ");
-            //        string str = Console.ReadLine();
-
-            //        if (str == "")
-            //        {
-            //            Console.WriteLine("Höjd ej satt");
-            //            parseError = false;
-            //        }
-            //        else
-            //        {
-            //            int nonNullHeigth;
-            //            bool success = int.TryParse(str, out nonNullHeigth);
-            //            if (success)
-            //            {
-            //                heigth = nonNullHeigth;
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Inte ett giltigt tal. Försök igen.");
-            //            }
-            //        }
-            //    }
-            //    #endregion
-
-            //    Console.WriteLine("Är fordonet el-driven?");
-            //    Console.WriteLine("[Y] Ja");
-            //    Console.WriteLine("[N] Nej");
-            //    switch (Console.ReadLine().ToUpper())
-            //    {
-            //        case "Y": electric = true; break;
-            //        default: electric = false; break;
-            //    }
-
-            //    Console.WriteLine("Fordonstyp: " );
-            //    Console.WriteLine("Registreringsnummer: " + (id == null ? "Ej satt" : id));
-            //    Console.WriteLine("Färg: " + (color == null ? "Ej satt" : color));
-            //    Console.WriteLine("Höjd: " + (heigth == null ? "Ej satt" : heigth + " cm"));
-            //    Console.WriteLine("Elektrisk: " + (electric ? "Ja" : "Nej"));
-
-            //    Console.WriteLine("Ok?");
-            //    Console.WriteLine("[Y] Ja");
-            //    Console.WriteLine("[N] Gör om");
-            //    Console.WriteLine("[X] Lämna");
-            //    switch (Console.ReadLine())
-            //    {
-            //        case "Y": isDone = true; break;
-            //        case "N": break;
-            //        default: return null; break;
-            //    }
-            //} // end of while()
-            //#endregion
-            #endregion
-        }
-        #endregion
-
-        #region CheckLotsOLD(row, filter, index) - Goes over lot/lots in a Row until remaining vehicle size is 0 
-        /// <summary>
-        /// Goes over lot(s) staring at "l", filling up each lot, until remaining vehicle size is 0,
-        /// </summary>
-        /// <returns>true if vehicle size reached 0, false if problem</returns>
-        private bool CheckLotsOLD(Row row, List<Lot> filter, int l)
-        {
-            Lot lot = row.Lots[l];
-            int vehicleSizeLeft = Size;
-            if (Size >= 4) // if vehicle is car or bigger
-            {
-                // As long as lot is empty, height is less than vehicle, the lot exists in the filter, Iterate lots until vehicle size is 'emptied' - return true
-                while (row.Lots[l].SpaceLeft >= 4 &&
-                    lot.Heigth >= Heigth &&
-                    vehicleSizeLeft != 0 &&
-                    filter.Contains(lot)) 
-                {
-                    vehicleSizeLeft -= 4;
-                    l++;
-                    lot = row.Lots[l];
-                }
-                if (vehicleSizeLeft == 0) // If while loop emptied vehicle size
-                {
-                    return true;
-                }
-            }
-            else if (Size < 4 && Size > 0) // If vehicle is smaller than car
-            {
-                // If lot is empty, height is less than vehicle, the lot exists in the filter, vehicle fits - return true
-                if (lot.SpaceLeft >= vehicleSizeLeft &&
-                    lot.Heigth >= Heigth &&
-                    filter.Contains(lot)) 
-                {
-                    return true;
-                }
-            }
-            return false;
         }
         #endregion
 
@@ -264,6 +143,10 @@ namespace Prague_Parking_2_0_beta
         #endregion
 
         #region UIMenu
+        /// <summary>
+        /// Menu of the vehicle.
+        /// </summary>
+        /// <param name="garage"></param>
         public void UIMenu(MyGarage garage)
         {
             while (true)
@@ -271,16 +154,22 @@ namespace Prague_Parking_2_0_beta
                 Console.Clear();
                 Display();
                 Console.WriteLine(" ");
-                Console.WriteLine(" [1]   Hämta ut fordon");
-                Console.WriteLine(" [2]   Flytta fordon");
-                Console.WriteLine(" [b]   Backa");
+                Console.WriteLine(" 1)   Hämta ut fordon");
+                Console.WriteLine(" 2)   Flytta fordon");
+                Console.WriteLine(" b)   Backa");
                 Console.Write("Val: ");
 
                 switch (Console.ReadLine())
                 {
                     case "1":
                         {
+                            Console.Clear();
                             Unpark(garage);
+                            DisplayTimeSinceArrival();
+                            DisplayPrice(CalcPrice());
+                            Console.WriteLine("Tryck för att fortsätta");
+                            Console.ReadKey();
+                            Console.Clear();
                             return;
                         }
                     case "2":
@@ -322,6 +211,78 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
+        #region DisplayTimeSinceArrival()
+        /// <summary>
+        /// Display the time since the vehicle arrived
+        /// </summary>
+        public void DisplayTimeSinceArrival()
+        {
+            TimeSpan since = DateTime.Now - Arrival;
+            Console.WriteLine("Fordonet har varit på platsen i..");
+            Console.WriteLine($"{since.Days} dagar, {since.Hours} timmar, {since.Minutes} minuter");
+            Console.WriteLine($"Eller {Math.Floor(since.TotalHours)} timmar");
+            Console.WriteLine($"Eller {Math.Floor(since.TotalMinutes)} minuter");
+        }
+        #endregion
+
+        #region CalcPrice()
+        /// <summary>
+        /// Calculate the current price of the parked vehicles by loading a settings.json object and using the Arrival of the vehicle
+        /// </summary>
+        /// <returns>int price</returns>
+        public double CalcPrice()
+        {
+            TimeSpan since = DateTime.Now - Arrival;
+            double price = 0;
+            double pricePerHour = 0;
+            
+            Settings settings = Settings.Load();
+
+            TimeSpan freeTime = new TimeSpan(0, settings.FreeTime, 0);
+
+            if (this.GetType() == typeof(Car))
+            {
+                pricePerHour = settings.CarPrice;
+            }
+            else if (this.GetType() == typeof(MC))
+            {
+                pricePerHour = settings.MCPrice;
+            }
+            else if (this.GetType() == typeof(Bike))
+            {
+                pricePerHour = settings.BikePrice;
+            }
+            else if (this.GetType() == typeof(Truck))
+            {
+                pricePerHour = settings.TruckPrice;
+            }
+
+            if (since < freeTime)
+            {
+                price = 0;
+            }
+            else
+            {
+                int hours = (int)Math.Floor(since.TotalHours);
+                price = hours * pricePerHour;
+            }
+            return price;
+        }
+        #endregion
+
+        #region DisplayPrice()
+        /// <summary>
+        /// Display the current price for the vehicle
+        /// </summary>
+        /// <param name="price"></param>
+        public void DisplayPrice(double price)
+        {
+            Settings settings = Settings.Load();
+
+            string currency = settings.Currency;
+            Console.WriteLine($"Pris: {price} {currency}\n");
+        }
+        #endregion
 
         #region UIPark - Main UI for parking the vehicle
         /// <summary>
@@ -337,9 +298,9 @@ namespace Prague_Parking_2_0_beta
                 Console.Clear();
                 Display();
                 Console.WriteLine("Parkera fordon");
-                Console.WriteLine("[1]  Hitta första lediga plats");
-                Console.WriteLine("[2]  Låt mig bestämma");
-                Console.WriteLine("[3]  Ångra och backa");
+                Console.WriteLine(" 1)  Hitta första lediga plats");
+                Console.WriteLine(" 2)  Låt mig bestämma");
+                Console.WriteLine(" 3)  Ångra och backa");
 
                 switch (Console.ReadLine())
                 {
@@ -466,8 +427,8 @@ namespace Prague_Parking_2_0_beta
                     #region Filtrera Med/utan laddningsstation
                     case "3":
                         {
-                            Console.WriteLine("[1] Med");
-                            Console.WriteLine("[2] Utan");
+                            Console.WriteLine(" 1) Med");
+                            Console.WriteLine(" 2) Utan");
                             switch (Console.ReadLine())
                             {
                                 case "1":
@@ -577,5 +538,56 @@ namespace Prague_Parking_2_0_beta
             return availableLots;
         }
         #endregion
+
+        #region Set Vehicle data
+        static public int SetHeight()
+        {
+            Console.Clear();
+            Console.WriteLine("Ange fordonets höjd");
+            Console.Write("Höjd: ");
+            int height = int.TryParse(Console.ReadLine(), out height) ? height : int.MaxValue;
+            return height;
+        }
+
+        static public string SetId()
+        {
+            Console.Clear();
+            Console.WriteLine("Ange ett regnr");
+            Console.Write("Regnr: ");
+            while (true)
+            {
+                string id = Console.ReadLine().Trim().ToUpper();
+                if (id.Length != 0)
+                {
+                    return id;
+                }
+                Console.WriteLine("Ogiltigt.");
+                Console.Write("Regnr: ");
+            }
+        }
+
+        static public string SetColor()
+        {
+            Console.Clear();
+            Console.WriteLine("Ange en färg");
+            Console.Write("Färg: ");
+            string id = Console.ReadLine().Trim().ToUpper();
+            id = id == "" ? null : id;
+            return id;
+        }
+
+        static public bool SetHasCharger()
+        {
+            Console.Clear();
+            Console.WriteLine("Eldriven: y/n");
+            Console.Write("Val: ");
+            string answer = Console.ReadLine().Trim();
+            if (answer == "y")
+                return true;
+            else
+                return false;
+        }
+        #endregion
+
     }
 }

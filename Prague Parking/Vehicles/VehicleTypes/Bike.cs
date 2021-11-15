@@ -6,11 +6,12 @@ namespace Prague_Parking_2_0_beta
 {
     class Bike : Vehicle
     {
+        #region Constructor
         public Bike(
             DateTime arrival,
             int heigth,
-            string color = null
-            ) : base (
+            string color
+            ) : base(
                 arrival,
                 heigth,
                 color: color
@@ -19,12 +20,18 @@ namespace Prague_Parking_2_0_beta
             this.Type = "Bike";
             Size = 1;
         }
+        #endregion
+
         public static Bike UICreate()
         {
             Console.Clear();
-            int heigth = 150;
             string color = null;
-            return new Bike(DateTime.Now, heigth, color);
+            int height = int.MaxValue;
+
+            height = SetHeight();
+            color = SetColor();
+
+            return new Bike(DateTime.Now, height, color);
         }
     }
 }

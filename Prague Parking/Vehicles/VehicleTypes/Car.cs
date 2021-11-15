@@ -6,16 +6,17 @@ namespace Prague_Parking_2_0_beta
 {
     class Car : Vehicle
     {
+        #region Constructor
         public Car(
             DateTime arrival,
             int heigth,
             string id,
             string color = null,
             bool electric = false
-            ) : base (
+            ) : base(
                 arrival,
                 heigth,
-                id, 
+                id,
                 color,
                 electric
                 )
@@ -23,35 +24,22 @@ namespace Prague_Parking_2_0_beta
             Size = 4;
             Type = "Car";
         }
+        #endregion
 
         public static Car UICreate()
         {
             Console.Clear();
-            int heigth = 0;
             string id = null;
             string color = null;
             bool electric = false;
+            int height = int.MaxValue;
 
-            Console.Write("Ange höjd på fordon: ");
-            heigth = int.TryParse(Console.ReadLine(), out heigth) == true ? heigth : 9999;
+            id = SetId();
+            height = SetHeight();
+            color = SetColor();
+            electric = SetHasCharger();
 
-            Console.Write("Ange regnr: ");
-            id = Console.ReadLine();
-
-            Console.Write("Ange en färg: ");
-            Console.ReadLine();
-
-            Console.Write("Elbil: y/n ");
-            string answer = Console.ReadLine().Trim();
-            if(answer == "y")
-            {
-                electric = true;
-            }
-            else if(answer == "n")
-            {
-                electric = false;
-            }
-            return new Car(DateTime.Now, heigth, id, color, electric);
+            return new Car(DateTime.Now, height, id, color, electric);
         }
     }
 }

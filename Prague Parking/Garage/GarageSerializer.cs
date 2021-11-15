@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+using Prague_Parking;
 
 namespace Prague_Parking_2_0_beta.Garage
 {
@@ -19,7 +16,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         /// <param name="data"></param>
         /// <param name="filePath"></param>
-        public void JsonSerialize( object data, string filePath)
+        public void JsonSerialize(object data, string filePath)
         {
 
             // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
@@ -34,10 +31,8 @@ namespace Prague_Parking_2_0_beta.Garage
         /// <summary>
         /// Deserialize a park from /parks. Remembers references and derived class types
         /// </summary>
-        /// <param name="dataType"></param>
-        /// <param name="filePath"></param>
         /// <returns></returns>
-        public object JsonDeserialize(Type dataType, string filePath)
+        public object JsonDeserialize(string filePath)
         {
             // https://www.newtonsoft.com/json/help/html/preserveobjectreferences.htm
             // https://stackoverflow.com/questions/8513042/json-net-serialize-deserialize-derived-types
@@ -49,14 +44,14 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region JsonDeserializeTemplate
+        #region JsonDeserializeSimple
         /// <summary>
         /// Deserialize a template garage from GarageMaker/templates/
         /// </summary>
         /// <param name="dataType"></param>
         /// <param name="filePath"></param>
         /// <returns>A garage object with contents</returns>
-        public object JsonDeserializeTemplate(Type dataType, string filePath)
+        public object JsonDeserializeSimple(Type dataType, string filePath)
         {
             JObject obj = null;
             JsonSerializer jsonSerializer = new JsonSerializer();
@@ -71,5 +66,7 @@ namespace Prague_Parking_2_0_beta.Garage
             return obj.ToObject(dataType);
         }
         #endregion
+
+
     }
 }

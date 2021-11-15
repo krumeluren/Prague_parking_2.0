@@ -1,0 +1,13 @@
+{
+  "Currency": "CZK",
+
+  "_comment": "Price is per hour",
+  "BikePrice": 5.0,
+  "CarPrice": 20.0,
+  "MCPrice": 10.0,
+  "TruckPrice": 80.0,
+  "BussPrice": 80.0,
+
+  "_comment": "Minutes that a vehicle can stay for free",
+  "FreeTime": 10
+}

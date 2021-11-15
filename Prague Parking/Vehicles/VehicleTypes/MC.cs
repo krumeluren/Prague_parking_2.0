@@ -6,6 +6,7 @@ namespace Prague_Parking_2_0_beta
 {
     class MC : Vehicle
     {
+        #region Constructor
         public MC(
             DateTime arrival,
             int heigth,
@@ -23,15 +24,22 @@ namespace Prague_Parking_2_0_beta
             Size = 2;
             this.Type = "MC";
         }
+        #endregion
 
         public static MC UICreate()
         {
             Console.Clear();
-            int heigth = 150;
             string id = null;
             string color = null;
             bool electric = false;
-            return new MC(DateTime.Now, heigth, id, color, electric);
+            int height = int.MaxValue;
+
+            id = SetId();
+            height = SetHeight();
+            color = SetColor();
+            electric = SetHasCharger();
+
+            return new MC(DateTime.Now, height, id, color, electric);
         } 
     }
 }

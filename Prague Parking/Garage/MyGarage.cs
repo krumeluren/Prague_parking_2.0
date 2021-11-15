@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta.Garage
@@ -578,7 +577,7 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
 
-        #region Load(fileName) - Load and return a json MyGarage object
+        #region Load() - Load and return a json MyGarage object
         /// <summary>
         /// Load a MyGarage object with contents from a json file in /parks and required initial methods
         /// </summary>
@@ -588,7 +587,7 @@ namespace Prague_Parking_2_0_beta.Garage
             Console.Clear();
             string filePath = $"../../../parks/{fileName}.json";
             GarageSerializer garageSerializer = new GarageSerializer();
-            MyGarage garage = garageSerializer.JsonDeserialize(typeof(MyGarage), filePath) as MyGarage;
+            MyGarage garage = garageSerializer.JsonDeserialize(filePath) as MyGarage;
             garage.SetIndexes();
             garage.SetReferences();
             return garage;

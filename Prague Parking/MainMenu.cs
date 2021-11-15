@@ -1,4 +1,5 @@
-﻿using Prague_Parking_2_0_beta.Garage;
+﻿using Prague_Parking;
+using Prague_Parking_2_0_beta.Garage;
 using System;
 
 namespace Prague_Parking_2_0_beta
@@ -36,7 +37,7 @@ namespace Prague_Parking_2_0_beta
                             string fileName = Console.ReadLine();
                             string filePath = $"../../../../GarageMaker/templates/{fileName}.json";
                             GarageSerializer garageSerializer = new GarageSerializer();
-                            Garage = garageSerializer.JsonDeserializeTemplate(typeof(MyGarage), filePath) as MyGarage;
+                            Garage = garageSerializer.JsonDeserializeSimple(typeof(MyGarage), filePath) as MyGarage;
                             FileName = fileName;
                             Garage.FileName = fileName;
                             FileName = Garage.UISave();
