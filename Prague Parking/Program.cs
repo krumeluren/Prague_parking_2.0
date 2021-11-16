@@ -11,17 +11,17 @@ namespace Prague_Parking_2_0_beta
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("V 2.0 beta");
+            Console.WriteLine("V 2.0");
 
-
-            MainMenu mainMenu = new MainMenu();
+            Initializer initializer = new Initializer();
             bool isDone = false;
             while (!isDone)
             {
-                isDone = mainMenu.Init();
+                isDone = initializer.Init();
             }
 
-
+            Console.WriteLine("Program avslutat");
+            Console.ReadKey();
         }
     }
 }

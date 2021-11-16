@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace Prague_Parking_2_0_beta
 {
     /// <summary>
-    /// Static methods filtering and returning list of lots
+    /// Static methods filtering and returning lists
     /// </summary>
     class Query
     {
@@ -75,14 +75,14 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
-        static public class VehicleQ
+        static public class VehicleQuery
         {
             #region ById()
             /// <returns>A list of vehicles with identical or similar ID to search string</returns>
             static public List<Vehicle> ById(List<Vehicle> list, string id)
             {
                 List<Vehicle> query = new List<Vehicle>();
-                char[] idChars = id.ToUpper().ToCharArray();
+                char[] idChars = id.ToUpper().Replace(" ", "").ToCharArray();
 
                 foreach (Vehicle vehicle in list)
                 {
@@ -133,7 +133,7 @@ namespace Prague_Parking_2_0_beta
                 List<Vehicle> query = new List<Vehicle>();
                 foreach (Vehicle vehicle in list)
                 {
-                    if (vehicle.Color == color.ToLower().Trim())
+                    if (vehicle.Color == color.ToLower().Replace(" ", ""))
                     {
                         query.Add(vehicle);
                     }

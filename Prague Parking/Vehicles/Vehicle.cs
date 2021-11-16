@@ -37,45 +37,7 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
-        #region Display()
-        public void Display()
-        {
-            string type = $"Typ: {Type}, ";
-            string id = Id == null ? null : $"Regnr: {Id}, ";
-            string color = Color == null ? null : $"Färg: {Color}, ";
-            string electric = Electric == false ? $"Eldriven: Nej, " : $"Eldriven: Ja, ";
-            string height = $"Height: {Heigth}, ";
-            string arrival = $"Ankom: {Arrival}";
-            Console.WriteLine($"{type}{id}{color}{height}{electric}{arrival}");
-        }
-        #endregion
-
-        #region UICreator() - Returns a Vehicle object
-        /// <summary>
-        /// UI for creating a custom vehicle
-        /// </summary>
-        /// <returns>The vehicle created by user</returns>
-        public static Vehicle UICreator()
-        {
-            Console.Clear();
-            Console.WriteLine("Ange ett fordonstyp: ");
-            Console.WriteLine(" 1) MC ");
-            Console.WriteLine(" 2) Personbil ");
-            Console.WriteLine(" 3) Cykel ");
-            Console.WriteLine(" 4) Lastbil ");
-            Console.Write("Val: ");
-            switch (Console.ReadLine())
-            {
-                case "1": return MC.UICreate();
-                case "2": return Car.UICreate();
-                case "3": return Bike.UICreate();
-                case "4": return Truck.UICreate();
-                default: Console.WriteLine("Ogiltigt\n"); break;
-            }
-            return null;
-        }
-        #endregion
-
+        // Functions
         #region Park(garage, lot, filter) - Parks the vehicle on lot (or lots if larger vehicle)
         /// <summary>
         /// Try add the vehicle to the specified lot start point + more if larger vehicle 
@@ -117,7 +79,6 @@ namespace Prague_Parking_2_0_beta
             else return false;
         }
         #endregion
-
         #region Unpark(garage)
         /// <summary>
         /// For every lot: if it contains the vehicle, remove it and update SpaceLeft of lot
@@ -141,90 +102,28 @@ namespace Prague_Parking_2_0_beta
             return removed;
         }
         #endregion
-
-        #region UIMenu
+        #region AvailableLots(filter, garage)
         /// <summary>
-        /// Menu of the vehicle.
+        /// Runs CheckLots() for every lot in garage using a filter.
         /// </summary>
-        /// <param name="garage"></param>
-        public void UIMenu(Garage.Garage garage)
+        /// <param name="filter">A list of lots used as a filter. If a lot doesnt exist inside this filter it will be skipped</param>
+        /// <param name="garage">The garage to check</param>
+        /// <returns>A list of available lots to park at</returns>
+        private List<Lot> AvailableLots(List<Lot> filter, Garage.Garage garage)
         {
-            while (true)
-            {
-                Console.Clear();
-                Display();
-                Console.WriteLine(" ");
-                Console.WriteLine(" 1)   Hämta ut fordon");
-                Console.WriteLine(" 2)   Flytta fordon");
-                Console.WriteLine(" b)   Backa");
-                Console.Write("Val: ");
+            List<Lot> allLots = garage.GetAllLots();
+            List<Lot> availableLots = new List<Lot>();
 
-                switch (Console.ReadLine())
+            foreach (Lot lot in allLots)
+            {
+                if (garage.CheckLots(this, lot, filter))
                 {
-                    case "1":
-                        {
-                            Console.Clear();
-                            Unpark(garage);
-                            DisplayTimeSinceArrival();
-                            DisplayPrice(CalcPrice());
-                            Console.WriteLine("Tryck för att fortsätta");
-                            Console.ReadKey();
-                            Console.Clear();
-                            return;
-                        }
-                    case "2":
-                        {
-                            Move(garage);
-                            return;
-                        }
-                    case "b":
-                        {
-                            return;
-                        }
-                    default:
-                        {
-                            Console.WriteLine("Fel.");
-                            break;
-                        }
+                    availableLots.Add(lot);
                 }
             }
+            return availableLots;
         }
         #endregion
-
-        #region Move()
-        /// <summary>
-        /// Remove the vehicle, then let user park it again
-        /// </summary>
-        /// <param name="garage"></param>
-        /// <returns>true if moved, else false</returns>
-        public bool Move(Garage.Garage garage)
-        {
-            if (Unpark(garage))
-            {
-                return UIPark(garage);
-            }
-            else
-            {
-                Console.WriteLine("Fel inträffade vid försök att flytta fordonet");
-            }
-            return false;
-        }
-        #endregion
-
-        #region DisplayTimeSinceArrival()
-        /// <summary>
-        /// Display the time since the vehicle arrived
-        /// </summary>
-        public void DisplayTimeSinceArrival()
-        {
-            TimeSpan since = DateTime.Now - Arrival;
-            Console.WriteLine("Fordonet har varit på platsen i..");
-            Console.WriteLine($"{since.Days} dagar, {since.Hours} timmar, {since.Minutes} minuter");
-            Console.WriteLine($"Eller {Math.Floor(since.TotalHours)} timmar");
-            Console.WriteLine($"Eller {Math.Floor(since.TotalMinutes)} minuter");
-        }
-        #endregion
-
         #region CalcPrice()
         /// <summary>
         /// Calculate the current price of the parked vehicles by loading a settings.json object and using the Arrival of the vehicle
@@ -235,7 +134,7 @@ namespace Prague_Parking_2_0_beta
             TimeSpan since = DateTime.Now - Arrival;
             double price = 0;
             double pricePerHour = 0;
-            
+
             Settings settings = Settings.Load();
 
             TimeSpan freeTime = new TimeSpan(0, settings.FreeTime, 0);
@@ -269,7 +168,85 @@ namespace Prague_Parking_2_0_beta
             return price;
         }
         #endregion
+        #region SetHeight()
+        static public int SetHeight()
+        {
+            Console.Clear();
+            Console.WriteLine("Ange fordonets höjd");
+            Console.Write("Höjd: ");
+            int height = int.TryParse(Console.ReadLine(), out height) ? height : int.MaxValue;
+            return height;
+        }
+        #endregion
+        #region SetId()
+        static public string SetId()
+        {
+            Console.Clear();
+            Console.WriteLine("Ange ett regnr");
+            Console.Write("Regnr: ");
+            while (true)
+            {
+                string id = Console.ReadLine().ToUpper().Replace(" ", "");
+                if (id.Length != 0)
+                {
+                    return id;
+                }
+                Console.WriteLine("Ogiltigt.");
+                Console.Write("Regnr: ");
+            }
+        }
+        #endregion
+        #region SetColor()
+        static public string SetColor()
+        {
+            Console.Clear();
+            Console.WriteLine("Ange en färg");
+            Console.Write("Färg: ");
+            string id = Console.ReadLine().ToLower().Replace(" ", "");
+            id = id == "" ? null : id;
+            return id;
+        }
+        #endregion
+        #region SetHasCharger()
+        static public bool SetHasCharger()
+        {
+            Console.Clear();
+            Console.WriteLine("Eldriven: y/n");
+            Console.Write("Val: ");
+            string answer = Console.ReadLine().Trim();
+            if (answer == "y")
+                return true;
+            else
+                return false;
+        }
+        #endregion
 
+        //  Displays
+        #region Display()
+        public void Display()
+        {
+            string type = $"Typ: {Type}, ";
+            string id = Id == null ? null : $"Regnr: {Id}, ";
+            string color = Color == null ? null : $"Färg: {Color}, ";
+            string electric = Electric == false ? $"Eldriven: Nej, " : $"Eldriven: Ja, ";
+            string height = $"Height: {Heigth}, ";
+            string arrival = $"Ankom: {Arrival}";
+            Console.WriteLine($"{type}{id}{color}{height}{electric}{arrival}");
+        }
+        #endregion
+        #region DisplayTimeSinceArrival()
+        /// <summary>
+        /// Display the time since the vehicle arrived
+        /// </summary>
+        public void DisplayTimeSinceArrival()
+        {
+            TimeSpan since = DateTime.Now - Arrival;
+            Console.WriteLine("Fordonet har varit på platsen i..");
+            Console.WriteLine($"{since.Days} dagar, {since.Hours} timmar, {since.Minutes} minuter");
+            Console.WriteLine($"Eller {Math.Floor(since.TotalHours)} timmar");
+            Console.WriteLine($"Eller {Math.Floor(since.TotalMinutes)} minuter");
+        }
+        #endregion
         #region DisplayPrice()
         /// <summary>
         /// Display the current price for the vehicle
@@ -284,6 +261,99 @@ namespace Prague_Parking_2_0_beta
         }
         #endregion
 
+        // User interfaces
+        #region UICreator() - Returns a Vehicle object
+        /// <summary>
+        /// UI for creating a vehicle
+        /// </summary>
+        /// <returns>The vehicle created by user</returns>
+        public static Vehicle UICreator()
+        {
+            Console.Clear();
+            Console.WriteLine("Ange ett fordonstyp: ");
+            Console.WriteLine(" 1) MC ");
+            Console.WriteLine(" 2) Personbil ");
+            Console.WriteLine(" 3) Cykel ");
+            Console.WriteLine(" 4) Lastbil ");
+            Console.Write("Val: ");
+            switch (Console.ReadLine())
+            {
+                case "1": return MC.UICreate();
+                case "2": return Car.UICreate();
+                case "3": return Bike.UICreate();
+                case "4": return Truck.UICreate();
+                default: Console.WriteLine("Ogiltigt\n"); break;
+            }
+            return null;
+        }
+        #endregion
+        #region UIMenu
+        /// <summary>
+        /// Menu of the vehicle.
+        /// </summary>
+        /// <param name="garage"></param>
+        public void UIMenu(Garage.Garage garage)
+        {
+            while (true)
+            {
+                Console.Clear();
+                Display();
+                Console.WriteLine(" ");
+                Console.WriteLine(" 1)   Hämta ut fordon");
+                Console.WriteLine(" 2)   Flytta fordon");
+                Console.WriteLine(" b)   Backa");
+                Console.Write("Val: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        {
+                            Console.Clear();
+                            Unpark(garage);
+                            DisplayTimeSinceArrival();
+                            DisplayPrice(CalcPrice());
+                            Console.WriteLine("Tryck för att fortsätta");
+                            Console.ReadKey();
+                            Console.Clear();
+                            return;
+                        }
+                    case "2":
+                        {
+                            UIMove(garage);
+                            return;
+                        }
+                    case "b":
+                        {
+                            return;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Fel.");
+                            break;
+                        }
+                }
+            }
+        }
+        #endregion
+        #region UIMove()
+        /// <summary>
+        /// Remove the vehicle, then let user park it again
+        /// </summary>
+        /// <param name="garage"></param>
+        /// <returns>true if moved, else false</returns>
+        public bool UIMove(Garage.Garage garage)
+        {
+            if (Unpark(garage))
+            {
+                return UIPark(garage);
+            }
+            else
+            {
+                Console.WriteLine("Fel inträffade vid försök att flytta fordonet");
+            }
+            return false;
+        }
+        #endregion
         #region UIPark - Main UI for parking the vehicle
         /// <summary>
         /// Main UI for parking the vehicle
@@ -333,8 +403,6 @@ namespace Prague_Parking_2_0_beta
             return false;
         }
         #endregion
-
-
         #region UIParkAuto(garage) - Add the vehicle to the first available lot/lots
         /// <summary>
         /// Add vehicle to first available lot/lots
@@ -370,21 +438,6 @@ namespace Prague_Parking_2_0_beta
             return false;
         }
         #endregion
-
-        #region UIParkCommand
-        /// <summary>
-        /// Tell user to park the vehicle at a lot
-        /// </summary>
-        /// <param name="lot"> The lot to park at</param>
-        public void UIParkCommand(Lot lot)
-        {
-            Console.WriteLine($"Parkera fordonet på plats {lot.Number+1} vid {lot.Row.Location.GetName()}");
-            Console.WriteLine("Tryck för att fortsätta");
-            Console.ReadKey();
-        }
-        #endregion
-
-
         #region UIParkAt(garage) - Let user filter the garage and pick a lot to park at
         /// <summary>
         /// Let user filter the garage and pick a lot to park at
@@ -392,7 +445,7 @@ namespace Prague_Parking_2_0_beta
         /// <returns>True if parked, false if not</returns>
         public bool UIParkAt(Garage.Garage garage)
         {
-            
+
             List<Lot> queriedLots = new List<Lot>();
             List<Lot> filter = Query.ByMinHeigth(garage.GetAllLots(), Heigth); // Return all lots taller than the vehicle
 
@@ -434,7 +487,7 @@ namespace Prague_Parking_2_0_beta
                                 Lot lot = queriedLots[i]; //  Select lot by index in available lots
                                 Console.Clear();
                                 // Try parking vehicle. if success exit method
-                                if (garage.CheckLots(this, lot, filter)) 
+                                if (garage.CheckLots(this, lot, filter))
                                 {
                                     UIParkCommand(lot);
                                     if (Park(garage, lot, filter))
@@ -455,7 +508,7 @@ namespace Prague_Parking_2_0_beta
                             bool success = int.TryParse(Console.ReadLine(), out i);
                             if (success && i > 0 && i <= garage.Locations.Count)
                             {
-                                filter = garage.Locations[i-1].GetAllLots();
+                                filter = garage.Locations[i - 1].GetAllLots();
                             }
                             break;
                         }
@@ -544,86 +597,17 @@ namespace Prague_Parking_2_0_beta
             return false;
         }
         #endregion
-
-        #region AvailableLots(filter, garage)
+        #region UIParkCommand
         /// <summary>
-        /// Runs CheckLots() for every lot in garage using a filter.
+        /// Tell user to park the vehicle at a lot. Run after garage.CheckLots() but before this.Park()
         /// </summary>
-        /// <param name="filter">A list of lots used as filter. Lot has to be inside. Do filter = garage.GetAllLots() if you want to check all lots</param>
-        /// <param name="garage">The garage to check</param>
-        /// <returns>A list of available lots to park at</returns>
-        private List<Lot> AvailableLots(List<Lot> filter, Garage.Garage garage)
+        /// <param name="lot"> The lot to park at</param>
+        public void UIParkCommand(Lot lot)
         {
-            List<Lot> availableLots = new List<Lot>();
-            for (int i = 0; i < garage.Locations.Count; i++)
-            {
-                Location location = garage.Locations[i];
-                for (int ii = 0; ii < location.Rows.Count; ii++)
-                {
-                    Row row = location.Rows[ii];
-                    for (int iii = 0; iii < row.Lots.Length; iii++)
-                    {
-                        Lot lot = row.Lots[iii];
-                        if (garage.CheckLots(this, lot, filter))
-                        {
-                            availableLots.Add(lot);
-                        }
-                    }
-                }
-            }
-            return availableLots;
+            Console.WriteLine($"Parkera fordonet på plats {lot.Number+1} vid {lot.Row.Location.GetName()}");
+            Console.WriteLine("Tryck för att fortsätta");
+            Console.ReadKey();
         }
         #endregion
-
-        #region Set Vehicle data
-        static public int SetHeight()
-        {
-            Console.Clear();
-            Console.WriteLine("Ange fordonets höjd");
-            Console.Write("Höjd: ");
-            int height = int.TryParse(Console.ReadLine(), out height) ? height : int.MaxValue;
-            return height;
-        }
-
-        static public string SetId()
-        {
-            Console.Clear();
-            Console.WriteLine("Ange ett regnr");
-            Console.Write("Regnr: ");
-            while (true)
-            {
-                string id = Console.ReadLine().Trim().ToUpper();
-                if (id.Length != 0)
-                {
-                    return id;
-                }
-                Console.WriteLine("Ogiltigt.");
-                Console.Write("Regnr: ");
-            }
-        }
-
-        static public string SetColor()
-        {
-            Console.Clear();
-            Console.WriteLine("Ange en färg");
-            Console.Write("Färg: ");
-            string id = Console.ReadLine().Trim().ToUpper();
-            id = id == "" ? null : id;
-            return id;
-        }
-
-        static public bool SetHasCharger()
-        {
-            Console.Clear();
-            Console.WriteLine("Eldriven: y/n");
-            Console.Write("Val: ");
-            string answer = Console.ReadLine().Trim();
-            if (answer == "y")
-                return true;
-            else
-                return false;
-        }
-        #endregion
-
     }
 }

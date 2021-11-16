@@ -20,14 +20,10 @@ namespace Prague_Parking
         public double TruckPrice { get; set; }
         public double BussPrice { get; set; }
         public int FreeTime { get; set; }
-        public Settings()
-        {
-
-        }
-
+        public Settings(){}
         #region Load
         /// <summary>
-        /// Deserialize settings from settings.json
+        /// Deserialize a settings object from settings.json
         /// </summary>
         static public Settings Load()
         {
@@ -36,7 +32,6 @@ namespace Prague_Parking
             return settings;
         }
         #endregion
-
         #region Save
         public void Save()
         {

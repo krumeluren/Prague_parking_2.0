@@ -46,7 +46,7 @@ namespace Prague_Parking_2_0_beta.Garage
 
         #region JsonDeserializeSimple
         /// <summary>
-        /// Deserialize a template garage from GarageMaker/templates/
+        /// Deserialize an object
         /// </summary>
         /// <param name="dataType"></param>
         /// <param name="filePath"></param>
@@ -66,7 +66,5 @@ namespace Prague_Parking_2_0_beta.Garage
             return obj.ToObject(dataType);
         }
         #endregion
-
-
     }
 }

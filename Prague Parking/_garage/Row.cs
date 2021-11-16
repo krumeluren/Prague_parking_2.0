@@ -11,7 +11,6 @@ namespace Prague_Parking_2_0_beta.Garage
         public Location Location { get; set; }
         public Lot[] Lots { get; set; } 
         #endregion
-
         #region Constructor
         public Row(int size, int number, string name = "Unnamed row", int heigth = 0)
         {
@@ -19,6 +18,7 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
+        //  Functions
         #region SetAllLotHeigths(int heigth) - set Heigth for all lots of this row
         public void SetAllLotHeigths(int heigth)
         {
@@ -37,43 +37,22 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
-        #region UISetHeigth() - Interface for setting Heigth
+
+        //  Displays
+        #region DisplayLots() - Displays properties of every lot on this Row
         /// <summary>
-        /// Ask for int, if not empty, set all lot heigths
+        /// Displays relevant properties of each lot in the Row object
         /// </summary>
-        public void UISetHeight()
+        public void DisplayLots()
         {
-            int heigth;
-            Console.WriteLine("Enter för att skippa");
-            Console.Write("Höjd: ");
-            string heigthStr = Console.ReadLine().Trim();
-            if (heigthStr != "") // If not empty input
+            for (int i = 0; i < Lots.Length; i++)
             {
-                if (int.TryParse(heigthStr, out heigth)) // While parse fails
-                {
-                    SetAllLotHeigths(heigth);
-                }
-            }
-        }
-        #endregion
-        #region UISetHasCharger() Change the HasCharger bool
-        /// <summary>
-        /// Updates the HasCharger bool of all lot
-        /// </summary>
-        public void UISetHasCharger()
-        {
-            Console.WriteLine("Har denna parkering en laddningsstation?");
-            Console.Write("y/n: ");
-            string answer = Console.ReadLine();
-            switch (answer)
-            {
-                case "y": SetAllLotChargers(true); break;
-                case "n": SetAllLotChargers(false); break;
-                default:  break;
+                Lots[i].Display();
             }
         }
         #endregion
 
+        //  User interfaces
         #region UIMenu()
         /// <summary>
         /// A user menu for managing this row
@@ -150,37 +129,47 @@ namespace Prague_Parking_2_0_beta.Garage
                             Console.WriteLine("Invalid!");
                             break;
                         }
-                    #endregion
+                        #endregion
                 }
             }
 
         }
         #endregion
-
-        #region DisplayLots() - Displays properties of every lot on this Row
+        #region UISetHeigth() - Interface for setting Heigth
         /// <summary>
-        /// Displays relevant properties of each lot in the Row object
+        /// Ask for int, if not empty, set all lot heigths
         /// </summary>
-        public void DisplayLots()
+        public void UISetHeight()
         {
-            for (int i = 0; i < Lots.Length; i++)
-            {                
-                Lots[i].Display();
-            }
-        }
-        #endregion
-
-        #region GetAllLots()
-        /// <returns>A list of all lots inside this row</returns>
-        public List<Lot> GetAllLots()
-        {
-            List<Lot> queriedLots = new List<Lot>();
-            foreach (Lot lot in Lots)
+            int heigth;
+            Console.WriteLine("Enter för att skippa");
+            Console.Write("Höjd: ");
+            string heigthStr = Console.ReadLine().Trim();
+            if (heigthStr != "") // If not empty input
             {
-                queriedLots.Add(lot);
+                if (int.TryParse(heigthStr, out heigth)) // While parse fails
+                {
+                    SetAllLotHeigths(heigth);
+                }
             }
-            return queriedLots;
         }
         #endregion
+        #region UISetHasCharger() Change the HasCharger bool
+        /// <summary>
+        /// Updates the HasCharger bool of all lot
+        /// </summary>
+        public void UISetHasCharger()
+        {
+            Console.WriteLine("Har denna parkering en laddningsstation?");
+            Console.Write("y/n: ");
+            string answer = Console.ReadLine();
+            switch (answer)
+            {
+                case "y": SetAllLotChargers(true); break;
+                case "n": SetAllLotChargers(false); break;
+                default:  break;
+            }
+        }
+        #endregion 
     }
 }

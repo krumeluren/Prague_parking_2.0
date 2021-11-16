@@ -4,12 +4,12 @@ using System;
 
 namespace Prague_Parking_2_0_beta
 {
-    class MainMenu
+    class Initializer
     {
         public Garage.Garage ThisGarage { get; set; }
         public string FileName { get; set; }
 
-        #region Init() - Init a Garage object from GarageMaker or /parks
+        #region Init() - Init a Garage object from GarageMaker/templates or /parks
         public bool Init()
         {
             bool isDone = false;
