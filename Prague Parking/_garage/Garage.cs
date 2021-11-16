@@ -343,7 +343,7 @@ namespace Prague_Parking_2_0_beta.Garage
                         }
                     #endregion
                     #region Exit
-                    case "7":
+                    case "5":
                         {
                             Console.WriteLine("Sparar..");
                             UISave();

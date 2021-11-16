@@ -2,7 +2,7 @@
 
 FÖR ATT KÖRA
 Hämta NewtonSoft.json v 9.0.1 med package manager. 
-Tools -> Manage NuGet Package Manager for solution -> "NewtonSoft.json" -> välj 9.0.1 -> Bocka "Project"
+Tools -> NuGet Package Manager -> Manage NuGet Packages Manager for Solution -> "Newtonsoft.json" -> välj 9.0.1 -> Bocka "Project" -> Install
 
 Kör programmet Pargue Parking 2_0
 I /parks finns ett färdigt garage som heter "Test" som är strukturerat enligt specifikationerna.
