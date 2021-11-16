@@ -106,7 +106,7 @@ namespace Prague_Parking_2_0_beta
         /// <summary>
         /// Runs CheckLots() for every lot in garage using a filter.
         /// </summary>
-        /// <param name="filter">A list of lots used as a filter. If a lot doesnt exist inside this filter it will be skipped</param>
+        /// <param name="filter">A list of lots used as a filter. If a lot doesnt exist inside this filter it will be skipped inside CheckLots</param>
         /// <param name="garage">The garage to check</param>
         /// <returns>A list of available lots to park at</returns>
         private List<Lot> AvailableLots(List<Lot> filter, Garage.Garage garage)
