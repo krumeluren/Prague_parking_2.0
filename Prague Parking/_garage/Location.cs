@@ -83,7 +83,6 @@ namespace Prague_Parking_2_0_beta.Garage
         public void Display()
         {
             string locName = GetName();
-            int lotCount = 0;
             int freeLot = 0;
             int occupiedLot = 0;
             int partOccupiedLot = 0;

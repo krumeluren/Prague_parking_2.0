@@ -6,7 +6,6 @@ namespace Prague_Parking_2_0_beta.Garage
     public class Lot
     {
         #region Properties
-        public string Name { get; set; }
         public int LocationIndex { get; set; }
         public int RowIndex { get; set; }
         public int Index { get; set; }
@@ -17,21 +16,14 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region Constructor
-        public Lot() { }
-        public Lot(string name = null, int? heigth = 0, bool hasCharger = false)
+        public Lot(int heigth, bool hasCharger)
         {
-            Name = name == null ? "Unnamed" : name;
-            Heigth = heigth == null ? 9999 : (int)heigth;
+           
+            Heigth = heigth == -1 ? int.MaxValue : heigth;
             HasCharger = hasCharger;
         }
         #endregion
 
-        #region SetName() set Name prop
-        public void SetName(string name)
-        {
-            Name = name == null ? Name : name;
-        }
-        #endregion
         #region SetHeigth() set Heigth prop
         public void SetHeigth(int h)
         {
@@ -49,18 +41,7 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         //  User Interfaces
-        #region UISetName() Change the Name string
-        /// <summary>
-        /// Ask user for name. If empty or only spaces it doesn't change.
-        /// </summary>
-        public void UISetName()
-        {
-            Console.Write("Name: ");
-            string name = Console.ReadLine().Trim();
-            name = name == "" ? null : name;
-            SetName(name);
-        }
-        #endregion
+
         #region UISetHeigth() Change the Heigth int
         /// <summary>
         /// Ask user for input heigth. Must be greater >= 0
@@ -110,7 +91,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"Name: {Name}, Heigth: {Heigth}, Charger: {HasCharger} ");
+            Console.WriteLine($"Heigth: {Heigth}, Charger: {HasCharger} ");
         }
         #endregion
     }

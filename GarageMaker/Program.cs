@@ -12,8 +12,6 @@ namespace Prague_Parking_2_0_beta
         static void Main(string[] args)
         {
 
-            Lot lot = new Lot();
-            Console.WriteLine(lot.Name);
             Console.WriteLine("GarageMaker 1.0b");
 
 

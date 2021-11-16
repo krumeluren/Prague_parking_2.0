@@ -37,7 +37,6 @@ namespace Prague_Parking_2_0_beta.Garage
             Size = lotNumber;
         }
         #endregion
-
         #region SetReferences()
         public void SetReferences()
         {
@@ -81,6 +80,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void UIAddLocation()
         {
+            Console.Clear();
             string name = Location.UISetName();
             AddLocation(name);
         }
@@ -92,6 +92,7 @@ namespace Prague_Parking_2_0_beta.Garage
         /// </summary>
         public void Display()
         {
+            
             Console.WriteLine("Floors/Locations: {0}", Locations.Count);
 
             foreach (var location in Locations)
@@ -120,18 +121,6 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        #region SetAllLotNames(string name) - set Name prop of all Lots in all Rows in all Locations
-        public void SetAllLotNames(string name)
-        {
-
-            for (int i = 0; i < Locations.Count; i++)
-            {
-                Location location = Locations[i];
-                location.SetAllLotNames(name);
-            }
-            
-        }
-        #endregion
         #region SetAllLotHeigths(int heigth) - set Heigth prop of all Lots in all Rows in all Locations
         public void SetAllLotHeigths(int heigth)
         {
@@ -146,9 +135,8 @@ namespace Prague_Parking_2_0_beta.Garage
         #region SetAllLotChargers(bool hasCharger) - set HasCharger prop of all Lots in all Rows in all Locations
         public void SetAllLotChargers(bool hasCharger)
         {
-            for (int i = 0; i < Locations.Count; i++)
+            foreach (Location location in Locations)
             {
-                Location location = Locations[i];
                 location.SetAllLotChargers(hasCharger);
             }
             Console.WriteLine("Success");
@@ -181,20 +169,21 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
+                Console.Clear();
                 Console.WriteLine($"Garage {Name} Menu");
                 Console.WriteLine("[1] Add a new Location");
                 Console.WriteLine("[2] Edit existing Location");
                 Console.WriteLine("[3] Display Garage");
-                Console.WriteLine("[4] Set all lot names in the Park");
                 Console.WriteLine("[5] Set the heigth of the Park");
                 Console.WriteLine("[6] Set charging stations of all lots in the Park");
-                Console.WriteLine("[7] Exit Garage Menu");
+                Console.WriteLine("[7] Save/Exit");
                 Console.Write("Option: ");
                 switch (Console.ReadLine())
                 {
                     #region IAddLocation();
                     case "1":
                         {
+                            Console.Clear();
                             UIAddLocation();
                             break;
                         }
@@ -202,6 +191,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region UILocationMenu(int-1)
                     case "2":
                         {
+                            Console.Clear();
                             DisplayLocations();
                             Console.Write("Enter a Location number:");
                             int loc;
@@ -228,21 +218,17 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Display();
                     case "3":
                         {
+                            Console.Clear();
                             Display();
-                            break;
-                        }
-                    #endregion
-                    #region UISetName();
-                    case "4":
-                        {
-                            string name = UISetName();
-                            SetAllLotNames(name);
+                            Console.WriteLine("Continue");
+                            Console.ReadKey();
                             break;
                         }
                     #endregion
                     #region UISetHeigth();
                     case "5":
                         {
+                            Console.Clear();
                             int? heigth = UISetHeigth();
                             if (heigth != null)
                             {
@@ -254,6 +240,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region UISetHasCharger();
                     case "6":
                         {
+                            Console.Clear();
                             UISetHasCharger();
                             break;
                         }
@@ -329,6 +316,7 @@ namespace Prague_Parking_2_0_beta.Garage
 
             while (!isDone)
             {
+                Console.Clear();
                 location.Display();
                 Console.WriteLine("Location Menu");
                 Console.WriteLine("[1] Step into");

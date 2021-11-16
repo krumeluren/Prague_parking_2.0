@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prague_Parking;
+using System;
 using System.Collections.Generic;
 
 namespace Prague_Parking_2_0_beta.Garage
@@ -32,7 +33,46 @@ namespace Prague_Parking_2_0_beta.Garage
             Garage garage = garageSerializer.JsonDeserialize(filePath) as Garage;
             garage.SetIndexes();
             garage.SetReferences();
+            garage.UpdateSettings();
+           
+
             return garage;
+        }
+        #endregion
+        #region UpdateSettings()
+        /// <summary>
+        /// Updates vehicle and lot settings from _settings/settings.json
+        /// </summary>
+        public void UpdateSettings()
+        {
+            Settings settings = Settings.Load();
+            
+            List<Vehicle> vehicles = GetAllVehicles();
+            foreach (Vehicle vehicle in vehicles)
+            {
+                if (vehicle.GetType() == typeof(Car))
+                {
+                    vehicle.Size = settings.Car_Size;
+                }
+                if (vehicle.GetType() == typeof(MC))
+                {
+                    vehicle.Size = settings.MC_Size;
+                }
+                if (vehicle.GetType() == typeof(Truck))
+                {
+                    vehicle.Size = settings.Car_Size;
+                }
+                if (vehicle.GetType() == typeof(Bike))
+                {
+                    vehicle.Size = settings.Bike_Size;
+                }
+            }
+            List<Lot> lots = GetAllLots();
+            foreach (Lot lot in lots)
+            {
+                lot.Space = settings.Size_Per_Lot;
+                lot.UpdateAvailableSpace();
+            }
         }
         #endregion
         #region SetIndexes()
@@ -145,23 +185,28 @@ namespace Prague_Parking_2_0_beta.Garage
         public bool CheckLots(Vehicle vehicle, Lot lot, List<Lot> filter)
         {
             Row row = lot.Row;
-            int i = lot.Index;
+            int i = lot.Index; // Start lot
 
             int vehicleSizeLeft = vehicle.Size;
             // if vehicle is same size or larger than a lot
             if (vehicle.Size >= lot.Space) 
             {
-                // As long as lot is empty, lot height is taller than vehicle, the lot exists in the filter, and not end of the row.
+                // While inside of row, lot is empty, lot height is taller than vehicle, the lot exists in the filter, not end of the row and vehicle has size left to fit..
                 // Iterate lots until vehicle size is 'emptied' - return true
-                while ((i < row.Lots.Length) &&
-                    row.Lots[i].SpaceLeft >= 4 &&
-                    lot.Heigth >= vehicle.Heigth &&
-                    vehicleSizeLeft != 0 &&
-                    filter.Contains(lot))
+                while ((i < row.Lots.Length &&
+                        lot.SpaceLeft >= lot.Space &&
+                        lot.Heigth >= vehicle.Heigth &&
+                        filter.Contains(lot) &&
+                        i < row.Lots.Length &&
+                        vehicleSizeLeft != 0)
+                        )
                 {
-                    lot = row.Lots[i];
                     vehicleSizeLeft -= lot.Space;
-                    i++;
+                    i++; // Move to next lot inside if to not go out of bound on last index
+                    if (i < row.Lots.Length)
+                    {
+                        lot = row.Lots[i];
+                    }
                 }
                 // If while loop emptied vehicle size
                 if (vehicleSizeLeft == 0) 
@@ -172,7 +217,8 @@ namespace Prague_Parking_2_0_beta.Garage
             // If vehicle is smaller than a lot
             else if (vehicle.Size < lot.Space && vehicle.Size > 0) 
             {
-                // If lot fits the vehicle, height is less than vehicle, the lot exists in the filter, vehicle fits - return true
+                // If lot fits the vehicle, height is less than vehicle, the lot exists in the filter..
+                // vehicle fits - return true
                 if (lot.SpaceLeft >= vehicleSizeLeft &&
                     lot.Heigth >= vehicle.Heigth &&
                     filter.Contains(lot))
@@ -214,8 +260,10 @@ namespace Prague_Parking_2_0_beta.Garage
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.WriteLine(" ");
-                Console.BackgroundColor = ConsoleColor.Red;
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.Black;
                 location.Display();
+                Console.ForegroundColor = ConsoleColor.White;
                 int counter = 0; // If squares on one line exceed 20 when moving to next row, write on  a new line
                 foreach (Row row in location.Rows)
                 {
@@ -291,6 +339,7 @@ namespace Prague_Parking_2_0_beta.Garage
                             if((vehicle = UIFilterVehicles()) != null)
                             {
                                 vehicle.UIMenu(this);
+                                Save(FileName);
                             }
                             break;
                         }
@@ -304,14 +353,16 @@ namespace Prague_Parking_2_0_beta.Garage
                                 try
                                 {
                                     vehicle.UIPark(this);
+                                    Save(FileName);
                                 }
                                 catch (Exception)
                                 {
                                     Console.WriteLine("Error while adding vehicle to lot");
+                                    Console.ReadKey();
 
                                 }
                             }
-                            catch (Exception) { Console.WriteLine("Error while creating vehicle"); }
+                            catch (Exception) { Console.WriteLine("Error while creating vehicle"); Console.ReadKey(); }
                             break;
                         }
                     #endregion
@@ -442,7 +493,7 @@ namespace Prague_Parking_2_0_beta.Garage
                 Console.WriteLine("  5)  Parkeringsnummer");
                 Console.WriteLine("  6)  Gör om");
                 Console.WriteLine("  b)  Backa");
-                Console.WriteLine("  x)  Välj ett fordon");
+                Console.WriteLine("  x)  Välj ett fordon från listan");
                 Console.WriteLine("");
                 Console.Write(" Val: ");
                 #endregion
@@ -591,7 +642,5 @@ namespace Prague_Parking_2_0_beta.Garage
             return null;
         }
         #endregion
-
-
     }
 }

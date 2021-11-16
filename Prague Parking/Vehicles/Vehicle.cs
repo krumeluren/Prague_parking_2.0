@@ -45,38 +45,37 @@ namespace Prague_Parking_2_0_beta
         /// <returns>Parking success</returns>
         public bool Park(Garage.Garage garage, Lot lot, List<Lot> filter)
         {
-            bool canFit = garage.CheckLots(this, lot, filter);
+            
             Row row = lot.Row;
             int i = lot.Index;
-
             int vehicleSizeLeft = this.Size;
 
-            if (canFit)
+            bool canFit = garage.CheckLots(this, lot, filter);
+            if (!canFit) return false;
+            
+            if (this.Size >= lot.Space) // If same size or bigger than lot
             {
-                if (this.Size >= 4) // If car or bigger
+                while (vehicleSizeLeft != 0 ) // While there is size left
                 {
-                    while (i < row.Lots.Length && lot.SpaceLeft == 4 && vehicleSizeLeft != 0 && filter.Contains(lot)) // While the lot is empty and there is size left
-                    {
-                       
-                        lot.Vehicles.Add(this); // Add vehicle to lot
-                        lot.SpaceLeft -= 4; // Remove available space from lot
-                        vehicleSizeLeft -= 4; // Drain vehicle size
+                    lot.Vehicles.Add(this); // Add vehicle to lot
+                    lot.SpaceLeft -= lot.Space; // Remove all available space from lot
+                    vehicleSizeLeft -= lot.Space; // Drain vehicle size
 
-                        i++; // Move to next lot
-                        if (i < row.Lots.Length) // Inside if to not go out of bound on last one
-                        {
-                            lot = row.Lots[i];
-                        }
+                    i++; // Move to next lot inside if to not go out of bound on last one
+                    if (i < row.Lots.Length) 
+                    {
+                        lot = row.Lots[i];
                     }
                 }
-                if (this.Size < 4) // If smaller than car
-                {
-                    lot.Vehicles.Add(this);
-                    lot.SpaceLeft -= vehicleSizeLeft;
-                }
-                return true;
             }
-            else return false;
+            else if (this.Size < lot.Space) // If vehicle is smaller than lot
+            {
+                lot.Vehicles.Add(this);
+                lot.SpaceLeft -= vehicleSizeLeft;
+            }
+            return true;
+            
+           
         }
         #endregion
         #region Unpark(garage)
@@ -137,23 +136,23 @@ namespace Prague_Parking_2_0_beta
 
             Settings settings = Settings.Load();
 
-            TimeSpan freeTime = new TimeSpan(0, settings.FreeTime, 0);
+            TimeSpan freeTime = new TimeSpan(0, settings.Free_Time, 0);
 
             if (this.GetType() == typeof(Car))
             {
-                pricePerHour = settings.CarPrice;
+                pricePerHour = settings.Car_Price;
             }
             else if (this.GetType() == typeof(MC))
             {
-                pricePerHour = settings.MCPrice;
+                pricePerHour = settings.MC_Price;
             }
             else if (this.GetType() == typeof(Bike))
             {
-                pricePerHour = settings.BikePrice;
+                pricePerHour = settings.Bike_Price;
             }
             else if (this.GetType() == typeof(Truck))
             {
-                pricePerHour = settings.TruckPrice;
+                pricePerHour = settings.Truck_Price;
             }
 
             if (since < freeTime)
@@ -460,14 +459,14 @@ namespace Prague_Parking_2_0_beta
 
                 #region Menu
                 Console.WriteLine("");
-                Console.WriteLine("[1] Parkera fordonet");
+                Console.WriteLine(" 1) Parkera fordonet");
                 Console.WriteLine("");
-                Console.WriteLine("[2] Hitta platser på våning: ");
-                Console.WriteLine("[3] Filtrera Med/utan laddningsstation");
-                Console.WriteLine("[4] Filtrera min höjd");
-                Console.WriteLine("[5] Filtrera max höjd");
-                Console.WriteLine("[x] Rensa filter");
-                Console.WriteLine("[b] Backa");
+                Console.WriteLine(" 2) Hitta platser på våning: ");
+                Console.WriteLine(" 3) Filtrera Med/utan laddningsstation");
+                Console.WriteLine(" 4) Filtrera min höjd");
+                Console.WriteLine(" 5) Filtrera max höjd");
+                Console.WriteLine(" 6) Rensa filter");
+                Console.WriteLine(" 7) Backa");
                 Console.Write("Val: ");
                 #endregion
                 switch (Console.ReadLine())
@@ -483,8 +482,7 @@ namespace Prague_Parking_2_0_beta
                             bool success = int.TryParse(Console.ReadLine(), out i);
                             if (success && i >= 1 && i <= garage.Size)
                             {
-                                i -= 1;
-                                Lot lot = queriedLots[i]; //  Select lot by index in available lots
+                                Lot lot = queriedLots[i-1]; //  Select lot by index in available lots
                                 Console.Clear();
                                 // Try parking vehicle. if success exit method
                                 if (garage.CheckLots(this, lot, filter))
@@ -604,6 +602,7 @@ namespace Prague_Parking_2_0_beta
         /// <param name="lot"> The lot to park at</param>
         public void UIParkCommand(Lot lot)
         {
+            Console.Clear();
             Console.WriteLine($"Parkera fordonet på plats {lot.Number+1} vid {lot.Row.Location.GetName()}");
             Console.WriteLine("Tryck för att fortsätta");
             Console.ReadKey();

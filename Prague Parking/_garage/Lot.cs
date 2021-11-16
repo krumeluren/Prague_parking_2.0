@@ -50,9 +50,9 @@ namespace Prague_Parking_2_0_beta.Garage
             int spaceUsed = 0;
             foreach (Vehicle vehicle in Vehicles)
             {
-                if (vehicle.Size >= 4)
+                if (vehicle.Size >= this.Space)
                 {
-                    spaceUsed += 4;
+                    spaceUsed += this.Space;
                 }
                 else
                 {

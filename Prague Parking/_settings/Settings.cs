@@ -14,12 +14,20 @@ namespace Prague_Parking
     public class Settings
     {
         public string Currency { get; set; }
-        public double BikePrice { get; set; }
-        public double CarPrice { get; set; }
-        public double MCPrice {get; set; }
-        public double TruckPrice { get; set; }
-        public double BussPrice { get; set; }
-        public int FreeTime { get; set; }
+        public double Bike_Price { get; set; }
+        public double Car_Price { get; set; }
+        public double MC_Price {get; set; }
+        public double Truck_Price { get; set; }
+        public double Buss_Price { get; set; }
+        public int Free_Time { get; set; }
+
+        public int Size_Per_Lot { get; set; }
+        public int Bike_Size { get; set; }
+        public int MC_Size { get; set; }
+        public int Car_Size { get; set; }
+        public int Truck_Size { get; set; }
+        public int Buss_Size { get; set; }
+
         public Settings(){}
         #region Load
         /// <summary>

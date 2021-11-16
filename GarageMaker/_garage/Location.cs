@@ -25,22 +25,10 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region AddRow() - Add a new Row() object to List<Row> Structure property
-        public void AddRow(int size, string name, int? heigth)
+        public void AddRow(int size, int heigth)
         {
-            Rows.Add(new Row(size,  name, heigth ));
+            Rows.Add(new Row(size, heigth ));
             Garage.SetLotNumbers();
-        }
-        #endregion
-
-        #region SetAllLotNames(string name) - set Name prop of all Lots in all Rows of this Location
-        public void SetAllLotNames(string name)
-        {
-            Name = name == null ? Name : name;
-            for (int i = 0; i < Rows.Count; i++)
-            {
-                Row row = Rows[i];
-                row.SetAllLotNames(name);
-            }
         }
         #endregion
 
@@ -54,7 +42,6 @@ namespace Prague_Parking_2_0_beta.Garage
             }
         }
         #endregion
-
         #region SetAllLotChargers(bool hasCharger) - set HasCharger prop of all Lots in all Rows of this Location
         public void SetAllLotChargers(bool hasCharger)
         {
@@ -75,7 +62,6 @@ namespace Prague_Parking_2_0_beta.Garage
             int i;
             if (int.TryParse(Console.ReadLine(), out i))
             {
-                i -= 1;
                 if (i < Rows.Count && i >= 0)
                 {
                     return i;
@@ -102,11 +88,9 @@ namespace Prague_Parking_2_0_beta.Garage
         {
             Console.WriteLine("How many lots are there on this row?");
             int size = Row.UISetSize();
-            Console.WriteLine("Enter the name of this row, or skip");
-            string name = Row.UISetName();
             Console.WriteLine("Enter the max heigth of this row, or skip");
-            int? heigth = Row.UISetHeight();
-            AddRow(size, name, heigth);
+            int heigth = Row.UISetHeight();
+            AddRow(size, heigth);
         }
         #endregion
 
@@ -126,28 +110,25 @@ namespace Prague_Parking_2_0_beta.Garage
                 Console.Write("Invalid. Try again: ");
             }
             //  Interface
+            Console.Clear();
             Console.WriteLine("[1] Enter parameters for all");
             Console.WriteLine("[2] Enter individually");
             Console.WriteLine("[x] Go back");
             Console.Write("Option: ");
-            #region Switch 
             switch (Console.ReadLine())
             {
                 #region Enter for all one time
                 case "1":
                     {
+                        Console.Clear();
                         Console.WriteLine("How many lots are there on the rows?");
                         int size = Row.UISetSize();
-
-                        Console.WriteLine("Enter a name of the rows, or skip");
-                        string name = Row.UISetName();
-
+                        Console.Clear();
                         Console.WriteLine("Enter the max heigth of the rows, or skip");
-                        int? heigth = Row.UISetHeight();
-
+                        int heigth = Row.UISetHeight();
                         for (int i = 0; i < amount; i++)
                         {
-                            AddRow(size, name, heigth);
+                            AddRow(size, heigth);
                         }
                         break;
                     }
@@ -157,6 +138,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     {
                         for (int i = 0; i < amount; i++)
                         {
+                            Console.Clear();
                             Console.WriteLine($"Entering for Row {i+1}");
                             UIAddRow();
                         }
@@ -165,7 +147,6 @@ namespace Prague_Parking_2_0_beta.Garage
                 #endregion
                 default: Console.WriteLine("Backing.."); return;
             }
-            #endregion
         }
         #endregion
 
@@ -183,28 +164,24 @@ namespace Prague_Parking_2_0_beta.Garage
         #endregion
 
         #region UISetHeigth()
-        public static int? UISetHeigth()
+        public static int UISetHeigth()
         {
-            int? heigth;
+            int heigth;
             Console.Write("Location Max Heigth: ");
             string heigthStr = Console.ReadLine().Trim();
-            int h;
             if (heigthStr != "") // If not empty input
             {
-                while (!(int.TryParse(heigthStr, out h))) // While parse fails
+                while (!(int.TryParse(heigthStr, out heigth))) // While parse fails
                 {
                     Console.Write("Invalid. Try again: ");
-                    heigthStr = Console.ReadLine().Trim();
+                    heigthStr = Console.ReadLine().Replace(" ", "");
                 }
-                Console.WriteLine("");
-                heigth = h; //  On success
+                return heigth;
             }
             else //if heigth not set
             {
-                heigth = 0;
+                return -1;
             }
-            heigth = heigth >= 0 ? heigth : null;
-            return heigth;
         }
         #endregion
 
@@ -259,15 +236,16 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
+                Console.Clear();
                 Display();
                 Console.WriteLine("Location Menu");
                 Console.WriteLine("[1] Add a new Row");
                 Console.WriteLine("[2] Add multiple Rows");
-                Console.WriteLine("[3] Edit an existing Row");
+                Console.WriteLine("[3] Enter row");
                 Console.WriteLine("[4] Display Rows");
-                Console.WriteLine("[5] Set all lot names in the Location");
-                Console.WriteLine("[6] Set the heigth of the location");
-                Console.WriteLine("[7] Set charging stations of all lots in the location");
+                Console.WriteLine("[5] Set Name");
+                Console.WriteLine("[6] Set the heigth of all lots");
+                Console.WriteLine("[7] Set charging stations of all lots");
                 Console.WriteLine("[8] Exit to Garage Menu");
                 Console.Write("Option: ");
                 switch (Console.ReadLine())
@@ -275,6 +253,7 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Add one Row. Enter IAddRow()
                     case "1":
                         {
+                            Console.Clear();
                             UIAddRow();
                             break;
                         }
@@ -282,13 +261,15 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Add multiple Rows. Enter IAddMultipleRows()
                     case "2":
                         {
+                            Console.Clear();
                             UIAddMultipleRows();
                             break;
                         }
                     #endregion
-                    #region Enter Row.UIMenu()
+                    #region Enter Row
                     case "3":
                         {
+                            Console.Clear();
                             int? row = UITargetRow();
                             if(row != null)
                             {
@@ -300,26 +281,31 @@ namespace Prague_Parking_2_0_beta.Garage
                     #region Display rows of location
                     case "4":
                         {
+                            Console.Clear();
                             Display();
                             DisplayRows();
+                            Console.WriteLine("Continue");
+                            Console.ReadKey();
                             break;
                         }
                     #endregion
-                    #region Set name of all lots in this location
+                    #region Set Name
                     case "5":
                         {
+                            Console.Clear();
                             string name = UISetName();
-                            SetAllLotNames(name);
+                            if (name != null)
+                            Name = name;
                             break;
                         }
                     #endregion
                     #region Set the heigth of the location
                     case "6":
                         {
-                            int? heigth = UISetHeigth();
-                            if(heigth != null)
+                            int heigth = UISetHeigth();
+                            if(heigth != -1)
                             {
-                                SetAllLotHeigths((int)heigth);
+                                SetAllLotHeigths(heigth);
                             }
 
                             break;
@@ -363,6 +349,7 @@ namespace Prague_Parking_2_0_beta.Garage
             bool isDone = false;
             while (!isDone)
             {
+                Console.Clear();
                 Console.WriteLine("Row Menu");
                 Console.WriteLine("[1] Step into");
                 Console.WriteLine("[2] Remove");

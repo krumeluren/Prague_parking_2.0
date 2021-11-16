@@ -9,6 +9,12 @@ I /parks finns ett färdigt garage som heter "Test" som är strukturerat enligt 
 
 ----------------------------------------------------------------------------------------------------
 
+INSTÄLLNINGAR
+I _settings/settings.json går det att ändra priser och andra inställningar. Det går att ändra samtidigt som programmet körs.
+
+
+----------------------------------------------------------------------------------------------------
+
 SKAPA ETT GARAGE
 Man kan också köra programmet GarageMaker för att skapa en egen parkering/p-hus. 
 Det sparas som en json i GarageMaker/templates/. 

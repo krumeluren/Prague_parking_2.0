@@ -1,4 +1,5 @@
-﻿using Prague_Parking_2_0_beta.Garage;
+﻿using Prague_Parking;
+using Prague_Parking_2_0_beta.Garage;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +19,7 @@ namespace Prague_Parking_2_0_beta
                 )
         {
             this.Type = "Bike";
-            Size = 1;
+            Size = Settings.Load().Bike_Size;
         }
         #endregion
 

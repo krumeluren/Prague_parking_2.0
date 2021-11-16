@@ -38,7 +38,7 @@ namespace Prague_Parking_2_0_beta
                             FileName = ThisGarage.UISave();
 
                             // Then Reload it from /parks
-                            ThisGarage = Prague_Parking_2_0_beta.Garage.Garage.Load(FileName);
+                            ThisGarage = Garage.Garage.Load(FileName);
                             ThisGarage.UIMenu();
                             break;
                         }
