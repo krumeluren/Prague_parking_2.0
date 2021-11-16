@@ -66,7 +66,6 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        //  Edit lot data individually
         #region UIEditLots() - User interface for editing data of lots
         /// <summary>
         /// User menu for editing lots inside of row
@@ -164,7 +163,6 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        // Entry menu
         #region UIMenu()
         /// <summary>
         /// A user menu for managing this row

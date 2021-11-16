@@ -40,7 +40,6 @@ namespace Prague_Parking_2_0_beta.Garage
         }
         #endregion
 
-        //  User Interfaces
 
         #region UISetHeigth() Change the Heigth int
         /// <summary>
