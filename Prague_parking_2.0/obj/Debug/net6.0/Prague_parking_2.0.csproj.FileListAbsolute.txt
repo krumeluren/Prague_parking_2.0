@@ -30,3 +30,20 @@ E:\Projekt\Visual Studio Projekt\source\repos\prague_parking_2.0\Prague_parking_
 E:\Projekt\Visual Studio Projekt\source\repos\prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\ref\Prague_parking_2.0.dll
 E:\Projekt\Visual Studio Projekt\source\repos\prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.pdb
 E:\Projekt\Visual Studio Projekt\source\repos\prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.genruntimeconfig.cache
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\bin\Debug\net6.0\Prague_parking_2.0.exe
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\bin\Debug\net6.0\Prague_parking_2.0.deps.json
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\bin\Debug\net6.0\Prague_parking_2.0.runtimeconfig.json
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\bin\Debug\net6.0\Prague_parking_2.0.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\bin\Debug\net6.0\ref\Prague_parking_2.0.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\bin\Debug\net6.0\Prague_parking_2.0.pdb
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.csproj.AssemblyReference.cache
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.AssemblyInfoInputs.cache
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.AssemblyInfo.cs
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.csproj.CoreCompileInputs.cache
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.csproj.CopyComplete
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\ref\Prague_parking_2.0.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.pdb
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\Prague_parking_2.0\obj\Debug\net6.0\Prague_parking_2.0.genruntimeconfig.cache

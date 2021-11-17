@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Prague_Parking_2_0_beta.Garage
+namespace Prague_Parking_2_0.Garage
 {
     [Serializable]
     public class Lot

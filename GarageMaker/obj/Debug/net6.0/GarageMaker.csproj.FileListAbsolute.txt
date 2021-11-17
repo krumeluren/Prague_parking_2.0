@@ -1,0 +1,17 @@
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\bin\Debug\net6.0\GarageMaker.exe
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\bin\Debug\net6.0\GarageMaker.deps.json
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\bin\Debug\net6.0\GarageMaker.runtimeconfig.json
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\bin\Debug\net6.0\GarageMaker.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\bin\Debug\net6.0\ref\GarageMaker.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\bin\Debug\net6.0\GarageMaker.pdb
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.csproj.AssemblyReference.cache
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.AssemblyInfoInputs.cache
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.AssemblyInfo.cs
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.csproj.CoreCompileInputs.cache
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.csproj.CopyComplete
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\ref\GarageMaker.dll
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.pdb
+C:\Users\9928l\Documents\GitHub\Prague_parking_2.0\GarageMaker\obj\Debug\net6.0\GarageMaker.genruntimeconfig.cache

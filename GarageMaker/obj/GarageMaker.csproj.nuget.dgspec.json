@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\GarageMaker\\GarageMaker.csproj": {}
+    "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\GarageMaker\\GarageMaker.csproj": {}
   },
   "projects": {
-    "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\GarageMaker\\GarageMaker.csproj": {
+    "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\GarageMaker\\GarageMaker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\GarageMaker\\GarageMaker.csproj",
+        "projectUniqueName": "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\GarageMaker\\GarageMaker.csproj",
         "projectName": "GarageMaker",
-        "projectPath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\GarageMaker\\GarageMaker.csproj",
+        "projectPath": "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\GarageMaker\\GarageMaker.csproj",
         "packagesPath": "C:\\Users\\9928l\\.nuget\\packages\\",
-        "outputPath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\GarageMaker\\obj\\",
+        "outputPath": "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\GarageMaker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,15 +22,14 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -41,12 +40,12 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[9.0.1, )"
             }
           },
           "imports": [
@@ -59,12 +58,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.12, 5.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

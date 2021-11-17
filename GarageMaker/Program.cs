@@ -1,11 +1,11 @@
 ﻿
 using System;
 
-using Prague_Parking_2_0_beta.Garage;
+using Prague_Parking_2_0.Garage;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Prague_Parking_2_0_beta
+namespace Prague_Parking_2_0
 {
     class Program
     {

@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 
-namespace Prague_Parking_2_0_beta.Garage
+namespace Prague_Parking_2_0.Garage
 {
     class GarageSerializer
     {

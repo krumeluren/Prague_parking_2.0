@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj": {}
+    "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj": {}
   },
   "projects": {
-    "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj": {
+    "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj",
+        "projectUniqueName": "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj",
         "projectName": "Prague_parking_2.0",
-        "projectPath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj",
+        "projectPath": "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\Prague_parking_2.0\\Prague_parking_2.0.csproj",
         "packagesPath": "C:\\Users\\9928l\\.nuget\\packages\\",
-        "outputPath": "E:\\Projekt\\Visual Studio Projekt\\source\\repos\\prague_parking_2.0\\Prague_parking_2.0\\obj\\",
+        "outputPath": "C:\\Users\\9928l\\Documents\\GitHub\\Prague_parking_2.0\\Prague_parking_2.0\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -25,8 +25,7 @@
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net6.0": {
@@ -46,7 +45,7 @@
           "dependencies": {
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[9.0.1, )"
             }
           },
           "imports": [

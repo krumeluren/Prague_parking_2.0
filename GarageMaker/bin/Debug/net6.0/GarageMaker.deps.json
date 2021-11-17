@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Prague_parking_2.0/1.0.0": {
+      "GarageMaker/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
-          "Prague_parking_2.0.dll": {}
+          "GarageMaker.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.1": {
@@ -362,7 +362,7 @@
     }
   },
   "libraries": {
-    "Prague_parking_2.0/1.0.0": {
+    "GarageMaker/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
