@@ -20,16 +20,16 @@ namespace Prague_Parking_2_0_beta
         #endregion
 
         #region Constructor
-        public Vehicle
-           (
+        public Vehicle(
             DateTime arrival,
             int heigth,
+            int Settings_Size,
             string id = null,
             string color = null,
-            bool electric = false
-            )
+            bool electric = false)
         {
             Id = id;
+            Size = Settings_Size;
             Color = color;
             Heigth = heigth;
             Electric = electric;
@@ -161,7 +161,7 @@ namespace Prague_Parking_2_0_beta
             }
             else
             {
-                int hours = (int)Math.Floor(since.TotalHours);
+                int hours = (int)Math.Ceiling(since.TotalHours);
                 price = hours * pricePerHour;
             }
             return price;
@@ -173,7 +173,7 @@ namespace Prague_Parking_2_0_beta
             Console.Clear();
             Console.WriteLine("Ange fordonets höjd");
             Console.Write("Höjd: ");
-            int height = int.TryParse(Console.ReadLine(), out height) ? height : int.MaxValue;
+            int height = int.TryParse(Console.ReadLine(), out height) ? height : int.MaxValue; // height = user input or max value
             return height;
         }
         #endregion
@@ -603,7 +603,7 @@ namespace Prague_Parking_2_0_beta
         public void UIParkCommand(Lot lot)
         {
             Console.Clear();
-            Console.WriteLine($"Parkera fordonet på plats {lot.Number+1} vid {lot.Row.Location.GetName()}");
+            Console.WriteLine($"Parkera fordonet på plats {lot.Number} vid {lot.Row.Location.GetName()}");
             Console.WriteLine("Tryck för att fortsätta");
             Console.ReadKey();
         }

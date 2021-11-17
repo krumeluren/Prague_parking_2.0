@@ -1,16 +1,17 @@
 ﻿
-projektet GarageMaker är separat program och har inte specifikt med uppgiften att göra
+Projektet 'GarageMaker' är separat program och har inte specifikt med uppgiften att göra
 
 
 FÖR ATT KÖRA
 
-Hämta NewtonSoft.json v 13.0.1 med package manager. 
+Om inte installerat, hämta NewtonSoft.json v 13.0.1 med package manager. 
 Tools -> NuGet Package Manager -> Manage NuGet Packages Manager for Solution -> "Newtonsoft.json" -> välj 13.0.1 -> Bocka "Project" -> Install
 
 Kör programmet Prague Parking 2_0
-I /parks finns ett existerande garage som heter "Test" som är strukturerat enligt kraven.
+I /parks finns ett existerande garage som heter "Test" som är strukturerat enligt specifikationerna.
 
 Eller ladda in ett nytt från template genom att välja "Load from GarageMaker/templates" -> "Test"
+För att skapa ett template läs "SKAPA ETT GARAGE"
 
 ----------------------------------------------------------------------------------------------------
 
@@ -20,7 +21,7 @@ I _settings/settings.json går det att ändra priser och andra inställningar.
 
 Det går att ändra priser samtidigt som programmet körs.
 
-För att ändra storlekar krävs omstart.
+För att ändra storlekar krävs omstart av programmet för att det ska ändras.
 
 ----------------------------------------------------------------------------------------------------
 

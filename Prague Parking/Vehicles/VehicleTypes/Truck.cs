@@ -7,22 +7,21 @@ namespace Prague_Parking_2_0_beta
 {
     class Truck : Vehicle
     {
+        static int Settings_Size = Settings.Load().Truck_Size;
         #region Constructor
         public Truck(
             DateTime arrival,
             int heigth,
             string id,
             string color = null,
-            bool electric = false
-            ) : base(
-                arrival,
+            bool electric = false) 
+            : base(arrival,
                 heigth,
+                Settings_Size,
                 id,
                 color,
-                electric
-                )
+                electric)
         {
-            Size = Settings.Load().Truck_Size;
             this.Type = "Truck";
         }
         #endregion

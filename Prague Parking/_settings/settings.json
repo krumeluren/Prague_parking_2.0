@@ -20,6 +20,7 @@
   "_comment": "Size that each vehicle takes up. If larger than Size_Per_Lot it needs to be divisible by Size_Per_Lot.",
   "-comment": "Example one. Size_Per_Lot = 5, Bike = 1, MC = 3, Car = 5, Buss = 10",
   "-comment": "Example two. Size_Per_Lot = 4, Bike = 2, MC = 2, Car = 8, Buss = 12",
+  "-comment": "Example three. Size_Per_Lot = 3, Bike = 1, MC = 2, Car = 6, Buss = 9",
   "Bike_Size": 1,
   "MC_Size": 2,
   "Car_Size": 4,

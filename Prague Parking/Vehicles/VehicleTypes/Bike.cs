@@ -7,19 +7,19 @@ namespace Prague_Parking_2_0_beta
 {
     class Bike : Vehicle
     {
+        static int Settings_Size = Settings.Load().Bike_Size;
         #region Constructor
         public Bike(
             DateTime arrival,
             int heigth,
-            string color
-            ) : base(
+            string color)
+            : base(
                 arrival,
                 heigth,
-                color: color
-                )
+                Settings_Size,
+                color: color)
         {
             this.Type = "Bike";
-            Size = Settings.Load().Bike_Size;
         }
         #endregion
 
