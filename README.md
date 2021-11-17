@@ -3,8 +3,8 @@ Projektet 'GarageMaker' är separat program och har inte specifikt med uppgiften
 
 FÖR ATT KÖRA
 
-Om inte installerat, hämta NewtonSoft.json v 13.0.1 med package manager. 
-Tools -> NuGet Package Manager -> Manage NuGet Packages Manager for Solution -> "Newtonsoft.json" -> välj 13.0.1 -> Bocka "Project" -> Install - Rebuild project
+Om inte installerat, hämta NewtonSoft.json v 13.0.1 eller 9.0.1 med package manager. 
+Tools -> NuGet Package Manager -> Manage NuGet Packages Manager for Solution -> "Newtonsoft.json" -> välj v 13.0.1 eller 9.0.1 -> Bocka "Project" -> Install - Rebuild project
 
 Kör programmet Prague Parking 2_0
 
