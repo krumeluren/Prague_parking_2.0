@@ -11,7 +11,7 @@ namespace Prague_Parking_2_0
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("V 2.0");
+            Console.WriteLine("v 2.0");
 
             Initializer initializer = new Initializer();
             bool isDone = false;

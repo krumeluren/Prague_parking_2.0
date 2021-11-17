@@ -10,7 +10,12 @@
       "ProjectGuid": "f7d1cc3a-b2de-462b-bf7d-aa0432b2316c",
       "DisplayName": "GarageMaker",
       "ColorIndex": 1
+    },
+    "77359f09-46ee-4987-9737-2286b10083ae": {
+      "ProjectGuid": "77359f09-46ee-4987-9737-2286b10083ae",
+      "DisplayName": "Prague_parking_2.0",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
