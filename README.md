@@ -11,6 +11,7 @@ Kör programmet Prague Parking 2_0
 I /parks finns ett existerande garage som heter "Test" som är strukturerat enligt specifikationerna.
 
 Eller ladda in ett nytt från template genom att välja "Load from GarageMaker/templates" -> "Test"
+
 För att skapa ett template läs "SKAPA ETT GARAGE"
 
 ----------------------------------------------------------------------------------------------------
